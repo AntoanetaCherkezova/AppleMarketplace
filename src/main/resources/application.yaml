@@ -1,0 +1,42 @@
+# Data Source Properties
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/apple_store?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC
+    username: ${db_username}
+    password: ${db_password}
+
+# Multipart settings
+  servlet:
+    multipart:
+      max-file-size: 2MB
+      max-request-size: 2MB
+
+
+# JPA Properties
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        format_sql: 'TRUE'
+    hibernate:
+      ddl-auto: update
+
+# MVC Properties
+  mvc:
+    hidden-method:
+      filter:
+        enabled: true
+
+# Logging Levels
+logging:
+  level:
+    org:
+      hibernate:
+        type:
+          descriptor: TRACE
+        SQL: DEBUG
+      nodeValue: WARN
+    blog: WARN
+
+
