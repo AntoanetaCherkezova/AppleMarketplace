@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Pacifico&display=swap');
+
+body {
+    background: url('../images/apple-home.png');
+    position: relative;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    font-family: "Roboto", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.home{
+    padding-top: 3rem;
+    text-align: center;
+}
+
+.home .welcome{
+    text-align: center;
+    width: 50rem;
+    margin: 2.5rem auto 0 auto;
+    color: #4bfaf1;
+    background: rgba(59, 43, 10, 0.4);
+    border: 2px solid #706b6b;
+    padding: 1rem;
+    border-radius: 3% 8%;
+    backdrop-filter: blur(3px);
+}
+
+.home h1 {
+    text-align: center;
+    width: 25rem;
+    margin: 0.5rem auto 0 auto;
+    font-family: "Black Ops One", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.home h1 span{
+    text-align: center;
+    width: 25rem;
+    margin: 0.5rem auto 0 auto;
+    font-family: "Black Ops One", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    color: red;
+}
+
+.home h2 {
+    text-align: center;
+    margin: 0.6rem auto 0 auto;
+    font-family: "Black Ops One", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.home p{
+    padding-top: 0.7rem;
+    text-align: center;
+    width: 28rem;
+    margin: 0 auto;
+    font-family: "Black Ops One", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+
+a{
+    color: blue;
+    font-weight: bold;
+}
+
+
+.home .welcome p a {
+    text-decoration: none;
+}

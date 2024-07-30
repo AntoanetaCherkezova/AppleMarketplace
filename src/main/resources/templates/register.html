@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <link th:include="~{fragments/head :: head}">
+    <link rel="stylesheet" href="/css/register.css">
+</head>
+
+<body>
+
+<div>
+    <nav th:replace="~{fragments/navigation}"></nav>
+</div>
+
+<div class="register-page">
+    <form method="POST" th:action="@{/user/register}">
+        <div class="register">
+            <div>
+                <label class="picture" for="file"><i class="fa fa-camera fa-2x"></i></label>
+                <input type="file" id="file" style="display: none;" accept="image/*">
+            </div>
+            <div class="element">
+                <label for="username"><i class="fa fa-envelope"></i></label>
+                <input id="username" type="text" name="username" placeholder="Username"/>
+            </div>
+            <div class="element">
+                <label for="email"><i class="fa fa-envelope"></i></label>
+                <input id="email" type="email" name="email" placeholder="Your Email Address"/>
+            </div>
+            <div class="element">
+                <label for="firstName"><i class="fa fa-user"></i></label>
+                <input id="firstName" type="text" name="firstName" placeholder="First Name"/>
+            </div>
+            <div class="element">
+                <label for="lastName"><i class="fa-regular fa-user"></i></label>
+                <input id="lastName" type="text" name="lastName" placeholder="Last Name"/>
+            </div>
+            <div class="element">
+                <label for="age"><i class="fa fa-calendar"></i></label>
+                <input id="age" type="number" name="age" placeholder="Age" min="1" max="100"/>
+            </div>
+            <div class="element">
+                <label for="password"><i class="fa fa-lock"></i></label>
+                <input id="password" type="password" name="password" placeholder="Password"/>
+            </div>
+            <div class="element">
+                <label for="confirmPassword"><i class="fa fa-lock"></i></label>
+                <input id="confirmPassword" type="password" name="confirmPassword"
+                       placeholder="Re-Enter Password"/>
+            </div>
+            <button>Register</button>
+        </div>
+    </form>
+</div>
+
+<footer th:replace="~{fragments/footer}"></footer>
+</body>
+</html>

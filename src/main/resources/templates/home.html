@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <link th:include="~{fragments/head :: head}">
+    <link rel="stylesheet" href="/css/home.css">
+</head>
+
+<body>
+<div>
+    <nav th:replace="~{fragments/navigation}"></nav>
+</div>
+
+<div class="featured-products">
+    <img src="/images/premium-device.jpg" alt="Apple Products">
+    <div class="text-featured-products"><span class="text1">Apple</span> <span class="text2">PRODUCTS</span></div>
+</div>
+
+<div class="choice-container">
+    <div class="choice">
+        <a href="#"><img src="/images/iphone.png" alt="iPhone"></a>
+        <h3>iPhone</h3>
+    </div>
+    <div class="choice">
+        <a href="#"><img src="/images/macBook.png" alt="MacBook"></a>
+        <h3>MacBook</h3>
+    </div>
+    <div class="choice">
+        <a href="#"><img src="/images/watch.jpg" alt="Watch"></a>
+        <h3>Watch</h3>
+    </div>
+    <div class="choice">
+        <a href="#"><img src="/images/all-products.jpg" alt="All"></a>
+        <h3>All Products</h3>
+    </div>
+</div>
+
+<div class="product-container">
+    <div class="iPhone">
+        <div class="text-expensive-products">
+            <p>The Most Expensive Apple Products</p>
+        </div>
+        <img src="/images/apple-test.jpg" alt="iPhone">
+    </div>
+    <div class="product">
+        <img src="/images/apple-test.jpg" alt="MacBook">
+        <div class="details">
+            <p>Experience the latest in technology with our selection of iPhones, MacBooks, and Watches. Designed for performance and style.</p>
+        </div>
+        <div class="button-best-product">
+            <a href="#" class="button-find-best-product">Discover the Best Products</a>
+        </div>
+    </div>
+</div>
+
+<div class="latest-iPhone">
+    <h2>Fresh Arrivals</h2>
+    <div class="iPhone-details">
+        <img src="/images/apple-test.jpg" alt="Product Image">
+        <div class="iPhone-info">
+            <h3>New iPhone 14</h3>
+            <div class="items">
+                <div>
+                    <i class="fa-solid fa-check"></i>
+                    <label>5G Connectivity</label>
+                </div>
+                <div>
+                    <i class="fa-solid fa-check"></i>
+                    <label>Retina Display</label>
+                </div>
+                <div>
+                    <i class="fa-solid fa-check"></i>
+                    <label>Face ID</label>
+                </div>
+            </div>
+            <a href="#" class="btn">Read More</a>
+        </div>
+    </div>
+</div>
+
+<div class="container mb-5">
+    <div class="row d-flex justify-content-center align-items-center ">
+        <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
+            <img src="/images/apple-test.jpg"
+                 class="w-100 shadow-1-strong rounded mb-4 img-thumbnail img-fluid" alt="Product Image" />
+
+            <img src="/images/apple-test.jpg"
+                 class="w-100 shadow-1-strong rounded mb-4 img-thumbnail img-fluid"
+                 alt="Product Image" />
+        </div>
+
+        <div class="col-lg-4 mb-4 mb-lg-0">
+            <img src="/images/apple-test.jpg"
+                 class="w-100 shadow-1-strong rounded mb-4 img-thumbnail img-fluid" alt="Product Image" />
+
+            <img src="/images/apple-test.jpg"
+                 class="w-100 shadow-1-strong rounded mb-4 img-thumbnail img-fluid" alt="Product Image" />
+        </div>
+
+        <div class="col-lg-4 mb-4 mb-lg-0">
+            <img src="/images/apple-test.jpg"
+                 class="w-100 shadow-1-strong rounded mb-4 img-thumbnail img-fluid" alt="Product Image" />
+
+            <img src="/images/apple-test.jpg"
+                 class="w-100 shadow-1-strong rounded mb-4 img-thumbnail img-fluid" alt="Product Image" />
+        </div>
+    </div>
+</div>
+
+<footer th:replace="~{fragments/footer}"></footer>
+</body>
+</html>

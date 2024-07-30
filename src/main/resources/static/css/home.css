@@ -1,0 +1,257 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Satisfy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baskervville+SC&family=Pacifico&family=Satisfy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baskervville+SC&family=Margarine&family=Pacifico&family=Satisfy&display=swap');
+
+body {
+    background: url('../images/apple-show.jpg');
+    color: white;
+    position: relative;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    font-family: "Roboto", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Premium device image with text */
+.featured-products{
+    max-width: 100%;
+    max-height: 50vh;
+    margin: 5rem 0 2rem 0;
+}
+
+.featured-products img{
+    width: 100%;
+    height: 60vh;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 0.5rem;
+}
+
+.text-featured-products{
+    position: absolute;
+    top: 16rem;
+    left: 18%;
+    transform: translate(-50%, 50%);
+    color: white;
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.4rem;
+    max-width: 15%;
+}
+
+.text-featured-products .text1{
+    font-family: "Satisfy", cursive;
+    font-style: normal;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.text-featured-products .text2{
+    font-family: "Baskervville SC", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.6rem;
+    letter-spacing: 0.5rem;
+}
+
+/* Device */
+.choice-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 8rem;
+    color: white;
+}
+
+.choice {
+    text-align: center;
+}
+
+.choice img {
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 0.5rem;
+}
+
+/* The most expensive Device */
+.product-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 4rem;
+    color: white;
+}
+
+.iPhone, .product {
+    text-align: center;
+    max-width: 22rem;
+    margin: 0.7rem;
+}
+
+.product img{
+    width: 22rem;
+    height: 20rem;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 0.5rem;
+}
+
+.iPhone img{
+    width: 22rem;
+    height: 29rem;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 0.5rem;
+}
+
+.text-expensive-products{
+    position: relative;
+    left: 7rem;
+    margin: 2rem 0 2rem 1rem;
+}
+
+.text-featured-products p{
+    font-family: "Pacifico", cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 2rem;
+}
+
+.details{
+    max-width: 28rem;
+    text-align: left;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+    letter-spacing: 2px;
+}
+
+.details p{
+    font-family: "Margarine", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+.button-best-product{
+    text-align: left;
+
+}
+
+.button-best-product a{
+    text-decoration: none;
+}
+
+.button-find-best-product{
+    display: inline-flex;
+    padding: 0.7rem;
+    background-color: #fb33a0;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    margin-top: 3rem;
+}
+
+.button-find-best-product:hover {
+    background-color: #007bff
+}
+
+
+
+
+/* Fresh Releases */
+.latest-iPhone {
+    padding: 2rem;
+    background: rgb(250, 49, 163);
+    background: linear-gradient(0deg, rgba(250, 49, 163, 1) 9%, rgba(43, 79, 230, 1) 56%, rgba(35, 50, 128, 1) 81%);
+    margin: 3rem auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    border-radius: 8px;
+}
+
+.latest-iPhone h2 {
+    text-align: center;
+    color: white;
+    margin-bottom: 1.5rem;
+}
+
+.iPhone-details {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid white;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+}
+
+.iPhone-details img {
+    width: 50%;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.iPhone-info {
+    flex: 1;
+    margin-left: 2rem;
+}
+
+.iPhone-info h3 {
+    font-size: 1.5rem;
+    color: white;
+    margin-bottom: 0.5rem;
+}
+
+.items {
+    margin-top: 1rem;
+}
+
+.items div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.items i.fa-solid.fa-check {
+    font-size: 1.2rem;
+    color: rgb(32, 233, 32);
+    margin-right: 0.5rem;
+}
+.items i.fa-solid.fa-times {
+    font-size: 1.2rem;
+    color: rgb(243, 83, 83);
+    margin-right: 0.5rem;
+}
+
+.items label {
+    font-size: 1rem;
+    color: white;
+}
+.btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #fb33a0;
+}

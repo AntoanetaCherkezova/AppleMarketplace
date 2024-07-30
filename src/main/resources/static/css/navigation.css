@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+*{
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+nav{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    padding: 1rem 4rem 1rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+nav.scrolled {
+    background-color: white;
+    z-index: 100;
+}
+nav .logo{
+    width: 9rem;
+}
+
+nav .menu{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+nav .menu a {
+    text-decoration: none;
+}
+
+nav .menu a, nav .menu form button{
+    color: #fff;
+    margin-left: 1rem;
+    position: relative;
+}
+
+nav .menu a::after,
+nav .menu form button::after {
+    content: '';
+    position: absolute;
+    bottom: -0.3rem;
+    left: 0;
+    width: 0%;
+    height: 0.15rem;
+    background-color: #dd0707;
+    transition: width 0.4s;
+}
+
+nav .menu a:hover::after,
+nav .menu form button:hover::after {
+    width: 100%;
+}
+
+nav .flags {
+    display: flex;
+}
+
+nav .flags a{
+    width: 1.5rem;
+    margin-left: 0.4rem;
+}
+
+nav i{
+    color: white;
+}
+
+nav .my-ads-and-favorite a{
+    margin-left: 0.4rem;
+}
+
+nav .menu .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #524f4f;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+}
+
+nav .menu .dropdown:hover .dropdown-content {
+    display: block;
+}
+
+nav .menu .dropdown-content a {
+    color: #fff;
+    margin: 1rem 2rem 1rem 1rem;
+    display: block;
+}
+
+nav .menu form button {
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-size: inherit;
+    padding: 0;
+}

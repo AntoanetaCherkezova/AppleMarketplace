@@ -1,0 +1,88 @@
+body {
+    background: url('../images/apple-register.jpg');
+    position: relative;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.register-page{
+    width: 30rem;
+    text-align: center;
+    position: relative;
+    bottom: 2rem;
+}
+
+.register{
+    text-align: center;
+    backdrop-filter: blur(0.4rem);
+    padding: 1rem 0;
+    border-radius: 2rem;
+}
+
+.picture{
+    display: inline-block;
+    background-color: rgba(236, 234, 234, 0.3);
+    padding: 2rem;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    cursor: pointer;
+}
+
+.element {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.element label {
+    margin-right: 0.5rem;
+}
+
+.element input {
+    flex: 0.5;
+    padding: 0.5rem 0;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    border-bottom: 2px solid white;
+    color: white;
+    font-size: 1em;
+    width: 80%;
+}
+
+.element input::placeholder {
+    color: white;
+    opacity: 0.6;
+}
+
+.element input:focus {
+    border-bottom: 2px solid #ec0a0a;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.register button{
+    background-color: #ec0a0a;
+    border: none;
+    color: white;
+    padding: 1rem 1.3rem;
+    text-align: center;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    width: 40%;
+    border-radius: 2rem;
+}
+
+button:hover {
+    background-color: #9ea39e;
+}

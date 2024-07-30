@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <link th:include="~{fragments/head :: head}">
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+
+<body>
+
+<div>
+    <nav th:replace="~{fragments/navigation}"></nav>
+</div>
+
+<th:block sec:authorize="!isAuthenticated()">
+    <div class="login-page">
+        <div class="form">
+            <form class="login-form acrylic" method="POST" th:action="@{/user/login}">
+                <span>Login to your account</span>
+                <input type="text" placeholder="Email" />
+                <input type="password" placeholder="Password" />
+                <button class="login"><strong>LOGIN</strong></button>
+                <p class="message"><a href="#">Register </a></p>
+            </form>
+        </div>
+    </div>
+</th:block>
+
+<footer th:replace="~{fragments/footer}"></footer>
+</body>
+</html>

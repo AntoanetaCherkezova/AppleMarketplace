@@ -1,0 +1,36 @@
+<nav th:fragment="navigation" id="nav-bar-scroll">
+    <a href="/"><img src="/images/png-apple-logo.png" class="logo" alt="logo"></a>
+    <th:block sec:authorize="isAuthenticated()">
+        <div class="my-ads-and-favorite">
+            <a th:href="@{/user/profile}"><i class="fa-solid fa-user"></i></a>
+            <a th:href="@{/user/favoriteList}"><i class="fa-solid fa-star"></i></a>
+            <a th:href="@{/user/myList}"><i class="fas fa-newspaper"></i></a>
+        </div>
+    </th:block>
+    <div class="menu">
+        <a th:href="@{/about}">About</a>
+        <th:block sec:authorize="isAuthenticated()">
+            <div class="dropdown">
+                <a href="#" class="dropbtn">Add <i class="fas fa-caret-down"></i></a>
+                <div class="dropdown-content">
+                    <a th:href="@{/home/iPhone}">iPhone</a>
+                    <a th:href="@{/home/MacBook}">MacBook</a>
+                    <a th:href="@{/home/Watch}">Watch</a>
+                </div>
+            </div>
+                <a th:href="@{/admin}">Admin</a>
+                <a th:href="@{/contacts}">Contact</a>
+        </th:block>
+        <a th:href="@{/user/register}">Register</a>
+        <a th:href="@{/user/login}">Login</a>
+        <th:block sec:authorize="isAuthenticated()">
+            <form method="POST" action="/user/logout">
+                <button type="submit">Logout</button>
+            </form>
+        </th:block>
+    </div>
+    <div class="flags">
+        <a href="#"><img src="/images/png-flag-united-kingdom.png" alt="English"></a>
+        <a href="#"><img src="/images/png-bulgaria-flag.png" alt="Bulgarian"></a>
+    </div>
+</nav>
