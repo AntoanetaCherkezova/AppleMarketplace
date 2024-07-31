@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <link th:include="~{fragments/head :: head}">
+    <link rel="stylesheet" href="/css/my-devices.css">
+</head>
+
+
+<body>
+
+<div>
+    <nav th:replace="~{fragments/navigation}"></nav>
+</div>
+
+<div class="container mb-5">
+    <div class="line-with-text">
+        <div class="line-1"></div>
+        <div class="text-line">My Devices</div>
+        <div class="line-2"></div>
+    </div>
+    <div class="row">
+        <div class="col-lg-8 mx-auto mt-4">
+            <ul class="list-group shadow">
+
+                <li class="list-group-item mb-1">
+                    <div class="media align-items-lg-center flex-column flex-lg-row p-3">
+                        <div class="media-body order-2 order-lg-1">
+                            <a href="...">
+                                <h5 class="mt-0 font-weight-bold mb-2">Brand & Model</h5>
+                            </a>
+                            <div class="d-flex align-items-center justify-content-between mt-1">
+                                <p class="font-italic text-muted mb-0 small mt-3">
+                                    <span>status | </span>
+                                    <span>warranty | </span>
+                                    <span>model | </span>
+                                    <span>colour | </span>
+                                    <span>capacity ram | </span>
+                                    <span>operating system | </span>
+                                    <span>display size | </span>
+                                    <span>release date</span>
+                                </p>
+                                <h6 class="font-weight-bold my-2 mr-3">€1,000</h6>
+                                <div>
+                                    <a href="..." class="btn btn-info mb-3"><i class="fas fa-info-circle"></i>
+                                        Info</a>
+                                    <form action="..." method="POST">
+                                        <button type="submit" class="btn btn-labeled btn-info mb-3">
+                                            <span class="btn-label"><i class="fa fa-refresh"></i></span> Refresh
+                                        </button>
+                                    </form>
+                                    <form action="..." method="POST">
+                                        <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i>
+                                            Delete</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="..." class="ml-4 order-1 order-lg-1"><img src="/images/apple-test.jpg" alt="Image"
+                                                                           class="order-1 order-lg-2"></a>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+<footer th:replace="~{fragments/footer}"></footer>
+</body>
+</html>

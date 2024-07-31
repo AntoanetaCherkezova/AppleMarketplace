@@ -1,4 +1,5 @@
 package com.example.applestore.config;
+import com.example.applestore.model.enums.Role;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,7 +14,9 @@ public class SecurityConfiguration {
         return httpSecurity.authorizeHttpRequests(
                 authorizeRequests -> authorizeRequests
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                        .requestMatchers("/**").permitAll()
+                        .requestMatchers("/", "/user/login", "/user/register", "/user/login-error","/about","/contact-us").permitAll()
+                        .requestMatchers("/home").hasRole(Role.USER.name())
+                        .requestMatchers("/control-room").hasRole(Role.ADMIN.name())
                         .anyRequest().authenticated()
         ).formLogin(
                 formLogin -> {
