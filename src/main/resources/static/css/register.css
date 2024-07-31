@@ -1,42 +1,52 @@
 body {
     background: url('../images/apple-register.jpg');
-    position: relative;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
     background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
+    color: #f0f0f0;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    height: 100vh;
 }
 
 .register-page{
     width: 30rem;
+    height: 32rem;
     text-align: center;
     position: relative;
-    bottom: 2rem;
+    bottom: 1rem;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+    color: #f0f0f0;
 }
 
 .register{
     text-align: center;
-    backdrop-filter: blur(0.4rem);
-    padding: 1rem 0;
-    border-radius: 2rem;
+    backdrop-filter: blur(10rem);
+    padding: 1rem 1rem;
+    border-radius: 1.8rem;
 }
 
-.picture{
+.picture {
     display: inline-block;
-    background-color: rgba(236, 234, 234, 0.3);
+    background-color: rgba(255, 255, 255, 0.8);
     padding: 2rem;
     border-radius: 50%;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.picture:hover {
+    background-color: rgba(255, 255, 255, 1); /* Промяна на фона при задържане */
+    transform: scale(1.05); /* Леко увеличение при задържане */
 }
 
 .element {
     position: relative;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
 }
 
 .element label {
@@ -61,7 +71,7 @@ body {
 }
 
 .element input:focus {
-    border-bottom: 2px solid #ec0a0a;
+    border-bottom: 2px solid #ecb52c;
 }
 
 input[type=number]::-webkit-inner-spin-button,
@@ -71,15 +81,15 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .register button{
-    background-color: #ec0a0a;
+    background-color: #ecb52c;
     border: none;
     color: white;
-    padding: 1rem 1.3rem;
+    padding: 0.5rem 1rem;
     text-align: center;
     font-size: 1rem;
     transition: background-color 0.3s ease;
     cursor: pointer;
-    width: 40%;
+    width: 35%;
     border-radius: 2rem;
 }
 
