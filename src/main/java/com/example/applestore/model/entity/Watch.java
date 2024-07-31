@@ -18,15 +18,15 @@ public class Watch extends Device {
     @Enumerated(EnumType.STRING)
     private Display display;
 
-    @Column(nullable = false, name = "touch_screeen_display")
-    private boolean touchScreenDisplay;
-
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private InternalMemory internalMemory;
 
     @Column(nullable = false)
     private String sizes;
+
+    @Column(nullable = false, name = "touch_screen_display")
+    private boolean touchScreenDisplay;
 
     @Column(nullable = false, name = "sim_card_support")
     private boolean simCardSupport;

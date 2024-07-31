@@ -24,7 +24,7 @@ public abstract class Device extends BaseEntity {
     private String warranty;
 
     @Column(nullable = false)
-    private int model;
+    private String model;
 
     @Column(nullable = false)
     private String resolution;

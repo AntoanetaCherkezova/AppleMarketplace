@@ -1,0 +1,103 @@
+.add-iPhone {
+    background: url('../images/watch.jpg');
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30rem;
+    padding: 2rem;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 1rem;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    overflow: hidden;
+}
+
+.add-form {
+    color: #f0f0f0;
+    background-color: transparent;
+}
+
+.add-form form .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+}
+
+.add-form label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.add-form input,
+.add-form select {
+    width: 100%;
+    padding: 0.6rem;
+    border: 2px solid #444;
+    border-radius: 0.5rem;
+    background-color: #333;
+    color: #f0f0f0;
+    transition: border-color 0.3s;
+}
+
+.add-form input:focus,
+.add-form select:focus {
+    border-color: #00aaff;
+    outline: none;
+}
+
+.add-form button {
+    width: 100%;
+    padding: 0.7rem;
+    background-color: #00aaff;
+    color: #fff;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.add-form button:hover {
+    background-color: #0077cc;
+}
+
+.photos,
+.price {
+    margin-bottom: 1rem;
+}
+
+.custom-checkbox .form-check-input {
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: #444;
+    border-radius: 0.3rem;
+    cursor: pointer;
+}
+
+.custom-checkbox .form-check-input:checked {
+    background-color: #00aaff;
+}
+
+.custom-checkbox .form-check-label {
+    font-size: 1rem;
+    margin-left: 0.5rem;
+}
+
+.form-group > * {
+    width: 100%;
+}
+
+.more-options {
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 0.5rem;
+    margin-top: 1rem;
+}
+
+option {
+    background: #222;
+    color: #f0f0f0;
+}

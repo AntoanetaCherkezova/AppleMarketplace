@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <link th:include="~{fragments/head :: head}">
+    <link rel="stylesheet" href="/css/add-macBook.css">
+</head>
+
+
+<body>
+
+<div>
+    <nav th:replace="~{fragments/navigation}"></nav>
+</div>
+
+<div class="add-macBook">
+    <div class="add-form">
+        <form th:method="POST" th:action="@{/user/add}">
+            <h2>Add MacBook</h2>
+            <div class="form-group">
+                <div>
+                    <label for="status">Status:</label>
+                    <input type="text" id="status" name="status" required>
+                </div>
+                <div>
+                    <label for="warranty">Warranty:</label>
+                    <input type="text" id="warranty" name="warranty" required>
+                </div>
+                <div>
+                    <label for="model">Model:</label>
+                    <input type="text" id="model" name="model" required>
+                </div>
+                <div>
+                    <label for="resolution">Resolution:</label>
+                    <input type="text" id="resolution" name="resolution" required>
+                </div>
+                <div>
+                    <label for="processor">Processor:</label>
+                    <input type="text" id="processor" name="processor" required>
+                </div>
+                <div>
+                    <label for="capacity-ram">Capacity Ram:</label>
+                    <select id="capacity-ram" name="capacity-ram" required>
+                        <option value="">- Select Capacity Ram -</option>
+                        <option>Capacity Ram</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="operating-system">Operating System:</label>
+                    <input type="text" id="operating-system" name="operating-system" required>
+                </div>
+                <div>
+                    <label for="display-size">Display Size:</label>
+                    <input type="text" id="display-size" name="display-size" required>
+                </div>
+                <div>
+                    <label for="colour">Colour:</label>
+                    <select id="colour" name="colour" required>
+                        <option value="">- Select colour -</option>
+                        <option>Colour</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="HDD">HDD:</label>
+                    <input type="text" id="HDD" name="HDD" required>
+                </div>
+                <div>
+                    <label for="video-card-type">Video Card Type:</label>
+                    <input type="text" id="video-card-type" name="video-card-type" required>
+                </div>
+                <div>
+                    <label for="release-date">Release Date:</label>
+                    <input type="date" id="release-date" name="release-date" required>
+                </div>
+            </div>
+            <div class="price">
+                <label for="price">Price (BGN):</label>
+                <input type="number" id="price" name="price" required>
+            </div>
+            <div class="photos">
+                <label for="photos">Photos:</label>
+                <input type="file" id="photos" name="photos" multiple accept="image/*">
+            </div>
+            <button type="submit">Add MacBook</button>
+        </form>
+    </div>
+</div>
+
+<footer th:replace="~{fragments/footer}"></footer>
+</body>
+</html>
