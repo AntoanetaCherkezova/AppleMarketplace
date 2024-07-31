@@ -1,0 +1,144 @@
+body {
+    background: url('../images/apple-show.jpg');
+    position: relative;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    font-family: "Roboto", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
+/* Line with text */
+.line-with-text {
+    display: flex;
+    align-items: center;
+    margin-top: 5rem;
+}
+
+.line-1 {
+    flex-grow: 1;
+    border-bottom: 0.5rem solid #f6217d;
+    border-radius: 1rem;
+}
+
+.line-2 {
+    flex-grow: 1;
+    border-bottom: 0.5rem solid #235bf3;
+    border-radius: 1rem;
+}
+
+.text-line {
+    margin: 0 0.4rem;
+    color: white;
+    font-weight: bold;
+    font-size: 1.5rem;
+    padding: 1rem;
+    border: 0.3rem solid transparent;
+    border-image: linear-gradient(to right, #f6217d 50%, #235bf3 50%) 1;
+    background-clip: padding-box;
+}
+
+
+/* Carousel navigation */
+.carousel-inner img {
+    width: 100%;
+    height: 30rem;
+    object-fit: cover;
+}
+
+.small-images{
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 10px;
+}
+
+.small-images img {
+    width: 8rem;
+    height: 6rem;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+
+
+/* Device info */
+.description {
+    margin: 1rem auto;
+    color: white;
+    border: 0.3rem solid transparent;
+    border-image: linear-gradient(to right, #f6217d 50%, #235bf3 50%) 1;
+    padding: 1.5rem;
+    width: 70%;
+    backdrop-filter: blur(0.5rem);
+}
+
+.description-text{
+    color: rgb(175, 164, 164);
+    font-weight: bold;
+}
+
+.description p {
+    color: white;
+    margin: 0.1rem auto;
+    text-align: left;
+}
+
+.description h5{
+    padding: 0.4rem;
+    border: 0.3rem solid transparent;
+    border-image: linear-gradient(to right, #f6217d 50%, #235bf3 50%) 1;
+}
+
+.description a{
+    color: white;
+}
+
+.items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.6rem;
+    width: 80%;
+    margin: 1rem auto;
+}
+
+.items div {
+    display: flex;
+    align-items: center;
+
+}
+
+.items i.fa-solid.fa-check {
+    font-size: 1.2rem;
+    color: rgb(32, 233, 32);
+    margin-right: 0.5rem;
+}
+
+.items i.fa-solid.fa-times {
+    font-size: 1.2rem;
+    color: rgb(243, 83, 83);
+    margin-right: 0.5rem;
+}
+
+.items label {
+    font-size: 1rem;
+    color: white;
+}
+
+
+
+/* Comments */
+.comments{
+    width: 70%;
+}
+
+.card{
+    background-color: transparent;
+    backdrop-filter: blur(10rem);
+    border: 0.1rem solid white;
+}

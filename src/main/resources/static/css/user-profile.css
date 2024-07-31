@@ -1,0 +1,81 @@
+body {
+    background: url('../images/user-profile.jpg');
+    position: relative;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: 135%;
+    background-color: black;
+    font-family: "Roboto", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: auto;
+}
+
+.profile {
+    margin: 10rem auto 0 auto;
+    width: 90%;
+}
+
+.card {
+    background-color: transparent;
+    backdrop-filter: blur(0.5rem);
+    border: 0.1rem solid white;
+    color: white;
+    overflow: auto;
+}
+
+.list-group li {
+    background-color: transparent;
+    border: 0;
+}
+
+.list-group-item{
+    align-items: center;
+    margin-top: 1rem;
+}
+
+div input {
+    background-color: bisque;
+}
+
+.edit-icon {
+    margin-left: 0.5rem 0 0 0.2rem;
+    cursor: pointer;
+    color:white;
+    padding-top: 0.5rem;
+}
+
+.edit-input {
+    display: none;
+    width: 75%;
+}
+
+.save-button {
+    display: none;
+    margin-top: 5px;
+}
+
+li input{
+    width: 20%;
+}
+
+.info-1{
+    height: 30rem;
+}
+
+.info-2{
+    height: 24rem;
+    padding: 2rem;
+
+}
+
+.info-2 .list-group-item{
+    padding: 0;
+    margin: 0.3rem;
+}
+
+.button-submit{
+    text-align: center;
+    margin: 2rem auto 3rem auto;
+}

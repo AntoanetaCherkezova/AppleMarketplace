@@ -6,3 +6,13 @@ window.addEventListener("scroll", function () {
         navbar.classList.remove("scrolled");
     }
 });
+document.querySelector('.menu-button').addEventListener('click', function (event) {
+    event.preventDefault();
+    const nav = document.querySelector('nav .menu');
+    const favorite = document.querySelector('.my-ads-and-favorite');
+    const flags = document.querySelector('nav .flags');
+
+    nav.classList.toggle('menu-open');
+    favorite.classList.toggle('menu-open');
+    flags.classList.toggle('menu-open');
+});

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <link th:include="~{fragments/head :: head}">
+    <link rel="stylesheet" href="/css/user-profile.css">
+</head>
+
+
+<body>
+
+<div>
+    <nav th:replace="~{fragments/navigation}"></nav>
+</div>
+
+<div class="container-fluid profile">
+    <div class="main-body">
+        <form th:action="...." method="POST">
+            <div class="row">
+                <div class="col-lg-5">
+                    <div class="card info-1">
+                        <div class="card-body info-1">
+                            <div class="d-flex flex-column align-items-center text-center">
+                                <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="Image"
+                                     class="rounded-circle p-1 bg-primary" width="110">
+                                <div class="mt-3">
+                                    <h4>John Doe</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="card">
+                        <div class="card-body info-2">
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <div class="row mb-3">
+                                        <div class="col-sm-3">
+                                            <h6 class="mb-0">Username</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary d-flex">
+                                            <span id="username-span">User1</span>
+                                            <input type="text" class="form-control edit-input" id="username-input">
+                                            <i class="fas fa-pencil-alt edit-icon ml-auto"
+                                               onclick="editProfile('username')"></i>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li class="list-group-item">
+                                    <div class="row mb-3">
+                                        <div class="col-sm-3">
+                                            <h6 class="mb-0">First Name</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary d-flex">
+                                            <span id="firstname-span">Ilan</span>
+                                            <input type="text" class="form-control edit-input" id="firstname-input">
+                                            <i class="fas fa-pencil-alt edit-icon ml-auto"
+                                               onclick="editProfile('firstname')"></i>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li class="list-group-item">
+                                    <div class="row mb-3">
+                                        <div class="col-sm-3">
+                                            <h6 class="mb-0">Last Name</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary d-flex">
+                                            <span id="lastname-span">Musk</span>
+                                            <input type="text" class="form-control edit-input" id="lastname-input">
+                                            <i class="fas fa-pencil-alt edit-icon ml-auto"
+                                               onclick="editProfile('lastname')"></i>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li class="list-group-item">
+                                    <div class="row mb-3">
+                                        <div class="col-sm-3">
+                                            <h6 class="mb-0">Phone</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary d-flex">
+                                            <span id="phone-span">(123) 456-789</span>
+                                            <input type="text" class="form-control edit-input" id="phone-input">
+                                            <i class="fas fa-pencil-alt edit-icon ml-auto"
+                                               onclick="editProfile('phone')"></i>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li class="list-group-item">
+                                    <div class="row mb-3">
+                                        <div class="col-sm-3">
+                                            <h6 class="mb=0">Email</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary d-flex">
+                                            <span id="email-span">ilan@example.com</span>
+                                            <input type="text" class="form-control edit-input" id="email-input">
+                                            <i class="fas fa-pencil-alt edit-icon ml-auto"
+                                               onclick="editProfile('email')"></i>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li class="list-group-item">
+                                    <div class="row mb-3">
+                                        <div class="col-sm-3">
+                                            <h6 class="mb-0">City</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary d-flex">
+                                            <span id="city-span">Burgas</span>
+                                            <input type="text" class="form-control edit-input" id="city-input">
+                                            <i class="fas fa-pencil-alt edit-icon ml-auto"
+                                               onclick="editProfile('city')"></i>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li class="list-group-item">
+                                    <div class="row mb-1">
+                                        <div class="col-sm-3">
+                                            <h6 class="mb-0">Role</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary">
+                                            <span class="text-warning">User</span>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="button-submit">
+                        <div>
+                            <input type="submit" class="btn btn-primary px-4" value="Save Changes">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<footer th:replace="~{fragments/footer}"></footer>
+
+</body>
+</html>

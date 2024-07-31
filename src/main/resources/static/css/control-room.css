@@ -1,0 +1,54 @@
+body {
+    background: url('../images/control-room.webp');
+    position: relative;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: 80%;
+    background-color: black;
+    font-family: "Roboto", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: auto;
+}
+
+.users{
+    margin: 3rem auto;
+    width: 73%;
+}
+
+
+.avatar.sm {
+    width: 2.25rem;
+    height: 2.25rem;
+}
+
+.table-nowrap .table td,
+.table-nowrap .table th {
+    white-space: nowrap;
+}
+
+.table>:not(caption)>*>* {
+    padding: 0.75rem 1.25rem;
+    border-bottom-width: 1px;
+}
+
+table th {
+    font-weight: 600;
+    background-color: rgba(26, 25, 25, 0.9);
+}
+
+.table-card{
+    background-color: rgba(26, 25, 25, 0.9);
+    color: white;
+}
+
+
+.table td{
+    text-align: center;
+    vertical-align: middle;
+}
+
+#toggleButton{
+    cursor: pointer;
+}
