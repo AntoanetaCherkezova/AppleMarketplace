@@ -1,5 +1,5 @@
 <nav th:fragment="navigation" id="nav-bar-scroll">
-    <a href="/"><img src="/images/png-apple-logo.png" class="logo" alt="logo"></a>
+    <a href="/"><img src="/images/apple-logo.png" class="logo" alt="logo"></a>
     <th:block sec:authorize="isAuthenticated()">
         <div class="my-ads-and-favorite">
             <a th:href="@{/user/profile}"><i class="fa-solid fa-user"></i></a>
@@ -30,7 +30,7 @@
         </th:block>
     </div>
     <div class="flags">
-        <a href="#"><img src="/images/png-flag-united-kingdom.png" alt="English"></a>
-        <a href="#"><img src="/images/png-bulgaria-flag.png" alt="Bulgarian"></a>
+        <a href="#"><img src="/images/flag-uk.png" alt="English"></a>
+        <a href="#"><img src="/images/flag-bg.png" alt="Bulgarian"></a>
     </div>
 </nav>
