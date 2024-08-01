@@ -40,3 +40,13 @@ logging:
     blog: WARN
 
 
+# Administrator
+admin:
+  username: ${ADMIN_USERNAME:antoaneta}
+  password: ${ADMIN_PASSWORD:aa1aa}
+  first-name: ${ADMIN_FIRST_NAME:Antoaneta}
+  last-name: ${ADMIN_LAST_NAME:Cherkezova}
+  email: ${ADMIN_EMAIL:admin@gmail.com}
+  age: ${ADMIN_AGE:33}
+  city: ${ADMIN_CITY:Burgas}
+  phone-number: ${ADMIN_PHONE_NUMBER:123-456-789}

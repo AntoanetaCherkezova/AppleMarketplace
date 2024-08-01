@@ -12,7 +12,7 @@
     <nav th:replace="~{fragments/navigation}"></nav>
 </div>
 
-<th:block sec:authorize="isAuthenticated()">
+<th:block sec:authorize="!isAuthenticated()">
     <div class="home">
         <div class="welcome">
             <h1>Welcome to AppleStore</h1>

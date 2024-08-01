@@ -22,7 +22,7 @@
                 <button type="submit">Logout</button>
             </form>
         </th:block>
-        <th:block sec:authorize="isAuthenticated()">
+        <th:block sec:authorize="!isAuthenticated()">
             <div class="my-ads">
                 <a th:href="@{/user/profile}"><i class="fa-solid fa-user"></i></a>
                 <a th:href="@{/user/myList}"><i class="fa-solid fa-list"></i></a>

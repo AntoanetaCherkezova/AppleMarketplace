@@ -13,7 +13,6 @@
     <nav th:replace="~{fragments/navigation}"></nav>
 </div>
 
-<th:block sec:authorize="isAuthenticated()">
     <div class="login-page">
         <div class="form acrylic">
             <form class="login-form" method="POST" th:action="@{/user/login}">
@@ -34,7 +33,6 @@
             </form>
         </div>
     </div>
-</th:block>
 
 <footer th:replace="~{fragments/footer}"></footer>
 </body>

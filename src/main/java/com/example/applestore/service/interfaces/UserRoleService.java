@@ -6,4 +6,7 @@ import com.example.applestore.model.enums.Role;
 public interface UserRoleService {
 
     UserRole findByRole(Role role);
+
+    void dbInit();
 }
+
