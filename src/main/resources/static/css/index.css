@@ -15,8 +15,13 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+.h1 {
+    padding-top: 7rem;
+    text-align: center;
+}
+
 .home{
-    padding-top: 3rem;
+    padding-top: 7rem;
     text-align: center;
 }
 
