@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400&display=swap');
+
+body {
+    background: url('../images/about-background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Roboto Slab', serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #333;
+}
+
+.about-container {
+    padding: 5rem 2rem;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
+    margin: 2rem auto;
+    max-width: 1200px;
+}
+
+.about-container h2 {
+    font-family: 'Roboto Slab', serif;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.about-container p {
+    font-family: 'Roboto Slab', serif;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    /*margin-bottom: 2rem;*/
+    color: #444;
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 0.5rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.card-body h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.card-body p {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #555;
+}
+
+.container-font {
+    font-family: "Concert One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #333;
+}
+
+/*.button {*/
+/*    background-color: #f85c70;*/
+/*    color: white;*/
+/*    padding: 0.7rem 1.5rem;*/
+/*    border: none;*/
+/*    border-radius: 5px;*/
+/*    text-transform: uppercase;*/
+/*    font-size: 1rem;*/
+/*    cursor: pointer;*/
+/*    transition: background-color 0.3s ease;*/
+/*}*/
+

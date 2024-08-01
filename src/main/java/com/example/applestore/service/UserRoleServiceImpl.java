@@ -17,7 +17,6 @@ public class UserRoleServiceImpl implements UserRoleService {
         this.userRoleRepository = userRoleRepository;
     }
 
-
     @Override
     public UserRole findByRole(Role role) {
         return userRoleRepository.findByName(role);
