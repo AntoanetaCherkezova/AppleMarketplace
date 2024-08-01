@@ -9,9 +9,9 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/")
 public class AboutController {
 
-    @GetMapping("/about")
+    @GetMapping("/about-us")
     public ModelAndView about(ModelAndView model) {
-        model.setViewName("about");
+        model.setViewName("about-us");
         return model;
     }
 }
