@@ -16,7 +16,7 @@ nav{
     align-items: center;
 }
 nav.scrolled {
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     z-index: 100;
 }
 nav .logo {
@@ -49,9 +49,9 @@ nav .menu form button::after {
     position: absolute;
     bottom: -0.3rem;
     left: 0;
-    width: 0%;
+    width: 0;
     height: 0.15rem;
-    background-color: #ecb52c;
+    background-color: #0e62ca;
     transition: width 0.4s;
 }
 
@@ -62,30 +62,37 @@ nav .menu form button:hover::after {
 
 nav .flags {
     display: flex;
+
 }
 
 nav .flags a{
-    width: 1.5rem;
-    height: 1.5rem;
-    background-color: white;
+    width: 1.2rem;
+    height: 1.2rem;
+    background-color: rgb(255, 255, 255);
     border-radius: 50%;
     overflow: hidden;
     display: inline-block;
     margin: 0 0.2rem;
+
 }
 
 nav i{
-    color: white;
+    color: #2e3030;
 }
 
-nav .my-ads-and-favorite a{
-    margin-left: 0.4rem;
+nav .my-ads a {
+    margin-left: 0.8rem;
 }
+
+nav .my-ads a:first-child {
+    margin-left: 10rem;
+}
+
 
 nav .menu .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #524f4f;
+    background-color: #ffffff;
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
     z-index: 1;
 }
@@ -95,7 +102,7 @@ nav .menu .dropdown:hover .dropdown-content {
 }
 
 nav .menu .dropdown-content a {
-    color: #fff;
+    color: rgba(41, 39, 39, 0.8);
     margin: 1rem 2rem 1rem 1rem;
     display: block;
 }
@@ -103,8 +110,9 @@ nav .menu .dropdown-content a {
 nav .menu form button {
     background: none;
     border: none;
-    color: #fff;
+    color: #2e3030;
     cursor: pointer;
     font-size: inherit;
     padding: 0;
 }
+

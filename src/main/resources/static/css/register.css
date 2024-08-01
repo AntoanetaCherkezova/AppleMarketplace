@@ -71,7 +71,7 @@ body {
 }
 
 .element input:focus {
-    border-bottom: 2px solid #ecb52c;
+    border-bottom: 2px solid #0e62ca;
 }
 
 input[type=number]::-webkit-inner-spin-button,
@@ -81,7 +81,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .register button{
-    background-color: #ecb52c;
+    background-color: #0e62ca;
     border: none;
     color: white;
     padding: 0.5rem 1rem;
