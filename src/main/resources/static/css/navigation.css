@@ -22,7 +22,7 @@ nav.scrolled {
 nav .logo {
     width: 4rem;
     height: 4rem;
-    background: url('../images/apple-logo.png') no-repeat center/cover;
+    background: url('https://res.cloudinary.com/dwgx3lz5l/image/upload/v1722579971/apple-logo_vrwcsz.png') no-repeat center/cover;
     border-radius: 50%;
     overflow: hidden;
 }

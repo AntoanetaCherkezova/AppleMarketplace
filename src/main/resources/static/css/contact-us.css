@@ -1,57 +1,75 @@
 body {
-    background: url('../images/contact-us.jpg');
-    position: relative;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
-    background-size: cover;
+    background-color: #4684b6;
     font-family: "Roboto", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    color: white;
+    color: #333;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
 }
 
-.contact-us{
-    padding-top: 7rem;
+.contact-us {
+    padding-top: 5rem;
+    min-height: calc(100vh - 100px);
+    padding-bottom: 50px;
 }
 
-#map {
-    height: 100%;
-    width: 100%;
+.contact-wrap {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    padding: 2rem;
+    color: #333;
 }
 
-.contact-wrap{
-    background-color: rgba(73, 76, 29, 0.3);
-}
-
-.text p .website{
+.text p .website {
     text-decoration: none;
+    color: #4669b6;
+}
+
+.contact-text {
+    color: #4669b6;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.button {
+    background-color: #4669b6;
     color: white;
+    padding: 0.8rem 2rem;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.button:hover {
+    background-color: #4669b6;
+    transform: scale(1.05);
+}
+
+.dbox {
+    margin-bottom: 1.5rem; /* Намалено разстояние между кутийките */
+    padding: 0.5rem; /* Намалено вътрешно разстояние */
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: auto; /* Може да се настройва по предпочитания */
 }
 
 .icon span {
     display: inline-block;
-    background-color: rgba(236, 234, 234, 0.3);
-    padding: 2rem;
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 0.8rem; /* Намалено вътрешно разстояние за иконите */
     border-radius: 50%;
-    margin-bottom: 1rem;
-    width: 6rem;
+    margin-bottom: 1rem; /* Намалено разстояние под иконите */
+    width: 3rem; /* Намален размер на иконите */
 }
 
-.contact-text{
-    color: #d79221;
-}
-
-.button {
-    background-color: #d79221;
-    color: white;
-    padding: 0.6rem 3rem;
-    border: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-    cursor: pointer;
-}
-
-.button:hover {
-    background-color: #e7ad52;
+.text p {
+    margin-bottom: 0;
+    font-size: 0.9rem; /* Намален размер на шрифта */
 }

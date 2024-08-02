@@ -1,13 +1,13 @@
 <nav th:fragment="navigation" id="nav-bar-scroll">
     <th:block sec:authorize="isAuthenticated()">
         <a th:href="@{/home}">
-            <img src="/images/apple-logo.png"
+            <img src="https://res.cloudinary.com/dwgx3lz5l/image/upload/v1722579971/apple-logo_vrwcsz.png"
                  class="logo" alt="logo">
         </a>
     </th:block>
     <th:block sec:authorize="isAnonymous()">
         <a th:href="@{/}">
-            <img src="/images/apple-logo.png"
+            <img src="https://res.cloudinary.com/dwgx3lz5l/image/upload/v1722579971/apple-logo_vrwcsz.png"
                  class="logo" alt="logo">
         </a>
     </th:block>

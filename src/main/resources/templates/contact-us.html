@@ -4,10 +4,8 @@
 
 <head>
     <link th:include="~{fragments/head :: head}">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
     <link rel="stylesheet" href="/css/contact-us.css">
 </head>
-
 
 <body>
 
@@ -20,7 +18,7 @@
         <div class="col-md-12">
             <div class="wrapper">
                 <div class="row no-gutters mb-4">
-                    <div class="col-md-7">
+                    <div class="col-md-12">
                         <div class="contact-wrap w-100 p-md-5 p-4 text-center">
                             <h3 class="mb-4 contact-text">Contact Us</h3>
                             <div id="form-message-warning" class="mb-4"></div>
@@ -63,50 +61,47 @@
                             </form>
                         </div>
                     </div>
-                    <div class="col-md-5 d-flex align-items-stretch">
-                        <div id="map" style=" position: relative; overflow: hidden;">
-                        </div>
-                    </div>
                 </div>
-                <div class="row text-dar">
+                <div class="row text-dark">
                     <div class="col-md-3">
                         <div class="dbox w-100 text-center">
                             <div class="icon d-flex align-items-center justify-content-center">
-                                <span class="fa-solid fa-location-dot contact-text"></span>
+                                <span class="fa-solid fa-location-dot"></span>
                             </div>
                             <div class="text">
-                                <p><span class="contact-text">Address: </span>Rilska 22 Street, Burgas</p>
+                                <p><span class="contact-text">Address: </span>22 Rilska St, Burgas</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="dbox w-100 text-center">
                             <div class="icon d-flex align-items-center justify-content-center">
-                                <span class="fa fa-phone contact-text"></span>
+                                <span class="fa-solid fa-phone-alt"></span>
                             </div>
                             <div class="text">
-                                <p><span class="contact-text">Phone: </span>+359 xxx xxx xxx </p>
+                                <p><span class="contact-text">Phone: </span>+359 885 996 774 </p>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="dbox w-100 text-center">
                             <div class="icon d-flex align-items-center justify-content-center">
-                                <span class="fa-regular fa-envelope contact-text"></span>
+                                <span class="fa fa-envelope"></span>
                             </div>
                             <div class="text">
-                                <p><span class="contact-text">Email: </span>example@mail.bg</p>
+                                <p><span class="contact-text">Email:
+                                </span><a href="/" class="website"> applestore@gmail.com</a></p>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="dbox w-100 text-center">
                             <div class="icon d-flex align-items-center justify-content-center">
-                                <span class="fa fa-globe contact-text"></span>
+                                <span class="fa fa-globe"></span>
                             </div>
                             <div class="text">
-                                <p><span class="contact-text">Website: </span><a href="/"
-                                                                                 class="website">example.com</a></p>
+                                <p><span class="contact-text">Website: </span>
+                                    <a href="/" class="website">www.applestore.com</a></p>
                             </div>
                         </div>
                     </div>
@@ -115,9 +110,6 @@
         </div>
     </div>
 </div>
-
-<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-<script src="/js/map.js"></script>
 
 <footer th:replace="~{fragments/footer}"></footer>
 </body>

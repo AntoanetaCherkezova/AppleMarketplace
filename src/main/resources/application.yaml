@@ -39,6 +39,11 @@ logging:
       nodeValue: WARN
     blog: WARN
 
+# Cloudinary
+cloudinary:
+  name: ${CLOUDINARY_NAME:dwgx3lz5l}
+  api-key: ${CLOUDINARY_API_KEY:952728852841552}
+  api-secret: ${CLOUDINARY_API_SECRET:6lRJ3v01NhjijHLchvvUS_-1bKM}
 
 # Administrator
 admin:

@@ -19,11 +19,13 @@ public class IphoneServiceImpl implements IphoneService {
     private final ModelMapper modelMapper;
     private final UserService userService;
     private final IphoneRepository iphoneRepository;
+    private final CloudinaryService cloudinaryService;
 
-    public IphoneServiceImpl(ModelMapper modelMapper, UserService userService, IphoneRepository iphoneRepository) {
+    public IphoneServiceImpl(ModelMapper modelMapper, UserService userService, IphoneRepository iphoneRepository, CloudinaryService cloudinaryService) {
         this.modelMapper = modelMapper;
         this.userService = userService;
         this.iphoneRepository = iphoneRepository;
+        this.cloudinaryService = cloudinaryService;
     }
 
     @Override
@@ -35,10 +37,10 @@ public class IphoneServiceImpl implements IphoneService {
     public void saveIphone(IphoneAddDTO iphoneAddDTO, UserDetails userDetails) {
         Iphone iphone = modelMapper.map(iphoneAddDTO, Iphone.class);
 
-//        List<String> photoUrls = iphoneAddDTO.getPhotosUrls().stream()
-//                .map(cloudinaryService::saveImage)
-//                .collect(Collectors.toList());
-//        iphone.setPhotosUrls(photoUrls);
+        List<String> photoUrls = iphoneAddDTO.getPhotosUrls().stream()
+                .map(cloudinaryService::saveImage)
+                .collect(Collectors.toList());
+        iphone.setPhotosUrls(photoUrls);
 
         iphone.setReleaseDate(LocalDateTime.now());
         User user = this.userService.findByUsername(userDetails.getUsername()).get();

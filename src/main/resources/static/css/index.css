@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Roboto:wght@300;400;700&display=swap');
 
 body {
-    background: url('../images/apple-home.jpg');
+    background: url('https://res.cloudinary.com/dwgx3lz5l/image/upload/v1722579970/apple-home_dvxczz.jpg');
     position: relative;
     background-repeat: no-repeat;
     background-attachment: fixed;

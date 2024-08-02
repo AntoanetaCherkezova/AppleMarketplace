@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 
 body {
-    background: url('../images/apple-login.jpg');
+    background: url('https://res.cloudinary.com/dwgx3lz5l/image/upload/v1722579970/apple-login_ej5guk.jpg');
     background-size: cover;
     display: flex;
     justify-content: center;
