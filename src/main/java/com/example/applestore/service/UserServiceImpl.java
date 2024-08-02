@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -66,5 +67,15 @@ public class UserServiceImpl implements UserService {
                     .setRoles(roles);
             this.userRepository.save(user);
         }
+    }
+
+    @Override
+    public Optional<User> findByUsername(String username) {
+        return this.userRepository.findByUsername(username);
+    }
+
+    @Override
+    public void saveCurrentUser(User user) {
+        this.userRepository.save(user);
     }
 }
