@@ -14,37 +14,80 @@
 </div>
 
 <div class="register-page">
-    <form method="POST" th:action="@{/user/register}">
+    <form method="POST" th:action="@{/user/register}" th:object="${userRegisterDTO}" enctype="multipart/form-data">
         <div class="register">
-            <div class="element">
+            <div class="element" th:style="${#fields.hasErrors('username')} ? 'margin-bottom: 0;' : ''">
                 <label for="username"><i class="fa fa-envelope"></i></label>
-                <input id="username" type="text" name="username" placeholder="Username"/>
+                <input id="username"
+                       type="text"
+                       placeholder="Username"
+                       name="username"
+                       th:field="*{username}"/>
+                <small id="usernameError"
+                       class="bg-danger rounded error-message"
+                       th:if="${#fields.hasErrors('username')}"
+                       th:errors="*{username}">Username Error
+                </small>
             </div>
-            <div class="element">
+            <div class="element" th:style="${#fields.hasErrors('email')} ? 'margin-bottom: 0;' : ''">
                 <label for="email"><i class="fa fa-envelope"></i></label>
-                <input id="email" type="email" name="email" placeholder="Your Email Address"/>
+                <input id="email"
+                       type="email"
+                       placeholder="Your Email Address"
+                       name="email"
+                       th:field="*{email}"/>
+                <small id="emailError"
+                       class="bg-danger rounded error-message"
+                       th:if="${#fields.hasErrors('email')}"
+                       th:errors="*{email}">Email Error
+                </small>
             </div>
-            <div class="element">
+            <div class="element" th:style="${#fields.hasErrors('firstName')} ? 'margin-bottom: 0;' : ''">
                 <label for="firstName"><i class="fa fa-user"></i></label>
-                <input id="firstName" type="text" name="firstName" placeholder="First Name"/>
+                <input id="firstName" type="text" name="firstName" placeholder="First Name" th:field="*{firstName}"/>
+                <small id="firstNameError"
+                       class="bg-danger rounded error-message"
+                       th:if="${#fields.hasErrors('firstName')}"
+                       th:errors="*{firstName}">First name Error
+                </small>
             </div>
-            <div class="element">
+            <div class="element" th:style="${#fields.hasErrors('lastName')} ? 'margin-bottom: 0;' : ''">
                 <label for="lastName"><i class="fa-regular fa-user"></i></label>
-                <input id="lastName" type="text" name="lastName" placeholder="Last Name"/>
+                <input id="lastName" type="text" name="lastName" placeholder="Last Name" th:field="*{lastName}"/>
+                <small id="lastNameError"
+                       class="bg-danger rounded error-message"
+                       th:if="${#fields.hasErrors('lastName')}"
+                       th:errors="*{lastName}">Last Name Error
+                </small>
             </div>
-            <div class="element">
+            <div class="element" th:style="${#fields.hasErrors('age')} ? 'margin-bottom: 0;' : ''">
                 <label for="age"><i class="fa fa-calendar"></i></label>
-                <input id="age" type="number" name="age" placeholder="Age" min="1" max="100"/>
+                <input id="age" type="number" name="age" placeholder="Age" th:field="*{age}"/>
+                <small id="ageError"
+                       class="bg-danger rounded error-message"
+                       th:if="${#fields.hasErrors('age')}"
+                       th:errors="*{age}">Age Error
+                </small>
             </div>
-            <div class="element">
+            <div class="element" th:style="${#fields.hasErrors('password')} ? 'margin-bottom: 0;' : ''">
                 <label for="password"><i class="fa fa-lock"></i></label>
-                <input id="password" type="password" name="password" placeholder="Password"/>
+                <input id="password" type="password" name="password" placeholder="Password" th:field="*{password}"/>
+                <small id="passwordError"
+                       class="bg-danger rounded error-message"
+                       th:if="${#fields.hasErrors('password')}"
+                       th:errors="*{password}">Password Error
+                </small>
             </div>
             <div class="element">
                 <label for="confirmPassword"><i class="fa fa-lock"></i></label>
-                <input id="confirmPassword" type="password" name="confirmPassword"
-                       placeholder="Re-Enter Password"/>
+                <input id="confirmPassword" type="password" name="confirmPassword" placeholder="Re-Enter Password" th:field="*{confirmPassword}"/>
+                <small id="confirmPasswordError"
+                       class="bg-danger rounded error-message"
+                       th:if="${#fields.hasErrors('confirmPassword')}"
+                       th:errors="*{confirmPassword}">Confirm password Error
+                </small>
             </div>
+
             <button>Register</button>
         </div>
     </form>
