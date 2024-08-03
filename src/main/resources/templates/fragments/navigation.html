@@ -23,9 +23,9 @@
             <div class="dropdown">
                 <a href="#" class="dropbtn">Add <i class="fas fa-caret-down"></i></a>
                 <div class="dropdown-content">
-                    <a th:href="@{/home/iPhone}">iPhone</a>
-                    <a th:href="@{/home/MacBook}">MacBook</a>
-                    <a th:href="@{/home/Watch}">Watch</a>
+                    <a th:href="@{/iPhones/add-iPhone}">iPhone</a>
+                    <a th:href="@{/macBooks/add-MacBook}">MacBook</a>
+                    <a th:href="@{/watches/add-Watch}">Watch</a>
                 </div>
             </div>
             <th:block sec:authorize="hasRole('ADMIN')">
@@ -34,18 +34,17 @@
         </th:block>
         <a th:href="@{/contact-us}">Contact</a>
         <th:block sec:authorize="!isAuthenticated()">
-            <a th:href="@{/user/register}">Register</a>
-            <a th:href="@{/user/login}">Login</a>
+                <a th:href="@{/user/register}">Register</a>
+                <a th:href="@{/user/login}">Login</a>
         </th:block>
+
         <th:block sec:authorize="isAuthenticated()">
-            <form method="POST" th:action="@{/user/logout}">
-                <button type="submit">Logout</button>
-            </form>
-        </th:block>
-        <th:block sec:authorize="isAuthenticated()">
-            <div class="my-ads">
+            <div class="auth-links">
                 <a th:href="@{/user/profile}"><i class="fa-solid fa-user"></i></a>
                 <a th:href="@{/user/myList}"><i class="fa-solid fa-list"></i></a>
+                <form method="POST" th:action="@{/user/logout}">
+                    <button type="submit">Logout</button>
+                </form>
             </div>
         </th:block>
     </div>

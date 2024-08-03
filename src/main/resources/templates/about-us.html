@@ -43,11 +43,21 @@
                     </p>
                     <div class="row mb-4">
                     </div>
-                    <div class="text-center">
-                        <a href="/shop" class="btn btn-primary btn-lg">Shop Now <i class="fa-solid fa-arrow-right ms-2"></i></a>
-                    </div>
+                    <th:block sec:authorize="isAuthenticated()">
+                        <div class="text-center">
+                        <a th:href="@{/home}" class="btn btn-primary bsb-btn-2xl">Shop Now <i
+                                class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </th:block>
+                    <th:block sec:authorize="isAnonymous()">
+                        <div class="text-center">
+                        <a th:href="@{/}" class="btn btn-primary bsb-btn-2xl">Shop Now <i
+                                class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </th:block>
                 </div>
             </div>
+
         </div>
     </div>
 </div>

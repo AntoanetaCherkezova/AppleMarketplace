@@ -1,10 +1,14 @@
 package com.example.applestore.service;
 import com.example.applestore.model.dtos.IphoneAddDTO;
+import com.example.applestore.model.entity.Device;
 import com.example.applestore.model.entity.Iphone;
 import com.example.applestore.model.entity.User;
+import com.example.applestore.model.view.IphoneProfileView;
+import com.example.applestore.model.view.ModelsWithLargestMemoryView;
 import com.example.applestore.repository.IphoneRepository;
 import com.example.applestore.service.interfaces.IphoneService;
 import com.example.applestore.service.interfaces.UserService;
+import com.example.applestore.util.ModelAttributeUtil;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
@@ -42,11 +46,39 @@ public class IphoneServiceImpl implements IphoneService {
                 .collect(Collectors.toList());
         iphone.setPhotosUrls(photoUrls);
 
-        iphone.setReleaseDate(LocalDateTime.now());
+        iphone.setRegisteredOn(LocalDateTime.now());
         User user = this.userService.findByUsername(userDetails.getUsername()).get();
+        iphone.setOwner(user);
         user.getMyIphones().add(iphone);
-        System.out.println();
         this.userService.saveCurrentUser(user);
+    }
 
+    @Override
+    public ModelsWithLargestMemoryView iphoneWithLargestMemory() {
+        return iphoneRepository.findIphoneWithLargestMemory()
+                .stream()
+                .findFirst()
+                .map(iPhone -> modelMapper.map(iPhone, ModelsWithLargestMemoryView.class))
+                .orElse(null);
+    }
+
+    @Override
+    public IphoneProfileView createIphoneProfileView(Iphone iphone) {
+        IphoneProfileView iphoneProfileView = modelMapper.map(iphone, IphoneProfileView.class);
+        iphoneProfileView.setReleaseDate(ModelAttributeUtil.formatDate(iphone.getReleaseDate()));
+        iphoneProfileView.setRegisteredOn(ModelAttributeUtil.formatDate(iphone.getRegisteredOn()));
+        iphoneProfileView.setPrice(ModelAttributeUtil.formatPrice(iphone.getPrice()));
+        return iphoneProfileView;
+    }
+
+    @Override
+    public void saveDevices(Device device) {
+        Iphone iphone = modelMapper.map(device, Iphone.class);
+        this.iphoneRepository.save(iphone);
+    }
+
+    @Override
+    public Iphone findById(Long deviceId) {
+        return this.iphoneRepository.findById(deviceId).orElse(null);
     }
 }

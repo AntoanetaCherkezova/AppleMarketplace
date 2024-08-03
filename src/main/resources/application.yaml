@@ -28,6 +28,7 @@ spring:
       filter:
         enabled: true
 
+
 # Logging Levels
 logging:
   level:

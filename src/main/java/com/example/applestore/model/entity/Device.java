@@ -18,7 +18,7 @@ import java.util.List;
 public abstract class Device extends BaseEntity {
 
     @Column(nullable = false)
-    private String status;
+    private String statusDevice;
 
     @Column(nullable = false)
     private String warranty;
@@ -54,6 +54,9 @@ public abstract class Device extends BaseEntity {
 
     @ElementCollection
     private List<String> photosUrls;
+
+    @Column(nullable = false, name = "registered_on")
+    private LocalDateTime registeredOn;
 
     @OneToMany(cascade = CascadeType.ALL)
     private List<Comment> comments;

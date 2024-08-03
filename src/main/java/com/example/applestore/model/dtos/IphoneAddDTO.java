@@ -18,7 +18,7 @@ import java.util.List;
 public class IphoneAddDTO {
 
     @NotBlank(message = "Status must be specified.")
-    private String status;
+    private String statusDevice;
 
     @NotBlank(message = "Warranty must be specified.")
     private String warranty;

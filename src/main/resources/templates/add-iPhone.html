@@ -15,106 +15,222 @@
 </div>
 
 <div class="add-iPhone">
-    <div class="add-form">
-        <form th:method="POST" th:action="@{/user/add}">
-            <h2>Add iPhone</h2>
-            <div class="form-group">
-                <div>
-                    <label for="status">Status:</label>
-                    <input type="text" id="status" name="status" required>
-                </div>
-                <div>
-                    <label for="warranty">Warranty:</label>
-                    <input type="text" id="warranty" name="warranty" required>
-                </div>
-                <div>
-                    <label for="model">Model:</label>
-                    <input type="text" id="model" name="model" required>
-                </div>
-                <div>
-                    <label for="resolution">Resolution:</label>
-                    <input type="text" id="resolution" name="resolution" required>
-                </div>
-                <div>
-                    <label for="processor">Processor:</label>
-                    <input type="text" id="processor" name="processor" required>
-                </div>
-                <div>
-                    <label for="internal-memory">Internal Memory:</label>
-                    <select id="internal-memory" name="internal-memory" required>
-                        <option value="">- Select Internal Memory -</option>
-                        <option>Internal Memory</option>
-                    </select>
-                </div>
-                <div>
-                    <label for="capacity-ram">Capacity Ram:</label>
-                    <select id="capacity-ram" name="capacity-ram" required>
-                        <option value="">- Select Capacity Ram -</option>
-                        <option>Capacity Ram</option>
-                    </select>
-                </div>
-                <div>
-                    <label for="operating-system">Operating System:</label>
-                    <input type="text" id="operating-system" name="operating-system" required>
-                </div>
-                <div>
-                    <label for="display-size">Display Size:</label>
-                    <input type="text" id="display-size" name="display-size" required>
-                </div>
-                <div>
-                    <label for="display">Display:</label>
-                    <select id="display" name="display" required>
-                        <option value="">- Select Display -</option>
-                        <option>Display</option>
-                    </select>
-                </div>
-                <div>
-                    <label for="battery">Battery:</label>
-                    <select id="battery" name="battery" required>
-                        <option value="">- Select Battery -</option>
-                        <option>Battery</option>
-                    </select>
-                </div>
-                <div>
-                    <label for="colour">Colour:</label>
-                    <select id="colour" name="colour" required>
-                        <option value="">- Select colour -</option>
-                        <option>Colour</option>
-                    </select>
-                </div>
-                <div>
-                    <label for="sizes">Sizes:</label>
-                    <input type="text" id="sizes" name="sizes" required>
-                </div>
-                <div>
-                    <label for="release-date">Release Date:</label>
-                    <input type="date" id="release-date" name="release-date" required>
-                </div>
-            </div>
-            <div class="price">
-                <label for="price">Price (BGN):</label>
-                <input type="number" id="price" name="price" required>
-            </div>
-            <div class="photos">
-                <label for="photos">Photos:</label>
-                <input type="file" id="photos" name="photos" multiple accept="image/*">
+    <form th:method="POST" th:action="@{/iPhones/add-iPhone}" th:object="${iPhoneAddDTO}" enctype="multipart/form-data">
+        <div class="form-group">
+            <div>
+                <label for="statusDevice" th:style="${#fields.hasErrors('statusDevice')} ? 'margin-bottom: 0;' : ''">Status Device:</label>
+                <small id="statusDeviceError"
+                       class="bg-danger rounded d-block "
+                       th:if="${#fields.hasErrors('statusDevice')}"
+                       th:errors="*{statusDevice}">Status Device Error
+                </small>
+                <input id="statusDevice"
+                       type="text"
+                       name="statusDevice" th:field="*{statusDevice}">
             </div>
 
-            <div class="more-options">
-                <div class="form-check form-check-inline custom-checkbox">
-                    <input class="form-check-input" type="checkbox" id="dual-sim" name="dual-sim" value="true">
-                    <label class="form-check-label" for="dual-sim">Dual Sim</label>
-                </div>
-                <div class="form-check form-check-inline custom-checkbox">
-                    <input class="form-check-input" type="checkbox" id="face-recognition-sensor" name="face-recognition-sensor"
-                           value="true">
-                    <label class="form-check-label" for="face-recognition-sensor">Face Recognition Sensor</label>
-                </div>
+            <div>
+                <label for="warranty" th:style="${#fields.hasErrors('warranty')} ? 'margin-bottom: 0;' : ''">Warranty:</label>
+                <small id="warrantyError"
+                       class="bg-danger rounded d-block "
+                       th:if="${#fields.hasErrors('warranty')}"
+                       th:errors="*{warranty}">Warranty Error
+                </small>
+                <input type="text"
+                       id="warranty"
+                       name="warranty" th:field="*{warranty}">
             </div>
-            <button type="submit">Add iPhone</button>
-        </form>
-    </div>
+            <div>
+                <label for="model" th:style="${#fields.hasErrors('model')} ? 'margin-bottom: 0;' : ''">Model:</label>
+                <small id="modelError"
+                       class="bg-danger rounded d-block "
+                       th:if="${#fields.hasErrors('model')}"
+                       th:errors="*{model}">Model Error
+                </small>
+                <input type="text"
+                       id="model"
+                       name="model" th:field="*{model}">
+           </div>
+           <div>
+                <label for="resolution" th:style="${#fields.hasErrors('resolution')} ? 'margin-bottom: 0;' : ''">Resolution:</label>
+                <small id="resolutionError"
+                       class="bg-danger rounded d-block "
+                       th:if="${#fields.hasErrors('resolution')}"
+                       th:errors="*{resolution}">Resolution Error
+                </small>
+                <input type="text"
+                       id="resolution"
+                       name="resolution" th:field="*{resolution}">
+            </div>
+            <div>
+                <label for="processor" th:style="${#fields.hasErrors('processor')} ? 'margin-bottom: 0;' : ''">Processor:</label>
+                <small id="processorError"
+                       class="bg-danger rounded d-block "
+                       th:if="${#fields.hasErrors('processor')}"
+                       th:errors="*{processor}">Processor Error
+                </small>
+                <input type="text"
+                       id="processor"
+                       name="processor" th:field="*{processor}">
+            </div>
+            <div>
+                <label for="internalMemory" th:style="${#fields.hasErrors('internalMemory')} ? 'margin-bottom: 0;' : ''">Internal Memory:</label>
+                <small id="internalMemoryError"
+                       class="bg-danger rounded d-block"
+                       th:if="${#fields.hasErrors('internalMemory')}"
+                       th:errors="*{internalMemory}">Internal Memory Error
+                </small>
+                <select id="internalMemory"
+                        name="internalMemory" th:field="*{internalMemory}">
+                    <option value="">- Select Internal Memory -</option>
+                    <option th:each="internalMemory : ${internalMemories}" th:value="${internalMemory}" th:text="${internalMemory.getName()}">Internal Memory</option>
+                </select>
+            </div>
+            <div>
+                <label for="capacityRam" th:style="${#fields.hasErrors('capacityRam')} ? 'margin-bottom: 0;' : ''">Capacity Ram:</label>
+                <small id="capacityRamError"
+                       class="bg-danger rounded d-block"
+                       th:if="${#fields.hasErrors('capacityRam')}"
+                       th:errors="*{capacityRam}">Capacity Ram Error
+                </small>
+                <select id="capacityRam"
+                        name="capacityRam" th:field="*{capacityRam}">
+                    <option value="">- Select Capacity Ram -</option>
+                    <option th:each="capacityRam : ${capacityRams}" th:value="${capacityRam}" th:text="${capacityRam.getName()}">Capacity Ram</option>
+                </select>
+            </div>
+            <div>
+                <label for="operatingSystem" th:style="${#fields.hasErrors('operatingSystem')} ? 'margin-bottom: 0;' : ''">Operating System:</label>
+                <small id="operatingSystemError"
+                       class="bg-danger rounded d-block "
+                       th:if="${#fields.hasErrors('operatingSystem')}"
+                       th:errors="*{operatingSystem}">Operating System Error
+                </small>
+                <input type="text"
+                       id="operatingSystem"
+                       name="operatingSystem" th:field="*{operatingSystem}">
+            </div>
+            <div>
+                <label for="displaySize" th:style="${#fields.hasErrors('displaySize')} ? 'margin-bottom: 0;' : ''">Display Size:</label>
+                <small id="displaySizeError"
+                       class="bg-danger rounded d-block "
+                       th:if="${#fields.hasErrors('displaySize')}"
+                       th:errors="*{displaySize}">Display Size Error
+                </small>
+                <input type="text"
+                       id="displaySize"
+                       name="displaySize" th:field="*{displaySize}">
+            </div>
+            <div>
+                <label for="display" th:style="${#fields.hasErrors('display')} ? 'margin-bottom: 0;' : ''">Display:</label>
+                <small id="displayError"
+                       class="bg-danger rounded d-block"
+                       th:if="${#fields.hasErrors('display')}"
+                       th:errors="*{display}">display Error
+                </small>
+                <select id="display"
+                        name="display" th:field="*{display}">
+                    <option value="">- Select Display -</option>
+                    <option th:each="display : ${displays}" th:value="${display}" th:text="${display.getName()}">Display</option>
+                </select>
+            </div>
+            <div>
+                <label for="battery" th:style="${#fields.hasErrors('battery')} ? 'margin-bottom: 0;' : ''">Battery:</label>
+                <small id="batteryError"
+                       class="bg-danger rounded d-block"
+                       th:if="${#fields.hasErrors('battery')}"
+                       th:errors="*{battery}">battery Error
+                </small>
+                <select id="battery" name="battery" th:field="*{battery}">
+                    <option value="">- Select Battery -</option>
+                    <option th:each="battery : ${batteries}" th:value="${battery}" th:text="${battery.getName()}">Battery</option>
+                </select>
+            </div>
+            <div>
+                <label for="colour" th:style="${#fields.hasErrors('colour')} ? 'margin-bottom: 0;' : ''">Colour:</label>
+                <small id="colourError"
+                       class="bg-danger rounded d-block"
+                       th:if="${#fields.hasErrors('colour')}"
+                       th:errors="*{colour}">Colour Error
+                </small>
+                <select id="colour"
+                        name="colour" th:field="*{colour}">
+                    <option value="">- Select colour -</option>
+                    <option th:each="colour : ${colours}" th:value="${colour}" th:text="${colour.getName()}">Colour</option>
+                </select>
+            </div>
+            <div>
+                <label for="sizes" th:style="${#fields.hasErrors('sizes')} ? 'margin-bottom: 0;' : ''">Sizes:</label>
+                <small id="sizesError"
+                       class="bg-danger rounded d-block"
+                       th:if="${#fields.hasErrors('sizes')}"
+                       th:errors="*{sizes}">Sizes Error
+                </small>
+                <input type="text"
+                       id="sizes"
+                       name="sizes" th:field="*{sizes}">
+            </div>
+            <div>
+                <label for="releaseDate" th:style="${#fields.hasErrors('releaseDate')} ? 'margin-bottom: 0;' : ''">Release Date:</label>
+                <small id="releaseDateError"
+                       class="bg-danger rounded d-block"
+                       th:if="${#fields.hasErrors('releaseDate')}"
+                       th:errors="*{releaseDate}">Release Date Error
+                </small>
+                <input type="datetime-local"
+                       id="releaseDate"
+                       name="release-date" th:field="*{releaseDate}">
+            </div>
+        </div>
+        <div class="price">
+            <label for="price" th:style="${#fields.hasErrors('price')} ? 'margin-bottom: 0;' : ''">Price (BGN):</label>
+            <small id="priceError"
+                   class="bg-danger rounded d-block"
+                   th:if="${#fields.hasErrors('price')}"
+                   th:errors="*{price}">Price Error
+            </small>
+            <input id="price"
+                   type="number"
+                   name="price"
+                   th:field="*{price}">
+        </div>
+        <div class="photos">
+            <label for="photosUrls" th:style="${#fields.hasErrors('photosUrls')} ? 'margin-bottom: 0;' : ''">Photos:</label>
+            <small id="photosUrlsError"
+                   class="bg-danger rounded d-block"
+                   th:if="${#fields.hasErrors('photosUrls')}"
+                   th:errors="*{photosUrls}">Photos Error
+            </small>
+            <input id="photosUrls"
+                   type="file"
+                   name="photosUrls"
+                   multiple
+                   accept="image/*"
+                   th:field="*{photosUrls}">
+        </div>
+
+        <div class="more-options">
+            <div class="form-check form-check-inline custom-checkbox">
+                <input class="form-check-input"
+                       type="checkbox"
+                       id="dualSim"
+                       name="dualSim"
+                       th:field="*{dualSim}">
+                <label class="form-check-label" for="dualSim">Dual Sim</label>
+            </div>
+            <div class="form-check form-check-inline custom-checkbox">
+                <input class="form-check-input"
+                       type="checkbox"
+                       id="faceRecognitionSensor"
+                       name="faceRecognitionSensor"
+                       th:field="*{faceRecognitionSensor}">
+                <label class="form-check-label" for="faceRecognitionSensor">Face Recognition Sensor</label>
+            </div>
+        </div>
+        <button type="submit">Add iPhone</button>
+    </form>
 </div>
+
 
 <footer th:replace="~{fragments/footer}"></footer>
 </body>

@@ -1,5 +1,6 @@
 package com.example.applestore.web;
 
+import com.example.applestore.model.view.ModelsWithLargestMemoryView;
 import com.example.applestore.service.interfaces.IphoneService;
 import com.example.applestore.service.interfaces.MacBookService;
 import com.example.applestore.service.interfaces.WatchService;
@@ -26,9 +27,13 @@ public class HomeController {
 
     @GetMapping()
     public ModelAndView home(ModelAndView model){
+
+        ModelsWithLargestMemoryView iPhoneWithLargestMemoryView = this.iphoneService.iphoneWithLargestMemory();
+
         model.addObject("availableIPhones", this.iphoneService.availableIPhones());
         model.addObject("availableMacBooks", this.macBookService.availableMacBooks());
         model.addObject("availableWatches", this.watchService.availableWatches());
+        model.addObject("iPhoneWithLargestMemoryView", iPhoneWithLargestMemoryView);
         model.setViewName("home");
         return model;
     }
