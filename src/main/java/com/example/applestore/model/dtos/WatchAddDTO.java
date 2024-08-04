@@ -2,11 +2,15 @@ package com.example.applestore.model.dtos;
 
 import com.example.applestore.model.enums.*;
 import com.example.applestore.validation.photosValidator.ValidPhotos;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PastOrPresent;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 import org.springframework.web.multipart.MultipartFile;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -14,8 +18,7 @@ import java.util.List;
 @Getter
 @Setter
 @Accessors(chain = true)
-public class IphoneAddDTO {
-
+public class WatchAddDTO {
     @NotBlank(message = "Status must be specified.")
     private String statusDevice;
 
@@ -60,14 +63,11 @@ public class IphoneAddDTO {
     @NotNull(message = "Internal Memory must be specified.")
     private InternalMemory internalMemory;
 
-    @NotNull(message = "Battery must be specified.")
-    private Battery battery;
-
     @NotBlank(message = "Sizes are required.")
     private String sizes;
 
-    private boolean dualSim;
+    private boolean touchScreenDisplay;
 
-    private boolean faceRecognitionSensor;
+    private boolean simCardSupport;
 
 }

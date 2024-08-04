@@ -37,4 +37,10 @@ public class ModelAttributeUtil {
         model.addObject("colours", Colour.values());
     }
 
+    public static void addEnumsToWatchModel(ModelAndView model) {
+        model.addObject("capacityRams", CapacityRam.values());
+        model.addObject("colours", Colour.values());
+        model.addObject("displays", Display.values());
+        model.addObject("internalMemories", InternalMemory.values());
+    }
 }
