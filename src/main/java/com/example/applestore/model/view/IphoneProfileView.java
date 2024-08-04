@@ -1,13 +1,9 @@
 package com.example.applestore.model.view;
-
 import com.example.applestore.model.enums.*;
-import jakarta.persistence.Column;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 import org.springframework.web.multipart.MultipartFile;
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
 import java.util.List;
 
 

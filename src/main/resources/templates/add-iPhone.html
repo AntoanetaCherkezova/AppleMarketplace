@@ -6,8 +6,6 @@
     <link th:include="~{fragments/head :: head}">
     <link rel="stylesheet" href="/css/add-iPhone.css">
 </head>
-
-
 <body>
 
 <div>
@@ -126,7 +124,7 @@
                 <small id="displayError"
                        class="bg-danger rounded d-block"
                        th:if="${#fields.hasErrors('display')}"
-                       th:errors="*{display}">display Error
+                       th:errors="*{display}">Display Error
                 </small>
                 <select id="display"
                         name="display" th:field="*{display}">

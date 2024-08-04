@@ -32,4 +32,9 @@ public class ModelAttributeUtil {
         model.addObject("batteries", Battery.values());
     }
 
+    public static void addEnumsToMacBookModel(ModelAndView model) {
+        model.addObject("capacityRams", CapacityRam.values());
+        model.addObject("colours", Colour.values());
+    }
+
 }

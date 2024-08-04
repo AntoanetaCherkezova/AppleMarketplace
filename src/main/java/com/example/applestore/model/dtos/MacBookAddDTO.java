@@ -1,8 +1,10 @@
 package com.example.applestore.model.dtos;
-
 import com.example.applestore.model.enums.*;
 import com.example.applestore.validation.photosValidator.ValidPhotos;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PastOrPresent;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
@@ -14,7 +16,7 @@ import java.util.List;
 @Getter
 @Setter
 @Accessors(chain = true)
-public class IphoneAddDTO {
+public class MacBookAddDTO {
 
     @NotBlank(message = "Status must be specified.")
     private String statusDevice;
@@ -54,22 +56,10 @@ public class IphoneAddDTO {
     @ValidPhotos
     private List<MultipartFile> photosUrls;
 
-    @NotNull(message = "Display must be specified.")
-    private Display display;
+    @NotBlank(message = "HDD must be specified.")
+    private String HDD;
 
-    @NotNull(message = "Internal Memory must be specified.")
-    private InternalMemory internalMemory;
-
-    @NotNull(message = "Battery must be specified.")
-    private Battery battery;
-
-    @NotBlank(message = "Sizes are required.")
-    private String sizes;
-
-    private boolean dualSim;
-
-    private boolean faceRecognitionSensor;
-
-
+    @NotBlank(message = "Video Card Type are required.")
+    private String videoCardType;
 
 }

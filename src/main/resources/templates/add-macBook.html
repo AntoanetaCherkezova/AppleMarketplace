@@ -6,8 +6,6 @@
     <link th:include="~{fragments/head :: head}">
     <link rel="stylesheet" href="/css/add-macBook.css">
 </head>
-
-
 <body>
 
 <div>
@@ -15,77 +13,189 @@
 </div>
 
 <div class="add-macBook">
-    <div class="add-form">
-        <form th:method="POST" th:action="@{/user/add}">
-            <h2>Add MacBook</h2>
-            <div class="form-group">
+    <form th:method="POST" th:action="@{/macBooks/add-macBook}" th:object="${macBookAddDTO}"
+          enctype="multipart/form-data">
+        <div class="form-group">
+            <div>
+                <label for="statusDevice" th:style="${#fields.hasErrors('statusDevice')} ? 'margin-bottom: 0;' : ''">Status
+                    Device:</label>
+                <small id="statusDeviceError"
+                       class="bg-danger rounded d-block "
+                       th:if="${#fields.hasErrors('statusDevice')}"
+                       th:errors="*{statusDevice}">Status Device Error
+                </small>
+                <input id="statusDevice"
+                       type="text"
+                       name="statusDevice" th:field="*{statusDevice}">
                 <div>
-                    <label for="status">Status:</label>
-                    <input type="text" id="status" name="status" required>
+                    <label for="warranty" th:style="${#fields.hasErrors('warranty')} ? 'margin-bottom: 0;' : ''">Warranty:</label>
+                    <small id="warrantyError"
+                           class="bg-danger rounded d-block "
+                           th:if="${#fields.hasErrors('warranty')}"
+                           th:errors="*{warranty}">Warranty Error
+                    </small>
+                    <input type="text"
+                           id="warranty"
+                           name="warranty" th:field="*{warranty}">
                 </div>
                 <div>
-                    <label for="warranty">Warranty:</label>
-                    <input type="text" id="warranty" name="warranty" required>
+                    <label for="model"
+                           th:style="${#fields.hasErrors('model')} ? 'margin-bottom: 0;' : ''">Model:</label>
+                    <small id="modelError"
+                           class="bg-danger rounded d-block "
+                           th:if="${#fields.hasErrors('model')}"
+                           th:errors="*{model}">Model Error
+                    </small>
+                    <input type="text"
+                           id="model"
+                           name="model" th:field="*{model}">
                 </div>
                 <div>
-                    <label for="model">Model:</label>
-                    <input type="text" id="model" name="model" required>
+                    <label for="resolution" th:style="${#fields.hasErrors('resolution')} ? 'margin-bottom: 0;' : ''">Resolution:</label>
+                    <small id="resolutionError"
+                           class="bg-danger rounded d-block "
+                           th:if="${#fields.hasErrors('resolution')}"
+                           th:errors="*{resolution}">Resolution Error
+                    </small>
+                    <input type="text"
+                           id="resolution"
+                           name="resolution" th:field="*{resolution}">
                 </div>
                 <div>
-                    <label for="resolution">Resolution:</label>
-                    <input type="text" id="resolution" name="resolution" required>
+                    <label for="processor" th:style="${#fields.hasErrors('processor')} ? 'margin-bottom: 0;' : ''">Processor:</label>
+                    <small id="processorError"
+                           class="bg-danger rounded d-block "
+                           th:if="${#fields.hasErrors('processor')}"
+                           th:errors="*{processor}">Processor Error
+                    </small>
+                    <input type="text"
+                           id="processor"
+                           name="processor" th:field="*{processor}">
                 </div>
                 <div>
-                    <label for="processor">Processor:</label>
-                    <input type="text" id="processor" name="processor" required>
-                </div>
-                <div>
-                    <label for="capacity-ram">Capacity Ram:</label>
-                    <select id="capacity-ram" name="capacity-ram" required>
+                    <label for="capacityRam" th:style="${#fields.hasErrors('capacityRam')} ? 'margin-bottom: 0;' : ''">Capacity
+                        Ram:</label>
+                    <small id="capacityRamError"
+                           class="bg-danger rounded d-block"
+                           th:if="${#fields.hasErrors('capacityRam')}"
+                           th:errors="*{capacityRam}">Capacity Ram Error
+                    </small>
+                    <select id="capacityRam"
+                            name="capacityRam" th:field="*{capacityRam}">
                         <option value="">- Select Capacity Ram -</option>
-                        <option>Capacity Ram</option>
+                        <option th:each="capacityRam : ${capacityRams}" th:value="${capacityRam}"
+                                th:text="${capacityRam.getName()}">Capacity Ram
+                        </option>
                     </select>
                 </div>
                 <div>
-                    <label for="operating-system">Operating System:</label>
-                    <input type="text" id="operating-system" name="operating-system" required>
+                    <label for="operatingSystem"
+                           th:style="${#fields.hasErrors('operatingSystem')} ? 'margin-bottom: 0;' : ''">Operating
+                        System:</label>
+                    <small id="operatingSystemError"
+                           class="bg-danger rounded d-block "
+                           th:if="${#fields.hasErrors('operatingSystem')}"
+                           th:errors="*{operatingSystem}">Operating System Error
+                    </small>
+                    <input type="text"
+                           id="operatingSystem"
+                           name="operatingSystem" th:field="*{operatingSystem}">
                 </div>
                 <div>
-                    <label for="display-size">Display Size:</label>
-                    <input type="text" id="display-size" name="display-size" required>
+                    <label for="displaySize" th:style="${#fields.hasErrors('displaySize')} ? 'margin-bottom: 0;' : ''">Display Size:</label>
+                    <small id="displaySizeError"
+                           class="bg-danger rounded d-block "
+                           th:if="${#fields.hasErrors('displaySize')}"
+                           th:errors="*{displaySize}">Display Size Error
+                    </small>
+                    <input type="text"
+                           id="displaySize"
+                           name="displaySize" th:field="*{displaySize}">
                 </div>
                 <div>
-                    <label for="colour">Colour:</label>
-                    <select id="colour" name="colour" required>
+                    <label for="colour"
+                           th:style="${#fields.hasErrors('colour')} ? 'margin-bottom: 0;' : ''">Colour:</label>
+                    <small id="colourError"
+                           class="bg-danger rounded d-block"
+                           th:if="${#fields.hasErrors('colour')}"
+                           th:errors="*{colour}">Colour Error
+                    </small>
+                    <select id="colour"
+                            name="colour" th:field="*{colour}">
                         <option value="">- Select colour -</option>
-                        <option>Colour</option>
+                        <option th:each="colour : ${colours}" th:value="${colour}" th:text="${colour.getName()}">
+                            Colour
+                        </option>
                     </select>
                 </div>
                 <div>
-                    <label for="HDD">HDD:</label>
-                    <input type="text" id="HDD" name="HDD" required>
+                    <label for="HDD" th:style="${#fields.hasErrors('HDD')} ? 'margin-bottom: 0;' : ''">HDD:</label>
+                    <small id="HDDError"
+                           class="bg-danger rounded d-block "
+                           th:if="${#fields.hasErrors('HDD')}"
+                           th:errors="*{HDD}">HDD Error
+                    </small>
+                    <input type="text"
+                           id="HDD"
+                           name="HDD" th:field="*{HDD}">
                 </div>
                 <div>
-                    <label for="video-card-type">Video Card Type:</label>
-                    <input type="text" id="video-card-type" name="video-card-type" required>
+                    <label for="videoCardType" th:style="${#fields.hasErrors('videoCardType')} ? 'margin-bottom: 0;' : ''">Video Card Type:</label>
+                    <small id="videoCardTypeError"
+                           class="bg-danger rounded d-block "
+                           th:if="${#fields.hasErrors('videoCardType')}"
+                           th:errors="*{videoCardType}">Video Card Type Error
+                    </small>
+                    <input type="text"
+                           id="videoCardType"
+                           name="videoCardType" th:field="*{videoCardType}">
                 </div>
                 <div>
-                    <label for="release-date">Release Date:</label>
-                    <input type="date" id="release-date" name="release-date" required>
+                    <label for="releaseDate" th:style="${#fields.hasErrors('releaseDate')} ? 'margin-bottom: 0;' : ''">Release
+                        Date:</label>
+                    <small id="releaseDateError"
+                           class="bg-danger rounded d-block"
+                           th:if="${#fields.hasErrors('releaseDate')}"
+                           th:errors="*{releaseDate}">Release Date Error
+                    </small>
+                    <input type="datetime-local"
+                           id="releaseDate"
+                           name="release-date" th:field="*{releaseDate}">
                 </div>
             </div>
             <div class="price">
-                <label for="price">Price (BGN):</label>
-                <input type="number" id="price" name="price" required>
+                <label for="price" th:style="${#fields.hasErrors('price')} ? 'margin-bottom: 0;' : ''">Price
+                    (BGN):</label>
+                <small id="priceError"
+                       class="bg-danger rounded d-block"
+                       th:if="${#fields.hasErrors('price')}"
+                       th:errors="*{price}">Price Error
+                </small>
+                <input id="price"
+                       type="number"
+                       name="price"
+                       th:field="*{price}">
             </div>
             <div class="photos">
-                <label for="photos">Photos:</label>
-                <input type="file" id="photos" name="photos" multiple accept="image/*">
+                <label for="photosUrls"
+                       th:style="${#fields.hasErrors('photosUrls')} ? 'margin-bottom: 0;' : ''">Photos:</label>
+                <small id="photosUrlsError"
+                       class="bg-danger rounded d-block"
+                       th:if="${#fields.hasErrors('photosUrls')}"
+                       th:errors="*{photosUrls}">Photos Error
+                </small>
+                <input id="photosUrls"
+                       type="file"
+                       name="photosUrls"
+                       multiple
+                       accept="image/*"
+                       th:field="*{photosUrls}">
             </div>
-            <button type="submit">Add MacBook</button>
-        </form>
-    </div>
+        </div>
+        <button type="submit">Add MacBook</button>
+    </form>
 </div>
+
 
 <footer th:replace="~{fragments/footer}"></footer>
 </body>
