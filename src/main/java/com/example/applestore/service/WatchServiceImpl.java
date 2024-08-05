@@ -3,6 +3,7 @@ import com.example.applestore.model.dtos.WatchAddDTO;
 import com.example.applestore.model.entity.MacBook;
 import com.example.applestore.model.entity.User;
 import com.example.applestore.model.entity.Watch;
+import com.example.applestore.model.view.LatestModelDeviceView;
 import com.example.applestore.repository.IphoneRepository;
 import com.example.applestore.repository.WatchRepository;
 import com.example.applestore.service.interfaces.UserService;
@@ -48,5 +49,14 @@ public class WatchServiceImpl implements WatchService {
         watch.setOwner(user);
         user.getMyWatches().add(watch);
         this.userService.saveCurrentUser(user);
+    }
+
+    @Override
+    public LatestModelDeviceView latestModelWatch() {
+        return watchRepository.findLatestModelWatch()
+                .stream()
+                .findFirst()
+                .map(watch -> modelMapper.map(watch, LatestModelDeviceView.class))
+                .orElse(null);
     }
 }

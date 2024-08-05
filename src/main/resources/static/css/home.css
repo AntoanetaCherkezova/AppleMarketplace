@@ -47,7 +47,7 @@ body {
 .categories, .allCategories {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* Center all elements */
+    justify-content: center;
     margin: 3rem 20rem;
     text-align: center;
     gap: 3rem;
@@ -60,9 +60,9 @@ body {
 }
 
 .allCategories {
-    width: 100%; /* Ensure full width */
-    max-width: 200px; /* Same max width as other categories */
-    margin: 0 auto; /* Center the element */
+    width: 100%;
+    max-width: 200px;
+    margin: 0 auto;
 }
 
 .category a, .allCategories a {
@@ -162,10 +162,11 @@ body {
 .arrival-item {
     display: flex;
     align-items: center;
+    margin: 2rem;
 }
 
 .arrival-item img {
-    max-width: 50%;
+    max-width: 35%;
     border-radius: 8px;
     margin-right: 2rem;
 }
@@ -233,4 +234,9 @@ body {
 .card-info ul {
     list-style: none;
     padding: 0;
+}
+
+.list-group-item {
+    padding: 0.5rem 0;
+    background-color: #333;
 }

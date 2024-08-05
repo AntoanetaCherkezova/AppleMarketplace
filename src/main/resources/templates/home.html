@@ -13,7 +13,8 @@
 </div>
 
 <section class="featured-section">
-    <img src="https://res.cloudinary.com/dwgx3lz5l/image/upload/v1722579979/premium-device_hx4ffd.jpg" alt="Apple Products" class="featured-image">
+    <img src="https://res.cloudinary.com/dwgx3lz5l/image/upload/v1722579979/premium-device_hx4ffd.jpg"
+         alt="Apple Products" class="featured-image">
     <div class="overlay">
         <h1>Explore <span>Apple</span> Products</h1>
     </div>
@@ -29,7 +30,7 @@
         </div>
         <div class="category">
             <a th:href="@{/device/macBooks}">
-                <img src="https://res.cloudinary.com/dwgx3lz5l/image/upload/v1722579978/macBook_zbjmsh.png"
+                <img src="https://res.cloudinary.com/dwgx3lz5l/image/upload/v1722784531/macbookair-og-202402_rczcgw.jpg"
                      alt="MacBook">
                 <h3>MacBook</h3>
             </a>
@@ -42,7 +43,8 @@
         </div>
         <div class="allCategories">
             <a th:href="@{/device/all}">
-                <img src="https://res.cloudinary.com/dwgx3lz5l/image/upload/v1722594832/all-apple-products_jtroib.jpg" alt="All Products">
+                <img src="https://res.cloudinary.com/dwgx3lz5l/image/upload/v1722784726/1669187309881_ylvins.jpg"
+                     alt="All Products">
                 <h3>All Products</h3>
             </a>
         </div>
@@ -57,40 +59,74 @@
 </th:block>
 
 <th:block th:if="${availableIPhones || availableMacBooks || availableWatches}">
+    <section class="latest-arrivals">
+        <h2>The Latest Model Device</h2>
+        <div class="arrival-item">
+            <img th:src="@{${latestModelIphoneView.photosUrls.get(0)}}" alt="New iPhone 15">
+            <div class="arrival-info">
+                <div class="iPhone">
+                    <h3 th:text="'New ' + ${latestModelIphoneView.model}">New iPhone 15</h3>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item" th:text="'Operating System: ' +${latestModelIphoneView.getOperatingSystem()}">iOS</li>
+                        <li class="list-group-item" th:text="'Release Date: ' + ${latestModelIphoneView.releaseDate}">Release Date</li>
+                        <li class="list-group-item" th:text="'Price: ' + ${latestModelIphoneView.price} + ' BGN'">Price</li>
+                    </ul>
+                    <a th:href="'/device/device-profile/iPhone/' + ${latestModelIphoneView.id}" class="btn">Read More</a>
+                </div>
+            </div>
+        </div>
+        <div class="arrival-item">
+            <img th:src="@{${latestModelMacBookView.photosUrls.get(0)}}" alt="New MacBook">
+            <div class="arrival-info">
+                <div class="macBook">
+                    <h3 th:text="'New ' + ${latestModelMacBookView.model}">New MacBook</h3>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item" th:text="'Operating System: ' +${latestModelMacBookView.getOperatingSystem()}">iOS</li>
+                        <li class="list-group-item" th:text="'Release Date: ' + ${latestModelMacBookView.releaseDate}">Release Date</li>
+                        <li class="list-group-item" th:text="'Price: ' + ${latestModelMacBookView.price} + ' BGN'">Price</li>
+                    </ul>
+                    <a th:href="'/device/device-profile/iPhone/' + ${latestModelIphoneView.id}" class="btn">Read More</a>
+                </div>
+            </div>
+        </div>
+        <div class="arrival-item">
+            <img th:src="@{${latestModelWatchView.photosUrls.get(0)}}" alt="New Watch">
+            <div class="arrival-info">
+                <div class="watch">
+                    <h3 th:text="'New ' + ${latestModelWatchView.model}">New Watch</h3>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item" th:text="'Operating System: ' +${latestModelWatchView.getOperatingSystem()}">iOS</li>
+                        <li class="list-group-item" th:text="'Release Date: ' + ${latestModelWatchView.releaseDate}">Release Date</li>
+                        <li class="list-group-item" th:text="'Price: ' + ${latestModelWatchView.price} + ' BGN'">Price</li>
+                    </ul>
+                    <a th:href="'/device/device-profile/iPhone/' + ${latestModelWatchView.id}" class="btn">Read More</a>
+                </div>
+            </div>
+        </div>
+        <p>Experience luxury and advanced technology with our premium Apple products.
+            Designed for those who want the best.</p>
+    </section>
+</th:block>
+<th:block th:if="${availableIPhones}">
     <section class="highlighted-products">
         <div class="product-highlight">
-            <h2>Available Models With Largest Memory </h2>
+            <h2>Available Models iPhone With Largest Memory </h2>
         </div>
         <div class="iPhone">
             <img th:src="@{${iPhoneWithLargestMemoryView.photosUrls.get(0)}}" alt="Iphone With Largest Memory">
         </div>
         <div>
-            <p>Experience luxury and advanced technology with our premium Apple products.
-                Designed for those who want the best.</p>
-            <a href="#" class="explore-button">Explore</a>
+            <p>..............</p>
+            <a th:href="@{/device/iPhones}" class="explore-button">Explore</a>
         </div>
     </section>
 </th:block>
-<section class="latest-arrivals">
-    <h2>Fresh Arrivals</h2>
-    <div class="arrival-item">
-        <img src="/images/apple-test.jpg" alt="New iPhone 14">
-        <div class="arrival-info">
-            <h3>New iPhone 15</h3>
-            <ul>
-                <li><i class="fa-solid fa-check"></i> 5G Connectivity</li>
-                <li><i class="fa-solid fa-check"></i> Retina Display</li>
-                <li><i class="fa-solid fa-check"></i> Face ID</li>
-            </ul>
-            <a href="#" class="btn">Read More</a>
-        </div>
-    </div>
-</section>
+
 
 <section class="recent-devices">
     <h2>Latest Devices</h2>
     <div class="recent-device-card">
-        <img src="/images/apple-test.jpg" alt="iPhone 14">
+        <img src="/images/apple-test.jpg" alt="iPhone 15">
         <div class="card-info">
             <h3>iPhone 15</h3>
             <ul>
@@ -102,6 +138,7 @@
         </div>
     </div>
 </section>
+
 
 <footer th:replace="~{fragments/footer}"></footer>
 </body>

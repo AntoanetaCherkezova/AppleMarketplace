@@ -2,6 +2,8 @@ package com.example.applestore.service;
 import com.example.applestore.model.dtos.MacBookAddDTO;
 import com.example.applestore.model.entity.MacBook;
 import com.example.applestore.model.entity.User;
+import com.example.applestore.model.view.LatestModelDeviceView;
+import com.example.applestore.model.view.ModelsWithLargestMemoryView;
 import com.example.applestore.repository.MacBookRepository;
 import com.example.applestore.service.interfaces.MacBookService;
 import com.example.applestore.service.interfaces.UserService;
@@ -48,4 +50,14 @@ public class MacBookServiceImpl implements MacBookService {
         user.getMyMacBooks().add(macBook);
         this.userService.saveCurrentUser(user);
     }
+
+    @Override
+    public LatestModelDeviceView latestModelMacBook() {
+        return macBookRepository.findLatestModelMacBook()
+                .stream()
+                .findFirst()
+                .map(macBook -> modelMapper.map(macBook, LatestModelDeviceView.class))
+                .orElse(null);
+    }
+
 }

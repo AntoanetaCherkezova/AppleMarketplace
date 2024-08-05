@@ -4,6 +4,7 @@ import com.example.applestore.model.entity.Device;
 import com.example.applestore.model.entity.Iphone;
 import com.example.applestore.model.entity.User;
 import com.example.applestore.model.view.IphoneProfileView;
+import com.example.applestore.model.view.LatestModelDeviceView;
 import com.example.applestore.model.view.ModelsWithLargestMemoryView;
 import com.example.applestore.repository.IphoneRepository;
 import com.example.applestore.service.interfaces.IphoneService;
@@ -61,7 +62,14 @@ public class IphoneServiceImpl implements IphoneService {
                 .map(iPhone -> modelMapper.map(iPhone, ModelsWithLargestMemoryView.class))
                 .orElse(null);
     }
-
+    @Override
+    public LatestModelDeviceView latestModelIphone() {
+        return iphoneRepository.findLatestModelIphone()
+                .stream()
+                .findFirst()
+                .map(iPhone -> modelMapper.map(iPhone, LatestModelDeviceView.class))
+                .orElse(null);
+    }
     @Override
     public IphoneProfileView createIphoneProfileView(Iphone iphone) {
         IphoneProfileView iphoneProfileView = modelMapper.map(iphone, IphoneProfileView.class);
@@ -81,4 +89,6 @@ public class IphoneServiceImpl implements IphoneService {
     public Iphone findById(Long deviceId) {
         return this.iphoneRepository.findById(deviceId).orElse(null);
     }
+
+
 }

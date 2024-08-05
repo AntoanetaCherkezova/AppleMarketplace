@@ -20,7 +20,11 @@ public interface IphoneService {
     void saveDevices(Device device);
 
     Iphone findById(Long deviceId);
+
+    LatestModelDeviceView latestModelIphone();
 }
+
+
 
 
 
