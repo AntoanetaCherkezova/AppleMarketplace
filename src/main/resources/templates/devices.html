@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <link th:include="~{fragments/head :: head}">
+    <link rel="stylesheet" href="/css/devices.css">
+</head>
+
+<body>
+
+<div>
+    <nav th:replace="~{fragments/navigation}"></nav>
+</div>
+
+<div class="line-with-text">
+    <div class="text-line" th:text="${title}">Device Showcase</div>
+</div>
+
+<div th:if="${devices.isEmpty()}" class="alert alert-warning mt-4 text-center no-vehicles" role="alert">
+    No devices available at the moment.
+</div>
+<div class="container ml-auto mr-auto device-container d-flex justify-content-center row mt-4 mb-5" th:each="device : ${devices}">
+    <div class="item">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="photo">
+                    <div class="row">
+                        <div class="col-md-8 big-image">
+                            <a th:href="'/devices/device-profile/' + ${device.type} + '/' + ${device.id}" class="d-block text-center">
+                                <img th:src="${device.getPhotosUrls().get(0)}" class="img-fluid" alt="Image">
+                            </a>
+                        </div>
+                        <div class="col-md-4 small-images d-flex flex-column justify-content-between">
+                            <a th:href="'/devices/device-profile/' + ${device.type} + '/' + ${device.id}" class="d-block mb-2 flex-fill">
+                                <img th:src="${device.getPhotosUrls().size() > 1 ? device.getPhotosUrls().get(1) : 'https://res.cloudinary.com/dwgx3lz5l/image/upload/v1722856503/add-image-icon-vector-add-image-icon-vector-filled-flat-sign-solid-pictogram-isolated-white-picture-plus-symbol-logo-103911077_pfvedm.png'}"
+                                     class="img-fluid" alt="Image">
+                            </a>
+                            <a th:href="'/devices/device-profile/' + ${device.type} + '/' + ${device.id}" class="d-block flex-fill">
+                                <img th:src="${device.getPhotosUrls().size() > 2 ? device.getPhotosUrls().get(2) : 'https://res.cloudinary.com/dwgx3lz5l/image/upload/v1722856503/add-image-icon-vector-add-image-icon-vector-filled-flat-sign-solid-pictogram-isolated-white-picture-plus-symbol-logo-103911077_pfvedm.png'}"
+                                     class="img-fluid" alt="Image">
+                            </a>
+                            <a th:href="'/devices/device-profile/' + ${device.type} + '/' + ${device.id}" class="d-block flex-fill">
+                                <img th:src="${device.getPhotosUrls().size() > 3 ? device.getPhotosUrls().get(3) : 'https://res.cloudinary.com/dwgx3lz5l/image/upload/v1722856503/add-image-icon-vector-add-image-icon-vector-filled-flat-sign-solid-pictogram-isolated-white-picture-plus-symbol-logo-103911077_pfvedm.png'}"
+                                     class="img-fluid" alt="Image">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 text pl-0 pr-0">
+                <div class="text-center mb-1">
+                    <a th:href="'/devices/device-profile/' + ${device.type} + '/' + ${device.id}"
+                       th:text="${device.model}" class="title h6 font-weight-bold">Device Model</a>
+                </div>
+
+                <div class="details-device">
+                    <p>Color: <span th:text="${device.colour.getName()}"></span></p>
+                    <p>Processor: <span th:text="${device.processor}"></span></p>
+                    <p>Release Date: <span th:text="${device.releaseDate}"></span></p>
+                    <p>Price: <span th:text="${device.price} + ' BGN'"></span></p>
+                </div>
+                <div class="button-device">
+                    <a th:href="'/devices/device-profile/' + ${device.type} + '/' + ${device.id}" class="">Details</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer th:replace="~{fragments/footer}"></footer>
+</body>
+</html>

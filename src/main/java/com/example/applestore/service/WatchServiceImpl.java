@@ -1,13 +1,14 @@
 package com.example.applestore.service;
 import com.example.applestore.model.dtos.WatchAddDTO;
-import com.example.applestore.model.entity.MacBook;
 import com.example.applestore.model.entity.User;
 import com.example.applestore.model.entity.Watch;
+import com.example.applestore.model.view.DeviceView;
 import com.example.applestore.model.view.LatestModelDeviceView;
-import com.example.applestore.repository.IphoneRepository;
+import com.example.applestore.model.view.WatchProfileView;
 import com.example.applestore.repository.WatchRepository;
 import com.example.applestore.service.interfaces.UserService;
 import com.example.applestore.service.interfaces.WatchService;
+import com.example.applestore.util.ModelAttributeUtil;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
@@ -58,5 +59,33 @@ public class WatchServiceImpl implements WatchService {
                 .findFirst()
                 .map(watch -> modelMapper.map(watch, LatestModelDeviceView.class))
                 .orElse(null);
+    }
+
+    @Override
+    public List<DeviceView> findLatestWatches() {
+        return watchRepository.findLatestWatches()
+                .stream()
+                .map(watch -> {
+                    DeviceView view = modelMapper.map(watch, DeviceView.class);
+                    view.setReleaseDate(ModelAttributeUtil.formatDate(watch.getReleaseDate()));
+                    view.setPrice(ModelAttributeUtil.formatPrice(watch.getPrice()));
+                    view.setType("watch");
+                    return view;
+                })
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public Watch findById(Long deviceId) {
+        return this.watchRepository.findById(deviceId).orElse(null);
+    }
+
+    @Override
+    public WatchProfileView createWatchProfileView(Watch watch) {
+        WatchProfileView watchProfileView = modelMapper.map(watch, WatchProfileView.class);
+        watchProfileView.setReleaseDate(ModelAttributeUtil.formatDate(watch.getReleaseDate()));
+        watchProfileView.setRegisteredOn(ModelAttributeUtil.formatDate(watch.getRegisteredOn()));
+        watchProfileView.setPrice(ModelAttributeUtil.formatPrice(watch.getPrice()));
+        return watchProfileView;
     }
 }

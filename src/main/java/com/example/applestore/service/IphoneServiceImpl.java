@@ -3,6 +3,7 @@ import com.example.applestore.model.dtos.IphoneAddDTO;
 import com.example.applestore.model.entity.Device;
 import com.example.applestore.model.entity.Iphone;
 import com.example.applestore.model.entity.User;
+import com.example.applestore.model.view.DeviceView;
 import com.example.applestore.model.view.IphoneProfileView;
 import com.example.applestore.model.view.LatestModelDeviceView;
 import com.example.applestore.model.view.ModelsWithLargestMemoryView;
@@ -70,6 +71,21 @@ public class IphoneServiceImpl implements IphoneService {
                 .map(iPhone -> modelMapper.map(iPhone, LatestModelDeviceView.class))
                 .orElse(null);
     }
+
+    @Override
+    public List<DeviceView> findLatestIphones() {
+        return iphoneRepository.findLatestIphones()
+                .stream()
+                .map(iPhone -> {
+                    DeviceView view = modelMapper.map(iPhone, DeviceView.class);
+                    view.setReleaseDate(ModelAttributeUtil.formatDate(iPhone.getReleaseDate()));
+                    view.setPrice(ModelAttributeUtil.formatPrice(iPhone.getPrice()));
+                    view.setType("iPhone");
+                    return view;
+                })
+                .collect(Collectors.toList());
+    }
+
     @Override
     public IphoneProfileView createIphoneProfileView(Iphone iphone) {
         IphoneProfileView iphoneProfileView = modelMapper.map(iphone, IphoneProfileView.class);

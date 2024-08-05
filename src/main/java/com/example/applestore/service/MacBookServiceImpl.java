@@ -2,15 +2,16 @@ package com.example.applestore.service;
 import com.example.applestore.model.dtos.MacBookAddDTO;
 import com.example.applestore.model.entity.MacBook;
 import com.example.applestore.model.entity.User;
+import com.example.applestore.model.view.DeviceView;
 import com.example.applestore.model.view.LatestModelDeviceView;
-import com.example.applestore.model.view.ModelsWithLargestMemoryView;
+import com.example.applestore.model.view.MacBookProfileView;
 import com.example.applestore.repository.MacBookRepository;
 import com.example.applestore.service.interfaces.MacBookService;
 import com.example.applestore.service.interfaces.UserService;
+import com.example.applestore.util.ModelAttributeUtil;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -58,6 +59,34 @@ public class MacBookServiceImpl implements MacBookService {
                 .findFirst()
                 .map(macBook -> modelMapper.map(macBook, LatestModelDeviceView.class))
                 .orElse(null);
+    }
+
+    @Override
+    public List<DeviceView> findLatestMacBoks() {
+        return macBookRepository.findLatestMacBooks()
+                .stream()
+                .map(macBook -> {
+                    DeviceView view = modelMapper.map(macBook, DeviceView.class);
+                    view.setReleaseDate(ModelAttributeUtil.formatDate(macBook.getReleaseDate()));
+                    view.setPrice(ModelAttributeUtil.formatPrice(macBook.getPrice()));
+                    view.setType("macBook");
+                    return view;
+                })
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public MacBook findById(Long deviceId) {
+        return this.macBookRepository.findById(deviceId).orElse(null);
+    }
+
+    @Override
+    public MacBookProfileView createMacBookProfileView(MacBook macBook) {
+        MacBookProfileView macBookProfileView = modelMapper.map(macBook, MacBookProfileView.class);
+        macBookProfileView.setReleaseDate(ModelAttributeUtil.formatDate(macBook.getReleaseDate()));
+        macBookProfileView.setRegisteredOn(ModelAttributeUtil.formatDate(macBook.getRegisteredOn()));
+        macBookProfileView.setPrice(ModelAttributeUtil.formatPrice(macBook.getPrice()));
+        return macBookProfileView;
     }
 
 }
