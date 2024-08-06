@@ -118,6 +118,8 @@ body {
 .highlighted-products h2 {
     font-family: 'Playfair Display', serif;
     margin-bottom: 1rem;
+    color: #437db6;
+    font-weight: bold;
 }
 
 .highlighted-products img {
@@ -135,8 +137,8 @@ body {
 .explore-button {
     display: inline-block;
     padding: 0.7rem 1.5rem;
-    background-color: #333;
-    color: #fff;
+    background-color: #0080ff;
+    color: #ffffff;
     text-decoration: none;
     border-radius: 4px;
     transition: background-color 0.3s ease;
@@ -154,9 +156,11 @@ body {
     border-radius: 8px;
 }
 
-.latest-arrivals h2 {
+.latest-arrivals h2, .latest-arrivals h6 {
     text-align: center;
-    margin-bottom: 1.5rem;
+    font-family: 'Playfair Display', serif;
+    color: #437db6;
+    font-weight: bold;
 }
 
 .arrival-item {
@@ -190,6 +194,7 @@ body {
 
 .arrival-info .btn {
     display: inline-block;
+    margin: 1rem 0;
     padding: 0.7rem 1.5rem;
     background-color: #0080ff;
     color: #fff;
@@ -240,3 +245,80 @@ body {
     padding: 0.5rem 0;
     background-color: #333;
 }
+
+
+.latest-devices {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin: 2rem auto;
+}
+
+.card {
+    width: 300px;
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+.card img {
+    height: 200px;
+    object-fit: cover;
+    width: 100%;
+}
+
+.card-body {
+    padding: 1rem;
+    text-align: center;
+    flex-grow: 1;
+}
+
+.card-title {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.list-group {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-align: left;
+    flex-grow: 1;
+}
+
+.list-group-item {
+    padding: 0.5rem 1rem;
+    background-color: #fff;
+    border: none;
+    border-top: 1px solid #ddd;
+    color: #333;
+}
+
+.list-group-item:first-child {
+    border-top: none;
+}
+
+.card-body .card-link {
+    display: block;
+    color: #0080ff;
+    text-decoration: none;
+    margin-top: 1rem;
+    border-top: 1px solid #ddd;
+    padding-top: 0.5rem;
+}
+
+.card-body .card-link:hover {
+    color: #0056b3;
+}
+

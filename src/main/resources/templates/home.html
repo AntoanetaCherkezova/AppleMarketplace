@@ -58,20 +58,29 @@
     </section>
 </th:block>
 
-<th:block th:if="${availableIPhones || availableMacBooks || availableWatches}">
+<th:block th:if="${availableIPhones && availableMacBooks && availableWatches}">
     <section class="latest-arrivals">
         <h2>The Latest Model Device</h2>
+        <h6>Experience luxury and advanced technology with our premium Apple products.
+            Designed for those who want the best.</h6>
         <div class="arrival-item">
             <img th:src="@{${latestModelIphoneView.photosUrls.get(0)}}" alt="New iPhone 15">
             <div class="arrival-info">
                 <div class="iPhone">
                     <h3 th:text="'New ' + ${latestModelIphoneView.model}">New iPhone 15</h3>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item" th:text="'Operating System: ' +${latestModelIphoneView.getOperatingSystem()}">iOS</li>
-                        <li class="list-group-item" th:text="'Release Date: ' + ${latestModelIphoneView.releaseDate}">Release Date</li>
-                        <li class="list-group-item" th:text="'Price: ' + ${latestModelIphoneView.price} + ' BGN'">Price</li>
+                        <li class="list-group-item"
+                            th:text="'Operating System: ' +${latestModelIphoneView.getOperatingSystem()}">iOS
+                        </li>
+                        <li class="list-group-item"
+                            th:text="'Release Date: ' + ${latestModelIphoneView.getReleaseDate.toLocalDate()}">Release
+                            Date
+                        </li>
+                        <li class="list-group-item" th:text="'Price: ' + ${latestModelIphoneView.price} + ' BGN'">
+                            Price
+                        </li>
                     </ul>
-                    <a th:href="'/device/device-profile/iPhone/' + ${latestModelIphoneView.id}" class="btn">Read More</a>
+                    <a th:href="'/devices/device-profile/iPhone/' + ${latestModelIphoneView.id}" class="btn">Read More</a>
                 </div>
             </div>
         </div>
@@ -81,11 +90,18 @@
                 <div class="macBook">
                     <h3 th:text="'New ' + ${latestModelMacBookView.model}">New MacBook</h3>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item" th:text="'Operating System: ' +${latestModelMacBookView.getOperatingSystem()}">iOS</li>
-                        <li class="list-group-item" th:text="'Release Date: ' + ${latestModelMacBookView.releaseDate}">Release Date</li>
-                        <li class="list-group-item" th:text="'Price: ' + ${latestModelMacBookView.price} + ' BGN'">Price</li>
+                        <li class="list-group-item"
+                            th:text="'Operating System: ' +${latestModelMacBookView.getOperatingSystem()}">iOS
+                        </li>
+                        <li class="list-group-item"
+                            th:text="'Release Date: ' + ${latestModelMacBookView.getReleaseDate.toLocalDate()}">Release
+                            Date
+                        </li>
+                        <li class="list-group-item" th:text="'Price: ' + ${latestModelMacBookView.price} + ' BGN'">
+                            Price
+                        </li>
                     </ul>
-                    <a th:href="'/device/device-profile/iPhone/' + ${latestModelIphoneView.id}" class="btn">Read More</a>
+                    <a th:href="'/devices/device-profile/macBook/' + ${latestModelMacBookView.id}" class="btn">Read More</a>
                 </div>
             </div>
         </div>
@@ -95,16 +111,21 @@
                 <div class="watch">
                     <h3 th:text="'New ' + ${latestModelWatchView.model}">New Watch</h3>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item" th:text="'Operating System: ' +${latestModelWatchView.getOperatingSystem()}">iOS</li>
-                        <li class="list-group-item" th:text="'Release Date: ' + ${latestModelWatchView.releaseDate}">Release Date</li>
-                        <li class="list-group-item" th:text="'Price: ' + ${latestModelWatchView.price} + ' BGN'">Price</li>
+                        <li class="list-group-item"
+                            th:text="'Operating System: ' +${latestModelWatchView.getOperatingSystem()}">iOS
+                        </li>
+                        <li class="list-group-item"
+                            th:text="'Release Date: ' + ${latestModelWatchView.getReleaseDate().toLocalDate()}">Release
+                            Date
+                        </li>
+                        <li class="list-group-item" th:text="'Price: ' + ${latestModelWatchView.price} + ' BGN'">Price
+                        </li>
                     </ul>
-                    <a th:href="'/device/device-profile/iPhone/' + ${latestModelWatchView.id}" class="btn">Read More</a>
+                    <a th:href="'/devices/device-profile/watch/' + ${latestModelWatchView.id}" class="btn">Read More</a>
                 </div>
             </div>
         </div>
-        <p>Experience luxury and advanced technology with our premium Apple products.
-            Designed for those who want the best.</p>
+
     </section>
 </th:block>
 <th:block th:if="${availableIPhones}">
@@ -114,31 +135,44 @@
         </div>
         <div class="iPhone">
             <img th:src="@{${iPhoneWithLargestMemoryView.photosUrls.get(0)}}" alt="Iphone With Largest Memory">
+            <ul class="list-group list-group-flush">
+                <li th:text="'Model: ' + ${iPhoneWithLargestMemoryView.getModel()}">Model</li>
+                <li th:text="'Storage: ' + ${iPhoneWithLargestMemoryView.getInternalMemory()}">Price</li>
+            </ul>
         </div>
         <div>
-            <p>..............</p>
+            <p></p>
             <a th:href="@{/devices/iPhones}" class="explore-button">Explore</a>
         </div>
     </section>
 </th:block>
 
-
-<section class="recent-devices">
-    <h2>Latest Devices</h2>
-    <div class="recent-device-card">
-        <img src="/images/apple-test.jpg" alt="iPhone 15">
-        <div class="card-info">
-            <h3>iPhone 15</h3>
-            <ul>
-                <li>Category: iPhone</li>
-                <li>Location: Burgas</li>
-                <li>Price: 2500lv</li>
-            </ul>
-            <a href="#" class="card-link">All Product Reviews</a>
+<th:block th:if="${availableIPhones || availableMacBooks || availableWatches}">
+    <section class="highlighted-products">
+        <div class="product-highlight">
+            <h2>Devices With Longest Warranty</h2>
         </div>
-    </div>
-</section>
-
+        <div class="row mx-auto justify-content-center">
+            <div class="card mt-4 mx-3" th:each="device : ${deviceWithTheLongestWarranty}">
+                <img th:src="${device.getPhotosUrls().get(0)}" class="card-img-top" alt="...">
+                <div class="card-body text-center">
+                    <h5 class="card-title" th:text="${device.model}"></h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item" th:text="'Registered on: ' + ${device.registeredOn.toLocalDate()}">
+                        Registered on:
+                    </li>
+                    <li class="list-group-item" th:text="'Warranty: ' + ${device.warranty} + ' month'">Warranty:</li>
+                    <li class="list-group-item" th:text="'Price: ' + ${device.price} + ' BGN'">Price:</li>
+                </ul>
+                <div class="card-body">
+                    <a th:href="'/devices/device-profile/' + ${device.type} + '/' + ${device.id}" class="card-link">Read
+                        More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</th:block>
 
 <footer th:replace="~{fragments/footer}"></footer>
 </body>

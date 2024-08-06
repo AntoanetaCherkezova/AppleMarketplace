@@ -15,9 +15,11 @@ public interface MacBookService {
 
     LatestModelDeviceView latestModelMacBook();
 
-    List<DeviceView> findLatestMacBoks();
+    List<DeviceView> findLatestMacBooks();
 
     MacBook findById(Long deviceId);
 
     MacBookProfileView createMacBookProfileView(MacBook macBook);
+
+    List<DeviceView> findLongestWarrantyMacBook();
 }

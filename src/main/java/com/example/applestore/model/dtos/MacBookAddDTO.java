@@ -21,8 +21,8 @@ public class MacBookAddDTO {
     @NotBlank(message = "Status must be specified.")
     private String statusDevice;
 
-    @NotBlank(message = "Warranty must be specified.")
-    private String warranty;
+    @Min(value = 0, message = "Warranty must be a non-negative number!")
+    private int warranty;
 
     @NotBlank(message = "Model must be specified.")
     private String model;

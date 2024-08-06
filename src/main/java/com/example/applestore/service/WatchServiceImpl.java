@@ -88,4 +88,18 @@ public class WatchServiceImpl implements WatchService {
         watchProfileView.setPrice(ModelAttributeUtil.formatPrice(watch.getPrice()));
         return watchProfileView;
     }
+
+    @Override
+    public List<DeviceView> findLongestWarrantyWatch() {
+        return watchRepository.findLongestWarrantyWatch()
+                .stream()
+                .map(watch -> {
+                    DeviceView view = modelMapper.map(watch, DeviceView.class);
+                    view.setReleaseDate(ModelAttributeUtil.formatDate(watch.getReleaseDate()));
+                    view.setPrice(ModelAttributeUtil.formatPrice(watch.getPrice()));
+                    view.setType("watch");
+                    return view;
+                })
+                .collect(Collectors.toList());
+    }
 }

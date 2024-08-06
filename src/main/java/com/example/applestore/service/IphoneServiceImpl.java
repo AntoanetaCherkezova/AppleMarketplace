@@ -87,6 +87,20 @@ public class IphoneServiceImpl implements IphoneService {
     }
 
     @Override
+    public List<DeviceView> findLongestWarrantyIphone() {
+        return iphoneRepository.findLongestWarrantyIphone()
+                .stream()
+                .map(iPhone -> {
+                    DeviceView view = modelMapper.map(iPhone, DeviceView.class);
+                    view.setReleaseDate(ModelAttributeUtil.formatDate(iPhone.getReleaseDate()));
+                    view.setPrice(ModelAttributeUtil.formatPrice(iPhone.getPrice()));
+                    view.setType("iPhone");
+                    return view;
+                })
+                .collect(Collectors.toList());
+    }
+
+    @Override
     public IphoneProfileView createIphoneProfileView(Iphone iphone) {
         IphoneProfileView iphoneProfileView = modelMapper.map(iphone, IphoneProfileView.class);
         iphoneProfileView.setReleaseDate(ModelAttributeUtil.formatDate(iphone.getReleaseDate()));

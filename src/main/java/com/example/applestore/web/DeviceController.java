@@ -53,7 +53,7 @@ public class DeviceController {
         List<DeviceView> devices = Stream.concat(
                         Stream.concat(
                                 iphoneService.findLatestIphones().stream(),
-                                macBookService.findLatestMacBoks().stream()
+                                macBookService.findLatestMacBooks().stream()
                         ),
                         watchService.findLatestWatches().stream()
                 ).sorted(Comparator.comparing(DeviceView::getRegisteredOn).reversed())
@@ -101,7 +101,7 @@ public class DeviceController {
 
     @GetMapping("/macBooks")
     public ModelAndView showMacBooks(@PageableDefault(sort = "id", size = 10) Pageable pageable, ModelAndView model, Locale locale) {
-        List<DeviceView> macBooks = macBookService.findLatestMacBoks()
+        List<DeviceView> macBooks = macBookService.findLatestMacBooks()
                 .stream()
                 .sorted(Comparator.comparing(DeviceView::getRegisteredOn).reversed())
                 .collect(Collectors.toList());
@@ -145,5 +145,71 @@ public class DeviceController {
         return model;
     }
 
+    @GetMapping("/device-profile/{type}/{deviceId}")
+    public ModelAndView deviceProfile(ModelAndView model,
+                                      @PathVariable String type,
+                                      @PathVariable Long deviceId,
+                                      @AuthenticationPrincipal UserDetails userDetails) {
 
+        User user = userService.findByUsername(userDetails.getUsername()).orElse(null);
+        if (user == null) return setNotFound(model);
+
+        return processDeviceProfile(model, type, deviceId, user, userDetails);
+    }
+
+    private ModelAndView processDeviceProfile(ModelAndView model, String type, Long deviceId, User user, UserDetails userDetails) {
+        boolean isOwner = isOwner(deviceId, user);
+
+        switch (type) {
+            case "iPhone":
+                Iphone iphone = iphoneService.findById(deviceId);
+                if (iphone == null) return setNotFound(model);
+                model.addObject("device", iphoneService.createIphoneProfileView(iphone));
+                model.addObject("deviceType", "iPhone");
+                break;
+            case "macBook":
+                MacBook macBook = macBookService.findById(deviceId);
+                if (macBook == null) return setNotFound(model);
+                model.addObject("device", macBookService.createMacBookProfileView(macBook));
+                model.addObject("deviceType", "macBook");
+                break;
+            case "watch":
+                Watch watch = watchService.findById(deviceId);
+                if (watch == null) return setNotFound(model);
+                model.addObject("device", watchService.createWatchProfileView(watch));
+                model.addObject("deviceType", "watch");
+                break;
+
+            default:
+                return setBadRequest(model);
+        }
+        addObjects(model, userDetails, isOwner);
+        model.setViewName("device-profile");
+        return model;
+    }
+
+    private ModelAndView setNotFound(ModelAndView model) {
+        model.setViewName("error");
+        model.setStatus(HttpStatus.NOT_FOUND);
+        return model;
+    }
+
+    private ModelAndView setBadRequest(ModelAndView model) {
+        model.setViewName("error");
+        model.setStatus(HttpStatus.BAD_REQUEST);
+        return model;
+    }
+
+    private static void addObjects(ModelAndView model, UserDetails userDetails, boolean isOwner) {
+        model.addObject("page", "profile");
+        model.addObject("isOwner", isOwner);
+        model.addObject("user", userDetails.getUsername());
+        model.addObject("isAdmin", userDetails.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN")));
+    }
+
+    private boolean isOwner(Long deviceId, User user) {
+        return user.getMyIphones().stream().anyMatch(myIphone -> myIphone.equals(iphoneService.findById(deviceId))) ||
+                user.getMyMacBooks().stream().anyMatch(myMacBook -> myMacBook.equals(macBookService.findById(deviceId))) ||
+                user.getMyWatches().stream().anyMatch(myWatch -> myWatch.equals(watchService.findById(deviceId)));
+    }
 }

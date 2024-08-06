@@ -16,7 +16,7 @@ public class DeviceView {
 
     private String statusDevice;
 
-    private String warranty;
+    private int warranty;
 
     private String model;
 

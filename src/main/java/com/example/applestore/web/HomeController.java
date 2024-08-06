@@ -1,5 +1,5 @@
 package com.example.applestore.web;
-
+import com.example.applestore.model.view.DeviceView;
 import com.example.applestore.model.view.LatestModelDeviceView;
 import com.example.applestore.model.view.ModelsWithLargestMemoryView;
 import com.example.applestore.service.interfaces.IphoneService;
@@ -39,6 +39,15 @@ public class HomeController {
         LatestModelDeviceView latestModelMacBookView = this.macBookService.latestModelMacBook();
         LatestModelDeviceView latestModelWatchView = this.watchService.latestModelWatch();
 
+        List<DeviceView> deviceWithTheLongestWarranty = Stream.concat(
+                        Stream.concat(
+                                iphoneService.findLongestWarrantyIphone().stream(),
+                                macBookService.findLongestWarrantyMacBook().stream()
+                        ),
+                        watchService.findLongestWarrantyWatch().stream()
+                ).sorted(Comparator.comparing(DeviceView::getWarranty).reversed())
+                .limit(5)
+                .collect(Collectors.toList());
 
         model.addObject("availableIPhones", this.iphoneService.availableIPhones());
         model.addObject("availableMacBooks", this.macBookService.availableMacBooks());
@@ -47,6 +56,7 @@ public class HomeController {
         model.addObject("latestModelIphoneView", latestModelIphoneView);
         model.addObject("latestModelMacBookView", latestModelMacBookView);
         model.addObject("latestModelWatchView", latestModelWatchView);
+        model.addObject("deviceWithTheLongestWarranty", deviceWithTheLongestWarranty);
         model.setViewName("home");
         return model;
     }

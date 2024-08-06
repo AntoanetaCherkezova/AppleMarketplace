@@ -62,7 +62,7 @@ public class MacBookServiceImpl implements MacBookService {
     }
 
     @Override
-    public List<DeviceView> findLatestMacBoks() {
+    public List<DeviceView> findLatestMacBooks() {
         return macBookRepository.findLatestMacBooks()
                 .stream()
                 .map(macBook -> {
@@ -87,6 +87,20 @@ public class MacBookServiceImpl implements MacBookService {
         macBookProfileView.setRegisteredOn(ModelAttributeUtil.formatDate(macBook.getRegisteredOn()));
         macBookProfileView.setPrice(ModelAttributeUtil.formatPrice(macBook.getPrice()));
         return macBookProfileView;
+    }
+
+    @Override
+    public List<DeviceView> findLongestWarrantyMacBook() {
+        return macBookRepository.findLongestWarrantyMacBook()
+                .stream()
+                .map(macBook -> {
+                    DeviceView view = modelMapper.map(macBook, DeviceView.class);
+                    view.setReleaseDate(ModelAttributeUtil.formatDate(macBook.getReleaseDate()));
+                    view.setPrice(ModelAttributeUtil.formatPrice(macBook.getPrice()));
+                    view.setType("macBook");
+                    return view;
+                })
+                .collect(Collectors.toList());
     }
 
 }

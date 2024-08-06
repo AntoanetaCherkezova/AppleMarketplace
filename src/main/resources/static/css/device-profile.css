@@ -5,140 +5,140 @@ body {
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
     font-family: "Roboto", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
-
-/* Line with text */
-.line-with-text {
-    display: flex;
-    align-items: center;
-    margin-top: 5rem;
+body::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.03); /* Полупрозрачен черен слой */
+    pointer-events: none;
+    z-index: 0;
 }
 
-.line-1 {
-    flex-grow: 1;
-    border-bottom: 0.5rem solid #f6217d;
-    border-radius: 1rem;
-}
-
-.line-2 {
-    flex-grow: 1;
-    border-bottom: 0.5rem solid #235bf3;
-    border-radius: 1rem;
-}
-
-.text-line {
-    margin: 0 0.4rem;
-    color: white;
+.model-text {
+    display: block;
+    text-align: center;
+    margin-top: 6rem;
+    color: #437db6;
     font-weight: bold;
     font-size: 1.5rem;
-    padding: 1rem;
-    border: 0.3rem solid transparent;
-    border-image: linear-gradient(to right, #f6217d 50%, #235bf3 50%) 1;
-    background-clip: padding-box;
+    padding: 0.8rem;
+    /*background: linear-gradient(to right, #5a5ae6, #235bf3);*/
+    /*-webkit-background-clip: text;*/
+    /*-webkit-text-fill-color: transparent;*/
 }
-
 
 /* Carousel navigation */
 .carousel-inner img {
     width: 100%;
-    height: 30rem;
+    height: 28rem;
     object-fit: cover;
+    border-radius: 0.5rem;
 }
 
-.small-images{
-    display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    gap: 10px;
+.small-images {
+    display: flex;
+    overflow-x: auto;
+    padding: 0.5rem;
 }
 
 .small-images img {
-    width: 8rem;
-    height: 6rem;
+    width: 7rem;
+    height: 5rem;
     object-fit: cover;
     cursor: pointer;
+    margin-right: 0.5rem;
+    border-radius: 0.3rem;
 }
 
-
+.small-images img:last-child {
+    margin-right: 0;
+}
 
 /* Device info */
 .description {
     margin: 1rem auto;
-    color: white;
-    border: 0.3rem solid transparent;
-    border-image: linear-gradient(to right, #f6217d 50%, #235bf3 50%) 1;
+    color: #e0e0e0;
+    background: rgba(0, 0, 0, 0.7); /* Добавен прозрачен черен фон */
     padding: 1.5rem;
-    width: 70%;
-    backdrop-filter: blur(0.5rem);
+    border-radius: 0.5rem;
+    width: 75%;
+    backdrop-filter: blur(1rem);
 }
 
-.description-text{
-    color: rgb(175, 164, 164);
+.description-text {
+    color: #c0c0c0;
     font-weight: bold;
 }
 
 .description p {
-    color: white;
-    margin: 0.1rem auto;
+    color: #e0e0e0;
+    margin: 0.2rem 0;
     text-align: left;
 }
 
-.description h5{
+.description h5 {
     padding: 0.4rem;
-    border: 0.3rem solid transparent;
-    border-image: linear-gradient(to right, #f6217d 50%, #235bf3 50%) 1;
+    color: #5a5ae6;
+    border-bottom: 0.2rem solid #235bf3;
 }
 
-.description a{
-    color: white;
+.description a {
+    color: #4669b6;
+    text-decoration: none;
+    border-bottom: 0.1rem solid #5a5ae6;
+    transition: border-color 0.3s;
+}
+
+.description a:hover {
+    border-color: #235bf3;
 }
 
 .items {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 0.6rem;
     width: 80%;
     margin: 1rem auto;
+
 }
 
 .items div {
     display: flex;
-    align-items: center;
-
+    align-items: inherit;
 }
 
 .items i.fa-solid.fa-check {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     color: rgb(32, 233, 32);
     margin-right: 0.5rem;
 }
 
 .items i.fa-solid.fa-times {
-    font-size: 1.2rem;
-    color: rgb(243, 83, 83);
+    font-size: 1.4rem;
+    color: rgb(70, 105, 182);
     margin-right: 0.5rem;
 }
 
 .items label {
     font-size: 1rem;
-    color: white;
+    color: #e0e0e0;
 }
 
-
-
 /* Comments */
-.comments{
+.comments {
     width: 70%;
 }
 
-.card{
-    background-color: transparent;
-    backdrop-filter: blur(10rem);
-    border: 0.1rem solid white;
+.card {
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    border: 0.1rem solid #e0e0e0;
 }

@@ -14,19 +14,15 @@
 </div>
 
 <div class="container mt-4 mb-5">
-    <div class="line-with-text">
-        <div class="line-1"></div>
-        <div class="text-line">...Brand and Model..</div>
-        <div class="line-2"></div>
+    <div class="model-text">
+        <div th:text="${device.model}">...Model..</div>
     </div>
 
     <div id="big-images" class="carousel slide mt-4">
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="/images/apple-test.jpg" class="d-block w-100" alt="Device Image">
-            </div>
-            <div class="carousel-item">
-                <img src="/images/apple-test.jpg" class="d-block w-100" alt="Device Image">
+            <div th:each="photo, iterStat : ${device.photosUrls}"
+                 th:class="${iterStat.index == 0} ? 'carousel-item active' : 'carousel-item'">
+                <img th:src="@{${photo}}" class="d-block w-100" alt="Image">
             </div>
         </div>
         <a class="carousel-control-prev" href="#big-images" role="button" data-slide="prev">
@@ -40,87 +36,136 @@
     </div>
 
     <div class="small-images justify-content-center mt-3">
-        <!--TODO: -->
-        <img src="/images/apple-test.jpg" alt="Thumbnail 1" onclick="manualPictureNavigation(0)">
-        <img src="/images/apple-test.jpg" alt="Thumbnail 2" onclick="manualPictureNavigation(1)">
+        <img th:each="photo, iterStat : ${device.photosUrls}" th:src="@{${photo}}" alt="Image"
+             th:onclick="'manualPictureNavigation(' + ${iterStat.index} + ')'" class="d-block w-100">
     </div>
 
     <div class="description text-center mt-4">
         <h5>Device Info</h5>
         <div class="row justify-content-around">
             <div>
-                <p><span class="description-text">Device Type: </span>iPhone</p>
-                <p><span class="description-text">Storage: </span>128GB</p>
-                <p><span class="description-text">Release Date: </span>...</p>
-                <p><span class="description-text">Color: </span>Space Gray</p>
-                <p><span class="description-text">Location: </span>...</p>
-                <p><span class="description-text">Registered On: </span>...</p>
-                <p><span class="description-text">Modified: </span>...</p>
-                <p><span class="description-text">Processor: </span>A15 Bionic</p>
-                <p><span class="description-text">Battery Life: </span>...</p>
-                <p><span class="description-text">Operating System: </span>iOS</p>
-                <p><span class="description-text">Price: </span>... BGN</p>
+                <p><span class="description-text">Status Device: </span></p>
+                <p><span class="description-text">Warranty: </span></p>
+                <p><span class="description-text">Model: </span></p>
+                <p><span class="description-text">Resolution: </span></p>
+                <p><span class="description-text">Processor: </span></p>
+                <p><span class="description-text">Capacity Ram: </span></p>
+                <p><span class="description-text">Operating System: </span></p>
+                <p><span class="description-text">Display Size: </span></p>
+                <p><span class="description-text">Color: </span></p>
+                <p><span class="description-text">Release Date: </span></p>
+                <p><span class="description-text">Price: </span></p>
+                <p><span class="description-text">Registered on: </span></p>
+            </div>
+            <div>
+                <p><span th:text="${device.statusDevice}">...</span></p>
+                <p><span th:text="${device.warranty}">...</span></p>
+                <p><span th:text="${device.model}">...</span></p>
+                <p><span th:text="${device.resolution}">...</span></p>
+                <p><span th:text="${device.processor}">...</span></p>
+                <p><span th:text="${device.capacityRam.getName()}">...</span></p>
+                <p><span th:text="${device.operatingSystem}">...</span></p>
+                <p><span th:text="${device.displaySize}">...</span></p>
+                <p><span th:text="${device.colour.getName()}">...</span></p>
+                <p><span th:text="${device.releaseDate}">...</span></p>
+                <p><span th:text="${device.price} + ' BGN'">... BGN</span></p>
+                <p><span th:text="${device.registeredOn}">...</span></p>
             </div>
         </div>
         <div class="features">
-            <div>
-                <i class="fa-solid fa-check"></i>
-                <label>Face ID</label>
-            </div>
-            <div>
-                <i class="fa-solid fa-check"></i>
-                <label>5G Connectivity</label>
-            </div>
-            <div>
-                <i class="fa-solid fa-check"></i>
-                <label>Retina Display</label>
-            </div>
-            <div>
-                <i class="fa-solid fa-check"></i>
-                <label>Water Resistant</label>
-            </div>
-            <div>
-                <i class="fa-solid fa-check"></i>
-                <label>Wireless Charging</label>
-            </div>
-        </div>
-        <div class="ratings">
-            <a href=""><i class="fa-regular fa-star"></i></a>
-            <a href=""><i class="fa-solid fa-star"></i></a>
-        </div>
-        <p class="small mb-0 text-center mt-2" style="color: #aaa;">
-            <button class="btn btn-danger btn-sm">
-                <i class="fas fa-trash-alt"></i> Remove
-            </button>
-        </p>
-    </div>
-
-    <div>
-        <div class="container mt-4 mb-5 comments">
-            <div class="row d-flex justify-content-center">
-                <div class="w-100">
-                    <div class="d-flex justify-content-center align-items-center mb-4">
-                        <h4 class="text-body mb-0 text-white">Comments</h4>
+            <th:block th:if="${deviceType == 'iPhone'}">
+                <div class="row justify-content-around">
+                    <div>
+                        <p><span class="description-text">Display: </span></p>
+                        <p><span class="description-text">Internal Memory: </span></p>
+                        <p><span class="description-text">Battery: </span></p>
+                        <p><span class="description-text">Sizes: </span></p>
                     </div>
-                    <div class="card mb-3">
-                        <div class="card-body">
-                            <div class="d-flex flex-start">
-                                <img class="rounded-circle shadow-1-strong me-3 mr-3"
-                                     src="/images/apple-test.jpg" alt="avatar"
-                                     width="40" height="40"/>
-                                <div class="w-100">
-                                    <div class="d-flex justify-content-between align-items-center mb-3">
-                                        <h6 class="text-success fw-bold mb-0">
-                                            username:
-                                            <span class="text-body ms-2 text-white">Comment text...</span>
-                                        </h6>
-                                    </div>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <p class="small mb-0" style="color: #aaa;">
-                                            <button class="btn btn-danger btn-sm">
-                                                <i class="fas fa-trash-alt"></i> Remove
-                                            </button>
-                                        </p>
+                    <div>
+                        <p><span th:text="${device.display}"></span></p>
+                        <p><span th:text="${device.internalMemory}"></span></p>
+                        <p><span th:text="${device.battery}"></span></p>
+                        <p><span th:text="${device.sizes}"></span></p>
+                    </div>
+                </div>
+                <div>
+                    <i class="fa-solid fa-check" th:if="${device.dualSim}"></i>
+                    <i class="fa-solid fa-times" th:unless="${device.dualSim}"></i>
+                    <label>Dual Sim</label>
+                </div>
+                <div>
+                    <i class="fa-solid fa-check" th:if="${device.faceRecognitionSensor}"></i>
+                    <i class="fa-solid fa-times" th:unless="${device.faceRecognitionSensor}"></i>
+                    <label>Face Recognition Sensor</label>
+                </div>
+            </th:block>
+
+            <th:block th:if="${deviceType == 'macBook'}">
+                <div class="row justify-content-around">
+                    <div>
+                        <!--                        <p><span class="description-text">HDD: </span>...</p>-->
+                        <p><span class="description-text">Video Card Type: </span></p>
+                    </div>
+                    <div>
+                        <!--                        <p><span th:text="${device.HHD}">...</span></p>-->
+                        <p><span th:text="${device.videoCardType}"></span></p>
+                    </div>
+                </div>
+            </th:block>
+
+            <th:block th:if="${deviceType == 'watch'}">
+                <div class="row justify-content-around">
+                    <div>
+                        <p><span class="description-text">Display: </span></p>
+                        <p><span class="description-text">Internal Memory:</span></p>
+                        <p><span class="description-text">Sizes: </span></p>
+                    </div>
+                    <div>
+                        <p><span th:text="${device.display}"></span></p>
+                        <p><span th:text="${device.internalMemory}"></span></p>
+                        <p><span th:text="${device.sizes}"></span></p>
+                    </div>
+                </div>
+                <div>
+                    <i class="fa-solid fa-check" th:if="${device.touchScreenDisplay}"></i>
+                    <i class="fa-solid fa-times" th:unless="${device.touchScreenDisplay}"></i>
+                    <label>Touch Screen Display</label>
+                </div>
+                <div>
+                    <i class="fa-solid fa-check" th:if="${device.simCardSupport}"></i>
+                    <i class="fa-solid fa-times" th:unless="${device.simCardSupport}"></i>
+                    <label>Sim Card Support</label>
+                </div>
+            </th:block>
+        </div>
+
+        <div>
+            <div class="container mt-4 mb-5 comments">
+                <div class="row d-flex justify-content-center">
+                    <div class="w-100">
+                        <div class="d-flex justify-content-center align-items-center mb-4">
+                            <h4 class="text-body mb-0 text-white">Comments</h4>
+                        </div>
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <div class="d-flex flex-start">
+                                    <img class="rounded-circle shadow-1-strong me-3 mr-3"
+                                         src="/images/apple-test.jpg" alt="avatar"
+                                         width="40" height="40"/>
+                                    <div class="w-100">
+                                        <div class="d-flex justify-content-between align-items-center mb-3">
+                                            <h6 class="text-success fw-bold mb-0">
+                                                username:
+                                                <span class="text-body ms-2 text-white">Comment text...</span>
+                                            </h6>
+                                        </div>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <p class="small mb-0" style="color: #aaa;">
+                                                <button class="btn btn-danger btn-sm">
+                                                    <i class="fas fa-trash-alt"></i> Remove
+                                                </button>
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -129,10 +174,9 @@
                 </div>
             </div>
         </div>
+
     </div>
 
-</div>
-
-<footer th:replace="~{fragments/footer}"></footer>
+    <footer th:replace="~{fragments/footer}"></footer>
 </body>
 </html>

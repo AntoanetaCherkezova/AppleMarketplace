@@ -1,10 +1,8 @@
 package com.example.applestore.model.view;
-
 import com.example.applestore.model.enums.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
-import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 
 @Getter
@@ -13,7 +11,7 @@ import java.util.List;
 public class MacBookProfileView {
     private String statusDevice;
 
-    private String warranty;
+    private int warranty;
 
     private String model;
 
@@ -33,11 +31,11 @@ public class MacBookProfileView {
 
     private String price;
 
-    private List<MultipartFile> photosUrls;
+    private List<String> photosUrls;
 
     private String registeredOn;
 
-    private Battery HDD;
+    private String HDD;
 
     private String videoCardType;
 }
