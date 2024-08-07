@@ -7,6 +7,7 @@ import com.example.applestore.service.interfaces.MacBookService;
 import com.example.applestore.service.interfaces.UserService;
 import com.example.applestore.service.interfaces.WatchService;
 import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -30,6 +31,7 @@ public class UserController {
     private final WatchService watchService;
     private final UserService userService;
 
+    @Autowired
     public UserController(IphoneService iphoneService, MacBookService macBookService, WatchService watchService, UserService userService) {
         this.iphoneService = iphoneService;
         this.macBookService = macBookService;

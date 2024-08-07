@@ -1,5 +1,5 @@
 body {
-    background: url('https://res.cloudinary.com/dwgx3lz5l/image/upload/v1722579979/user-profile_cxgflp.jpg') no-repeat center center fixed;
+    background-color: #4684b6;
     background-size: cover;
     color: #333;
     font-family: "Roboto", sans-serif;
@@ -10,7 +10,7 @@ body {
 .profile-container {
     display: flex;
     justify-content: center;
-    padding: 10rem;
+    padding: 5rem;
 }
 
 .profile-card {

@@ -52,24 +52,24 @@ body {
 }
 
 .dbox {
-    margin-bottom: 1.5rem; /* Намалено разстояние между кутийките */
-    padding: 0.5rem; /* Намалено вътрешно разстояние */
+    margin-bottom: 1.5rem;
+    padding: 0.5rem;
     border-radius: 8px;
     background-color: rgba(255, 255, 255, 0.8);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: auto; /* Може да се настройва по предпочитания */
+    width: auto;
 }
 
 .icon span {
     display: inline-block;
     background-color: rgba(0, 0, 0, 0.1);
-    padding: 0.8rem; /* Намалено вътрешно разстояние за иконите */
+    padding: 0.8rem;
     border-radius: 50%;
-    margin-bottom: 1rem; /* Намалено разстояние под иконите */
-    width: 3rem; /* Намален размер на иконите */
+    margin-bottom: 1rem;
+    width: 3rem;
 }
 
 .text p {
     margin-bottom: 0;
-    font-size: 0.9rem; /* Намален размер на шрифта */
+    font-size: 0.9rem;
 }

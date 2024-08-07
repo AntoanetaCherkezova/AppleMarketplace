@@ -1,26 +1,32 @@
 body {
-    background: url('https://res.cloudinary.com/dwgx3lz5l/image/upload/v1722579975/control-room_ymoxj2.webp');
+    background: url('https://res.cloudinary.com/dwgx3lz5l/image/upload/v1722579975/apple-test_pi64hv.jpg');
     position: relative;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
-    background-size: 80%;
-    background-color: black;
+    background-size: cover;
     font-family: "Roboto", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     min-height: auto;
+    color: #333;
 }
 
-.users{
-    margin: 3rem auto;
-    width: 73%;
+.users {
+    margin-top: 5rem;
+    margin-bottom: 1rem;
+    width: 80%;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-
 
 .avatar.sm {
-    width: 2.25rem;
-    height: 2.25rem;
+    width: 3rem;
+    height: 3rem;
+    object-fit: cover;
+    border: 0.1rem solid #ccc;
 }
 
 .table-nowrap .table td,
@@ -28,27 +34,65 @@ body {
     white-space: nowrap;
 }
 
-.table>:not(caption)>*>* {
+.table > :not(caption) > * > * {
     padding: 0.75rem 1.25rem;
     border-bottom-width: 1px;
 }
 
 table th {
     font-weight: 600;
-    background-color: rgba(26, 25, 25, 0.9);
+    color: #2e3030;
 }
 
-.table-card{
-    background-color: rgba(26, 25, 25, 0.9);
-    color: white;
+.table-card {
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 0.1rem solid #ddd;
 }
 
-
-.table td{
-    text-align: center;
+.table td {
     vertical-align: middle;
+    border-top: 0.1rem solid #ddd;
 }
 
-#toggleButton{
+.card-header h5 {
+    color: rgba(41, 39, 39, 0.8);
+    font-weight: bold;
+}
+
+button.btn-danger,
+button.btn-success,
+button.block-button {
+    border: none;
+    color: #fff;
+    padding: 0.3rem 0.6rem;
+    border-radius: 0.3rem;
     cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button.btn-danger {
+    background-color: #e74c3c;
+}
+
+button.btn-success {
+    background-color: #5a5ae6;
+}
+
+button.block-button {
+    background-color: #e74c3c;
+}
+
+button.btn-success:hover{
+    background-color: #4e4ecc;
+}
+
+button.btn-danger:hover,
+button.block-button:hover {
+    background-color: #c0392b;
+}
+
+@media (min-width: 992px) {
+    .mb-lg-5, .my-lg-5 {
+        margin-bottom: 0 !important;
+    }
 }

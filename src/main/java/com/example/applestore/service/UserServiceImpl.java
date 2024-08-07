@@ -6,19 +6,22 @@ import com.example.applestore.model.entity.Contact;
 import com.example.applestore.model.entity.User;
 import com.example.applestore.model.entity.UserRole;
 import com.example.applestore.model.enums.Role;
+import com.example.applestore.model.view.UserControlCenterView;
 import com.example.applestore.model.view.UserProfileView;
 import com.example.applestore.repository.UserRepository;
 import com.example.applestore.service.interfaces.UserRoleService;
 import com.example.applestore.service.interfaces.UserService;
+import com.example.applestore.util.ModelAttributeUtil;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDateTime;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -106,5 +109,66 @@ public class UserServiceImpl implements UserService {
         if (userProfileDTO.getCity() != null) user.setCity(userProfileDTO.getCity());
 
         this.userRepository.save(user);
+    }
+
+    @Override
+    public List<UserControlCenterView> findAllUsersExcludingMyUser() {
+        return userRepository.findAllUsersExcludingUsername("antoaneta")
+                .stream()
+                .map(user -> {
+                    UserControlCenterView view = modelMapper.map(user, UserControlCenterView.class);
+                    view.setRegisteredOn(ModelAttributeUtil.formatDate(user.getRegisteredOn()));
+                    view.setDeviceCounts(user.getMyIphones().size() + user.getMyMacBooks().size() + user.getMyWatches().size());
+                    return view;
+                })
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public void addAdminRole(Long userId) {
+        Optional<User> userOptional = userRepository.findById(userId);
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
+            UserRole adminRole = this.userRoleService.findByRole(Role.ADMIN);
+            user.getRoles().add(adminRole);
+            this.userRepository.save(user);
+        }
+    }
+
+    @Override
+    public void removeAdminRole(Long userId) {
+        Optional<User> userOptional = userRepository.findById(userId);
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
+            UserRole adminRole = this.userRoleService.findByRole(Role.ADMIN);
+            user.getRoles().remove(adminRole);
+            this.userRepository.save(user);
+        }
+    }
+
+    @Override
+    public void blockUser(Long userId) {
+        userRepository.findById(userId)
+                .ifPresent(user -> {
+                    user.setBanned(true);
+                    userRepository.save(user);
+                });
+    }
+
+    @Override
+    public void unblockUser(Long userId) {
+        userRepository.findById(userId)
+                .ifPresent(user -> {
+                    user.setBanned(false);
+                    userRepository.save(user);
+                });
+    }
+
+    @Override
+    public void deleteUser(Long userId) {
+        userRepository.findById(userId)
+                .ifPresent(user -> {
+                    userRepository.deleteById(userId);
+                });
     }
 }
