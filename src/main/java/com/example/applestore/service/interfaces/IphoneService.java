@@ -2,6 +2,7 @@ package com.example.applestore.service.interfaces;
 import com.example.applestore.model.dtos.IphoneAddDTO;
 import com.example.applestore.model.entity.Device;
 import com.example.applestore.model.entity.Iphone;
+import com.example.applestore.model.entity.User;
 import com.example.applestore.model.view.DeviceView;
 import com.example.applestore.model.view.IphoneProfileView;
 import com.example.applestore.model.view.LatestModelDeviceView;
@@ -18,7 +19,7 @@ public interface IphoneService {
 
     IphoneProfileView createIphoneProfileView(Iphone iphone);
 
-    void saveDevices(Device device);
+    void saveDevice(Device device);
 
     Iphone findById(Long deviceId);
 
@@ -27,6 +28,10 @@ public interface IphoneService {
     List<DeviceView> findLatestIphones();
 
     List<DeviceView> findLongestWarrantyIphone();
+
+    User findIphoneOwner(Long iPhoneId);
+
+    void deleteIphone(User user, Long deviceId, Iphone iphone);
 }
 
 

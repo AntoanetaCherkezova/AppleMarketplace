@@ -30,12 +30,8 @@ body::after {
     font-weight: bold;
     font-size: 1.5rem;
     padding: 0.8rem;
-    /*background: linear-gradient(to right, #5a5ae6, #235bf3);*/
-    /*-webkit-background-clip: text;*/
-    /*-webkit-text-fill-color: transparent;*/
 }
 
-/* Carousel navigation */
 .carousel-inner img {
     width: 100%;
     height: 28rem;
@@ -62,11 +58,10 @@ body::after {
     margin-right: 0;
 }
 
-/* Device info */
 .description {
     margin: 1rem auto;
     color: #e0e0e0;
-    background: rgba(0, 0, 0, 0.7); /* Добавен прозрачен черен фон */
+    background: rgba(0, 0, 0, 0.7);
     padding: 1.5rem;
     border-radius: 0.5rem;
     width: 75%;
@@ -77,6 +72,7 @@ body::after {
     color: #c0c0c0;
     font-weight: bold;
 }
+
 
 .description p {
     color: #e0e0e0;
@@ -132,13 +128,37 @@ body::after {
     color: #e0e0e0;
 }
 
-/* Comments */
 .comments {
     width: 70%;
 }
 
 .card {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(5px);
     border: 0.1rem solid #e0e0e0;
+}
+.form-add-comment{
+    text-align: center;
+}
+
+.form-group{
+    margin-bottom: 0;
+}
+
+.btn-primary{
+    color: inherit;
+    margin: 1rem auto;
+}
+
+.text-success{
+    margin-right: 0.3rem;
+    color: #1f1fec !important;
+}
+
+.card-body {
+    padding: 0 1.5rem;
+}
+
+.text-white {
+    color: rgb(43, 45, 48) !important;
 }

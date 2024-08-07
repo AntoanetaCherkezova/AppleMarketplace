@@ -1,7 +1,6 @@
 package com.example.applestore.service;
 import com.example.applestore.model.dtos.WatchAddDTO;
-import com.example.applestore.model.entity.User;
-import com.example.applestore.model.entity.Watch;
+import com.example.applestore.model.entity.*;
 import com.example.applestore.model.view.DeviceView;
 import com.example.applestore.model.view.LatestModelDeviceView;
 import com.example.applestore.model.view.WatchProfileView;
@@ -101,5 +100,23 @@ public class WatchServiceImpl implements WatchService {
                     return view;
                 })
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public void saveDevice(Device device) {
+        Watch watch = modelMapper.map(device, Watch.class);
+        this.watchRepository.save(watch);
+    }
+
+    @Override
+    public User findWatchOwner(Long watchId) {
+        Watch watch = watchRepository.findById(watchId).orElse(null);
+        return watch != null ? watch.getOwner() : null;
+    }
+
+    @Override
+    public void deleteWatch(User user, Long deviceId, Watch watch) {
+        user.getMyWatches().remove(watch);
+        this.watchRepository.deleteById(deviceId);
     }
 }

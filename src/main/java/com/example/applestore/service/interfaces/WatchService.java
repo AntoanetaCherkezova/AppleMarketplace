@@ -1,5 +1,7 @@
 package com.example.applestore.service.interfaces;
 import com.example.applestore.model.dtos.WatchAddDTO;
+import com.example.applestore.model.entity.Device;
+import com.example.applestore.model.entity.User;
 import com.example.applestore.model.entity.Watch;
 import com.example.applestore.model.view.DeviceView;
 import com.example.applestore.model.view.LatestModelDeviceView;
@@ -22,4 +24,10 @@ public interface WatchService {
     WatchProfileView createWatchProfileView(Watch watch);
 
     List<DeviceView> findLongestWarrantyWatch();
+
+    void saveDevice(Device device);
+
+    User findWatchOwner(Long watchId);
+
+    void deleteWatch(User user, Long deviceId, Watch watch);
 }

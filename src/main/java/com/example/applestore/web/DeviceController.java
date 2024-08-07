@@ -212,4 +212,34 @@ public class DeviceController {
                 user.getMyMacBooks().stream().anyMatch(myMacBook -> myMacBook.equals(macBookService.findById(deviceId))) ||
                 user.getMyWatches().stream().anyMatch(myWatch -> myWatch.equals(watchService.findById(deviceId)));
     }
+
+    @DeleteMapping("/delete-device/{type}/{deviceId}/{page}")
+    public ModelAndView deleteDevice(@PathVariable String type,
+                                      @PathVariable Long deviceId,
+                                      @PathVariable String page,
+                                      ModelAndView model) {
+        User user = null;
+        if (type.equals("iPhone")) {
+            Iphone iphone = iphoneService.findById(deviceId);
+            if (iphone != null) {
+                user = this.iphoneService.findIphoneOwner(deviceId);
+                this.iphoneService.deleteIphone(user,deviceId,iphone);
+            }
+        } else if (type.equals("macBook")) {
+            MacBook macBook = macBookService.findById(deviceId);
+            if (macBook != null) {
+                user = this.macBookService.findMacBookOwner(deviceId);
+                this.macBookService.deleteMacBook(user,deviceId,macBook);
+            }
+        } else if (type.equals("watch")) {
+            Watch watch = watchService.findById(deviceId);
+            if (watch != null) {
+                user = this.watchService.findWatchOwner(deviceId);
+                this.watchService.deleteWatch(user,deviceId,watch);
+            }
+        }
+        userService.saveCurrentUser(user);
+        model.setViewName(page.equals("profile") ? "redirect:/home" : "redirect:/user/my-devices");
+        return model;
+    }
 }

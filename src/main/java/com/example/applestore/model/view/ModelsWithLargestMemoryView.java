@@ -12,6 +12,7 @@ import java.util.List;
 @Accessors(chain = true)
 public class ModelsWithLargestMemoryView {
 
+    private Long id;
     private List<String> photosUrls;
     private String model;
     private InternalMemory internalMemory;

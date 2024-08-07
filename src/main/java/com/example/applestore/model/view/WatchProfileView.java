@@ -9,6 +9,7 @@ import java.util.List;
 @Setter
 @Accessors(chain = true)
 public class WatchProfileView {
+    private Long id;
 
     private String statusDevice;
 

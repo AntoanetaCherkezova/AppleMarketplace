@@ -9,6 +9,8 @@ import java.util.List;
 @Setter
 @Accessors(chain = true)
 public class MacBookProfileView {
+    private Long id;
+
     private String statusDevice;
 
     private int warranty;

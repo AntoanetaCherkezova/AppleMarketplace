@@ -1,5 +1,7 @@
 package com.example.applestore.service;
 import com.example.applestore.model.dtos.MacBookAddDTO;
+import com.example.applestore.model.entity.Device;
+import com.example.applestore.model.entity.Iphone;
 import com.example.applestore.model.entity.MacBook;
 import com.example.applestore.model.entity.User;
 import com.example.applestore.model.view.DeviceView;
@@ -12,6 +14,8 @@ import com.example.applestore.util.ModelAttributeUtil;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
+
+import javax.crypto.Mac;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -101,6 +105,24 @@ public class MacBookServiceImpl implements MacBookService {
                     return view;
                 })
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public void saveDevice(Device device) {
+        MacBook macBook = modelMapper.map(device, MacBook.class);
+        this.macBookRepository.save(macBook);
+    }
+
+    @Override
+    public User findMacBookOwner(Long macBookId) {
+        MacBook macBook = macBookRepository.findById(macBookId).orElse(null);
+        return macBook != null ? macBook.getOwner() : null;
+    }
+
+    @Override
+    public void deleteMacBook(User user, Long deviceId, MacBook macBook) {
+        user.getMyMacBooks().remove(macBook);
+        this.macBookRepository.deleteById(deviceId);
     }
 
 }

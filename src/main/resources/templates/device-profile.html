@@ -138,34 +138,47 @@
                 </div>
             </th:block>
         </div>
+        <form th:action="'/devices/delete-device/' + ${deviceType} + '/' + ${device.id} + '/' + ${page}"
+              method="POST"
+              th:if="${isAdmin or isOwner}">
+            <input type="hidden" name="_method" value="DELETE"/>
+            <button type="submit" class="btn btn-danger btn-sm mt-2">
+                <i class="fas fa-trash-alt"></i> Delete
+            </button>
+        </form>
+    </div>
 
-        <div>
-            <div class="container mt-4 mb-5 comments">
-                <div class="row d-flex justify-content-center">
-                    <div class="w-100">
-                        <div class="d-flex justify-content-center align-items-center mb-4">
-                            <h4 class="text-body mb-0 text-white">Comments</h4>
+    <div id="device-data"
+         th:attr="data-device-type=${deviceType}, data-device-id=${device.id}, data-user=${user}, data-is-owner=${isOwner}, data-is-admin=${isAdmin}">
+    </div>
+
+    <div>
+        <div class="container mt-4 mb-5  comments">
+            <div class="row d-flex justify-content-center ">
+                <div class="w-100">
+                    <div class="d-flex justify-content-center align-items-center mb-4 ">
+                        <h4 class="text-body mb-0 text-white">Comments</h4>
+                    </div>
+                    <form class="form-add-comment"
+                          th:action="'/comments/add-comment/' + ${deviceType} + '/' + ${device.id}" method="POST">
+                        <div class="form-group">
+                            <textarea class="form-control" id="comment" name="comment" rows="3"
+                                      placeholder="Add a comment"></textarea>
                         </div>
-                        <div class="card mb-3">
-                            <div class="card-body">
-                                <div class="d-flex flex-start">
-                                    <img class="rounded-circle shadow-1-strong me-3 mr-3"
-                                         src="/images/apple-test.jpg" alt="avatar"
-                                         width="40" height="40"/>
-                                    <div class="w-100">
-                                        <div class="d-flex justify-content-between align-items-center mb-3">
-                                            <h6 class="text-success fw-bold mb-0">
-                                                username:
-                                                <span class="text-body ms-2 text-white">Comment text...</span>
-                                            </h6>
-                                        </div>
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <p class="small mb-0" style="color: #aaa;">
-                                                <button class="btn btn-danger btn-sm">
-                                                    <i class="fas fa-trash-alt"></i> Remove
-                                                </button>
-                                            </p>
-                                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+
+                    <div class="card mb-3" id="card-section">
+                        <div class="card-body">
+                            <div class="d-flex flex-start">
+                                <img class="rounded-circle shadow-1-strong me-3 mr-3"
+                                     alt="avatar"
+                                     width="40" height="40"/>
+                                <div class="w-100">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <h6 class="text-success fw-bold mb-0">
+                                        </h6>
+                                        <span class="text-body ms-2 text-white ml-1">....</span>
                                     </div>
                                 </div>
                             </div>
@@ -174,9 +187,41 @@
                 </div>
             </div>
         </div>
-
     </div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const deviceDataElement = document.getElementById('device-data');
+        const deviceType = deviceDataElement.getAttribute('data-device-type');
+        const deviceId = deviceDataElement.getAttribute('data-device-id');
+        const user = deviceDataElement.getAttribute('data-user');
+        const isOwner = deviceDataElement.getAttribute('data-is-owner');
+        const isAdmin = deviceDataElement.getAttribute('data-is-admin');
 
-    <footer th:replace="~{fragments/footer}"></footer>
+        const cardSection = document.getElementById('card-section');
+
+        fetch(`/comments/${deviceType}/${deviceId}`)
+            .then(response => response.json())
+            .then(comments => {
+                const commentsHTML = comments.map(comment => `
+                        <div class="card-body">
+                            <div class="d-flex flex-start">
+                                <div class="w-100">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <h6 class="text-success fw-bold mb-0">${comment.userUsername}:</h6>
+                                        <span class="text-body ms-2 text-white">${comment.comment}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                `).join('');
+
+                cardSection.innerHTML = commentsHTML;
+            })
+            .catch(error => console.error('Error fetching comments:', error));
+    });
+
+</script>
+<footer th:replace="~{fragments/footer}"></footer>
 </body>
 </html>

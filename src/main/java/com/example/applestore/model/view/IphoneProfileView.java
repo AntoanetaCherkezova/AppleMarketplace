@@ -10,6 +10,7 @@ import java.util.List;
 @Setter
 @Accessors(chain = true)
 public class IphoneProfileView {
+    private Long id;
 
     private String statusDevice;
 
