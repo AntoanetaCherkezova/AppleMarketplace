@@ -1,48 +1,117 @@
 body {
-    background: url('https://res.cloudinary.com/dwgx3lz5l/image/upload/v1722579979/my-device_yagxht.jpg');
-    position: relative;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
-    background-size: 100%;
+    background: url('https://res.cloudinary.com/dwgx3lz5l/image/upload/v1722579979/my-device_yagxht.jpg') no-repeat center center fixed;
+    background-size: cover;
     font-family: "Roboto", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    margin: 2rem;
+    padding: 2rem;;
 }
 
-.media img {
-    width: 15rem;
-    height: 12rem;
-    object-fit: cover;
-    border: 0.2rem solid rgb(59, 59, 59);
+.container {
+    margin-top: 3rem;
 }
 
-.media-body a{
-    text-decoration: none;
+.header {
+    text-align: center;
 }
 
-/* Line with text */
-.line-with-text {
-    display: flex;
-    align-items: center;
-    padding-top: 5rem;
+.header h1 {
+    font-size: 2rem;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.5);
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
 }
 
-.line-1, .line-2 {
-    flex: 1;
-    height: 2px;
-    background: linear-gradient(to right, #00f260, #0575e6);
-    border-radius: 1px;
-    box-shadow: 0 0 10px rgba(0, 242, 96, 0.5), 0 0 10px rgba(5, 117, 230, 0.5);
+.alert {
+    border-radius: 0.3rem;
 }
 
-.text-line {
-    margin: 0 0.4rem;
-    color: white;
-    font-weight: bold;
-    font-size: 1.5rem;
+.no-devices-alert {
+    font-size: 1.1rem;
+}
+
+.device-list {
+    list-style: none;
+    padding: 0;
+}
+
+.device-item {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 1rem;
+    overflow: hidden;
+    border-top: 4px solid #4669b6;
+}
+
+.device-media {
     padding: 1rem;
-    border: 0.3rem solid transparent;
-    border-image: linear-gradient(to right, #356147, #2f4b68) 1;
-    background-clip: padding-box;
+    border-bottom: 1px solid #ddd;
+}
+
+.device-image {
+    width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+}
+
+.device-details {
+    padding-left: 1rem;
+}
+
+.device-model {
+    color: #333;
+}
+
+.device-info {
+    color: #666;
+    border-top: 1px solid #ddd;
+    padding-top: 0.5rem;
+    margin-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.device-actions {
+    margin-top: 1rem;
+}
+
+.device-price {
+    color: rgba(41, 39, 39, 0.8);
+    font-weight: bold;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.btn-info {
+    background-color: #4669b6;
+    border: none;
+}
+
+.btn-info:hover {
+    background-color: #4669b6;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border: none;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+@media (max-width: 768px) {
+    .device-media {
+        flex-direction: column;
+    }
+
+    .device-image {
+        margin-bottom: 1rem;
+    }
 }

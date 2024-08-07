@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Locale;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -45,7 +44,7 @@ public class DeviceController {
 
     @GetMapping("/all")
     public ModelAndView showAllDevices(@RequestParam(defaultValue = "0") int page,
-                                       @RequestParam(defaultValue = "10") int size,
+                                       @RequestParam(defaultValue = "5") int size,
                                        @RequestParam(defaultValue = "id") String sortBy) {
 
         Pageable pageable = PageRequest.of(page, size, Sort.by(sortBy));
@@ -62,11 +61,8 @@ public class DeviceController {
         int start = (int) pageable.getOffset();
         int end = Math.min(start + pageable.getPageSize(), devices.size());
 
-        Page<DeviceView> allDevices = new PageImpl<>(
-                devices.subList(start, end),
-                pageable,
-                devices.size()
-        );
+        List<DeviceView> pagedDevices = devices.subList(start, end);
+        Page<DeviceView> allDevices = new PageImpl<>(pagedDevices, pageable, devices.size());
 
         ModelAndView model = new ModelAndView();
         model.addObject("filter", "all");
@@ -77,7 +73,7 @@ public class DeviceController {
     }
 
     @GetMapping("/iPhones")
-    public ModelAndView showIphones(@PageableDefault(sort = "id", size = 10) Pageable pageable, ModelAndView model, Locale locale) {
+    public ModelAndView showIphones(@PageableDefault(sort = "id", size = 5) Pageable pageable, ModelAndView model) {
         List<DeviceView> iPhones = iphoneService.findLatestIphones()
                 .stream()
                 .sorted(Comparator.comparing(DeviceView::getRegisteredOn).reversed())
@@ -86,11 +82,8 @@ public class DeviceController {
         int start = (int) pageable.getOffset();
         int end = Math.min(start + pageable.getPageSize(), iPhones.size());
 
-        Page<DeviceView> allDevices = new PageImpl<>(
-                iPhones.subList(start, end),
-                pageable,
-                iPhones.size()
-        );
+        List<DeviceView> pagedDevices = iPhones.subList(start, end);
+        Page<DeviceView> allDevices = new PageImpl<>(pagedDevices, pageable, iPhones.size());
 
         model.addObject("filter", "iPhones");
         model.addObject("devices", allDevices);
@@ -100,7 +93,7 @@ public class DeviceController {
     }
 
     @GetMapping("/macBooks")
-    public ModelAndView showMacBooks(@PageableDefault(sort = "id", size = 10) Pageable pageable, ModelAndView model, Locale locale) {
+    public ModelAndView showMacBooks(@PageableDefault(sort = "id", size = 5) Pageable pageable, ModelAndView model) {
         List<DeviceView> macBooks = macBookService.findLatestMacBooks()
                 .stream()
                 .sorted(Comparator.comparing(DeviceView::getRegisteredOn).reversed())
@@ -109,11 +102,8 @@ public class DeviceController {
         int start = (int) pageable.getOffset();
         int end = Math.min(start + pageable.getPageSize(), macBooks.size());
 
-        Page<DeviceView> allDevices = new PageImpl<>(
-                macBooks.subList(start, end),
-                pageable,
-                macBooks.size()
-        );
+        List<DeviceView> pagedDevices = macBooks.subList(start, end);
+        Page<DeviceView> allDevices = new PageImpl<>(pagedDevices, pageable, macBooks.size());
 
         model.addObject("filter", "macBooks");
         model.addObject("devices", allDevices);
@@ -123,7 +113,7 @@ public class DeviceController {
     }
 
     @GetMapping("/watches")
-    public ModelAndView showWatches(@PageableDefault(sort = "id", size = 10) Pageable pageable, ModelAndView model, Locale locale) {
+    public ModelAndView showWatches(@PageableDefault(sort = "id", size = 5) Pageable pageable, ModelAndView model) {
         List<DeviceView> watches = watchService.findLatestWatches()
                 .stream()
                 .sorted(Comparator.comparing(DeviceView::getRegisteredOn).reversed())
@@ -132,11 +122,8 @@ public class DeviceController {
         int start = (int) pageable.getOffset();
         int end = Math.min(start + pageable.getPageSize(), watches.size());
 
-        Page<DeviceView> allDevices = new PageImpl<>(
-                watches.subList(start, end),
-                pageable,
-                watches.size()
-        );
+        List<DeviceView> pagedDevices = watches.subList(start, end);
+        Page<DeviceView> allDevices = new PageImpl<>(pagedDevices, pageable, watches.size());
 
         model.addObject("filter", "watches");
         model.addObject("devices", allDevices);

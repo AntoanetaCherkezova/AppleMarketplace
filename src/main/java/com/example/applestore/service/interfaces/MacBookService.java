@@ -30,4 +30,8 @@ public interface MacBookService {
     User findMacBookOwner(Long macBookId);
 
     void deleteMacBook(User user, Long deviceId, MacBook macBook);
+
+    void refreshMacBook(Long deviceId);
+
+    List<DeviceView> findMyMacBooks(String username);
 }

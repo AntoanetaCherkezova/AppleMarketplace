@@ -68,6 +68,107 @@
     </div>
 </div>
 
+<th:block th:if="${devices.totalElements > 0}">
+    <div class="row justify-content-center mt-3 section-pagination">
+        <div class="pagination-controls">
+            <div aria-label="Page navigation">
+                <ul class="pagination">
+
+                    <!-- First Page -->
+                    <li class="page-item" th:classappend="${devices.number == 0 ? 'disabled' : ''}">
+                        <a th:unless="${devices.number == 0}" class="page-link"
+                           th:href="@{'/devices/' + ${filter} + '?page=0'}">First</a>
+                        <a th:if="${devices.number == 0}" class="page-link" href="#">First</a>
+                    </li>
+
+                    <!-- Previous Page -->
+                    <li class="page-item" th:classappend="${devices.number == 0 ? 'disabled' : ''}">
+                        <a th:unless="${devices.number == 0}" class="page-link"
+                           th:href="@{'/devices/' + ${filter} + '?page=' + ${devices.number - 1}}">Previous</a>
+                        <a th:if="${devices.number == 0}" class="page-link" href="#">Previous</a>
+                    </li>
+
+                    <!-- Page Numbers -->
+                    <th:block th:if="${devices.totalPages <= 5}">
+                        <th:block th:each="i : ${#numbers.sequence(0, devices.totalPages - 1)}">
+                            <li class="page-item" th:classappend="${devices.number == i ? 'active' : ''}">
+                                <a class="page-link"
+                                   th:href="@{'/devices/' + ${filter} + '?page=' + ${i}}" th:text="${i + 1}"></a>
+                            </li>
+                        </th:block>
+                    </th:block>
+
+                    <th:block th:if="${devices.totalPages > 5}">
+                        <th:block th:if="${devices.number < 2}">
+                            <th:block th:each="i : ${#numbers.sequence(0, 4)}">
+                                <li class="page-item" th:classappend="${devices.number == i ? 'active' : ''}">
+                                    <a class="page-link"
+                                       th:href="@{'/devices/' + ${filter} + '?page=' + ${i}}" th:text="${i + 1}"></a>
+                                </li>
+                            </th:block>
+                            <li class="page-item disabled"><span class="page-link">...</span></li>
+                            <li class="page-item">
+                                <a class="page-link"
+                                   th:href="@{'/devices/' + ${filter} + '?page=' + ${devices.totalPages - 1}}"
+                                   th:text="${devices.totalPages}"></a>
+                            </li>
+                        </th:block>
+
+                        <th:block th:if="${devices.number >= devices.totalPages - 2}">
+                            <li class="page-item">
+                                <a class="page-link"
+                                   th:href="@{'/devices/' + ${filter} + '?page=0'}" th:text="1"></a>
+                            </li>
+                            <li class="page-item disabled"><span class="page-link">...</span></li>
+                            <th:block th:each="i : ${#numbers.sequence(devices.totalPages - 5, devices.totalPages - 1)}">
+                                <li class="page-item" th:classappend="${devices.number == i ? 'active' : ''}">
+                                    <a class="page-link"
+                                       th:href="@{'/devices/' + ${filter} + '?page=' + ${i}}" th:text="${i + 1}"></a>
+                                </li>
+                            </th:block>
+                        </th:block>
+
+                        <th:block th:if="${devices.number >= 2 && devices.number < devices.totalPages - 2}">
+                            <li class="page-item">
+                                <a class="page-link"
+                                   th:href="@{'/devices/' + ${filter} + '?page=0'}" th:text="1"></a>
+                            </li>
+                            <li class="page-item disabled"><span class="page-link">...</span></li>
+                            <th:block th:each="i : ${#numbers.sequence(devices.number - 1, devices.number + 1)}">
+                                <li class="page-item" th:classappend="${devices.number == i ? 'active' : ''}">
+                                    <a class="page-link"
+                                       th:href="@{'/devices/' + ${filter} + '?page=' + ${i}}" th:text="${i + 1}"></a>
+                                </li>
+                            </th:block>
+                            <li class="page-item disabled"><span class="page-link">...</span></li>
+                            <li class="page-item">
+                                <a class="page-link"
+                                   th:href="@{'/devices/' + ${filter} + '?page=' + ${devices.totalPages - 1}}"
+                                   th:text="${devices.totalPages}"></a>
+                            </li>
+                        </th:block>
+                    </th:block>
+
+                    <!-- Next Page -->
+                    <li class="page-item" th:classappend="${devices.number == devices.totalPages - 1 ? 'disabled' : ''}">
+                        <a th:unless="${devices.number == devices.totalPages - 1}" class="page-link"
+                           th:href="@{'/devices/' + ${filter} + '?page=' + ${devices.number + 1}}">Next</a>
+                        <a th:if="${devices.number == devices.totalPages - 1}" class="page-link" href="#">Next</a>
+                    </li>
+
+                    <!-- Last Page -->
+                    <li class="page-item" th:classappend="${devices.number == devices.totalPages - 1 ? 'disabled' : ''}">
+                        <a th:unless="${devices.number == devices.totalPages - 1}" class="page-link"
+                           th:href="@{'/devices/' + ${filter} + '?page=' + ${devices.totalPages - 1}}">Last</a>
+                        <a th:if="${devices.number == devices.totalPages - 1}" class="page-link" href="#">Last</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</th:block>
+
 <footer th:replace="~{fragments/footer}"></footer>
 </body>
 </html>

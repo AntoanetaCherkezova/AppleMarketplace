@@ -1,10 +1,12 @@
 package com.example.applestore.service;
 import com.example.applestore.config.AdminConfiguration;
+import com.example.applestore.model.dtos.UserProfileDTO;
 import com.example.applestore.model.dtos.UserRegisterDTO;
 import com.example.applestore.model.entity.Contact;
 import com.example.applestore.model.entity.User;
 import com.example.applestore.model.entity.UserRole;
 import com.example.applestore.model.enums.Role;
+import com.example.applestore.model.view.UserProfileView;
 import com.example.applestore.repository.UserRepository;
 import com.example.applestore.service.interfaces.UserRoleService;
 import com.example.applestore.service.interfaces.UserService;
@@ -76,6 +78,33 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void saveCurrentUser(User user) {
+        this.userRepository.save(user);
+    }
+
+    @Override
+    public UserProfileView mapUserToView(String username) {
+        User user = this.userRepository.findByUsername(username).get();
+        return this.modelMapper.map(user, UserProfileView.class);
+    }
+
+    @Override
+    public UserProfileDTO mapUserToDTO(String username) {
+        User user = this.userRepository.findByUsername(username).get();
+        return this.modelMapper.map(user, UserProfileDTO.class);
+    }
+
+    @Override
+    public void updateUser(UserProfileDTO userProfileDTO, String username) {
+        User user = this.userRepository.findByUsername(username)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        if (userProfileDTO.getFirstName() != null) user.setFirstName(userProfileDTO.getFirstName());
+        if (userProfileDTO.getLastName() != null) user.setLastName(userProfileDTO.getLastName());
+
+        if (userProfileDTO.getContactPhone() != null) user.getContact().setPhone(userProfileDTO.getContactPhone());
+
+        if (userProfileDTO.getCity() != null) user.setCity(userProfileDTO.getCity());
+
         this.userRepository.save(user);
     }
 }

@@ -104,3 +104,8 @@ body {
 .button-device a:hover {
     background-color: #0056b3;
 }
+
+.mt-3, .my-3 {
+    margin-top: 1rem !important;
+    margin-bottom: 2rem;
+}

@@ -1,7 +1,9 @@
 package com.example.applestore.service.interfaces;
 
+import com.example.applestore.model.dtos.UserProfileDTO;
 import com.example.applestore.model.dtos.UserRegisterDTO;
 import com.example.applestore.model.entity.User;
+import com.example.applestore.model.view.UserProfileView;
 
 import java.util.List;
 import java.util.Optional;
@@ -14,6 +16,12 @@ public interface UserService {
     Optional<User> findByUsername(String username);
 
     void saveCurrentUser(User user);
+
+    UserProfileView mapUserToView(String username);
+
+    UserProfileDTO mapUserToDTO(String username);
+
+    void updateUser(UserProfileDTO userProfileDTO, String username);
 }
 
 

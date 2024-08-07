@@ -119,4 +119,26 @@ public class WatchServiceImpl implements WatchService {
         user.getMyWatches().remove(watch);
         this.watchRepository.deleteById(deviceId);
     }
+
+    @Override
+    public void refreshWatch(Long deviceId) {
+        Watch watch = watchRepository.findById(deviceId).get();
+        watch.setRegisteredOn(LocalDateTime.now());
+        watchRepository.save(watch);
+    }
+
+    @Override
+    public List<DeviceView> findMyWatches(String username) {
+        return this.userService.findByUsername(username).get()
+                .getMyWatches()
+                .stream()
+                .map(watch -> {
+                    DeviceView view = modelMapper.map(watch, DeviceView.class);
+                    view.setReleaseDate(ModelAttributeUtil.formatDate(watch.getReleaseDate()));
+                    view.setPrice(ModelAttributeUtil.formatPrice(watch.getPrice()));
+                    view.setType("watch");
+                    return view;
+                })
+                .collect(Collectors.toList());
+    }
 }

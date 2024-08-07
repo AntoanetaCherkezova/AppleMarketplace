@@ -7,6 +7,8 @@ import com.example.applestore.model.view.DeviceView;
 import com.example.applestore.model.view.LatestModelDeviceView;
 import com.example.applestore.model.view.WatchProfileView;
 import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.Collection;
 import java.util.List;
 
 public interface WatchService {
@@ -30,4 +32,8 @@ public interface WatchService {
     User findWatchOwner(Long watchId);
 
     void deleteWatch(User user, Long deviceId, Watch watch);
+
+    void refreshWatch(Long deviceId);
+
+    List<DeviceView> findMyWatches(String username);
 }

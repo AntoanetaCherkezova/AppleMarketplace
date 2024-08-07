@@ -7,65 +7,165 @@
     <link rel="stylesheet" href="/css/my-devices.css">
 </head>
 
-
 <body>
 
 <div>
     <nav th:replace="~{fragments/navigation}"></nav>
 </div>
 
-<div class="container mb-5">
-    <div class="line-with-text">
-        <div class="line-1"></div>
-        <div class="text-line">My Devices</div>
-        <div class="line-2"></div>
+<div class="container my-devices-container">
+    <div class="header">
+        <h1>My Devices</h1>
+    </div>
+
+    <div th:if="${myDevices.isEmpty()}" class="alert alert-warning mt-4 text-center no-devices-alert" role="alert">
+        No devices available at the moment.
     </div>
     <div class="row">
-        <div class="col-lg-8 mx-auto mt-4">
-            <ul class="list-group shadow">
-
-                <li class="list-group-item mb-1">
-                    <div class="media align-items-lg-center flex-column flex-lg-row p-3">
-                        <div class="media-body order-2 order-lg-1">
-                            <a href="...">
-                                <h5 class="mt-0 font-weight-bold mb-2">Brand & Model</h5>
+        <div class="col-lg-10 mx-auto mt-4">
+            <ul class="list-group device-list">
+                <li class="list-group-item device-item" th:each="device : ${myDevices}">
+                    <div class="device-media d-flex align-items-center">
+                        <a th:href="'/devices/device-profile/' + ${device.type} + '/' + ${device.id}">
+                            <img th:src="${device.getPhotosUrls().get(0)}" alt="Device Image" class="device-image">
+                        </a>
+                        <div class="device-details ml-3">
+                            <a th:href="'/devices/device-profile/' + ${device.type} + '/' + ${device.id}">
+                                <h5 class="device-model mt-0 mb-2" th:text="${device.model}">Model</h5>
                             </a>
-                            <div class="d-flex align-items-center justify-content-between mt-1">
-                                <p class="font-italic text-muted mb-0 small mt-3">
-                                    <span>status | </span>
-                                    <span>warranty | </span>
-                                    <span>model | </span>
-                                    <span>colour | </span>
-                                    <span>capacity ram | </span>
-                                    <span>operating system | </span>
-                                    <span>display size | </span>
-                                    <span>release date</span>
-                                </p>
-                                <h6 class="font-weight-bold my-2 mr-3">€1,000</h6>
-                                <div>
-                                    <a href="..." class="btn btn-info mb-3"><i class="fas fa-info-circle"></i>
-                                        Info</a>
-                                    <form action="..." method="POST">
-                                        <button type="submit" class="btn btn-labeled btn-info mb-3">
-                                            <span class="btn-label"><i class="fa fa-refresh"></i></span> Refresh
-                                        </button>
+                            <p class="device-info mb-2 text-muted small">
+                                <span><span th:text="${device.statusDevice}"></span> / </span>
+                                <span><span th:text="${device.warranty}"></span> / </span>
+                                <span><span th:text="${device.model}"></span> / </span>
+                                <span><span th:text="${device.resolution}"></span> / </span>
+                                <span><span th:text="${device.processor}"></span> / </span>
+                                <span><span th:text="${device.capacityRam.getName()}"></span> / </span>
+                                <span><span th:text="${device.operatingSystem}"></span> / </span>
+                                <span><span th:text="${device.displaySize}"></span> / </span>
+                                <span><span th:text="${device.colour.getName()}"></span> / </span>
+                                <span><span th:text="${device.releaseDate}"></span></span>
+                            </p>
+                            <div class="device-actions d-flex align-items-center justify-content-between">
+                                <h6 class="device-price mb-2" th:text="${device.price} + ' BGN'"></h6>
+                                <div class="action-buttons">
+                                    <a th:href="'/devices/device-profile/' + ${device.type} + '/' + ${device.id}"
+                                       class="btn btn-info mb-2"><i class="fas fa-info-circle"></i> Info</a>
+                                    <form th:action="'/user/refresh-device/' + ${device.type} + '/' + ${device.id}" method="POST" class="d-inline">
+                                        <button type="submit" class="btn btn-info mb-2"><i class="fa fa-refresh"></i> Refresh</button>
                                     </form>
-                                    <form action="..." method="POST">
-                                        <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i>
-                                            Delete</button>
+                                    <form th:action="'/devices/delete-device/' + ${device.type} + '/' + ${device.id} + '/' + ${page}" method="POST" class="d-inline">
+                                        <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Delete</button>
                                     </form>
                                 </div>
                             </div>
                         </div>
-                        <a href="..." class="ml-4 order-1 order-lg-1"><img src="/images/apple-test.jpg" alt="Image"
-                                                                           class="order-1 order-lg-2"></a>
                     </div>
                 </li>
-
             </ul>
         </div>
     </div>
 </div>
+
+<th:block th:if="${myDevices.totalElements > 0}">
+    <div class="row justify-content-center mt-3 section-pagination">
+        <div class="pagination-controls">
+            <div aria-label="Page navigation">
+                <ul class="pagination">
+
+                    <!-- First Page -->
+                    <li class="page-item" th:classappend="${myDevices.number == 0 ? 'disabled' : ''}">
+                        <a th:unless="${myDevices.number == 0}" class="page-link"
+                           th:href="@{'/user/myDevices?page=0'}">First</a>
+                        <a th:if="${myDevices.number == 0}" class="page-link" href="#">First</a>
+                    </li>
+
+                    <!-- Previous Page -->
+                    <li class="page-item" th:classappend="${myDevices.number == 0 ? 'disabled' : ''}">
+                        <a th:unless="${myDevices.number == 0}" class="page-link"
+                           th:href="@{'/user/myDevices?page=' + ${myDevices.number - 1}}">Previous</a>
+                        <a th:if="${myDevices.number == 0}" class="page-link" href="#">Previous</a>
+                    </li>
+
+                    <!-- Page Numbers -->
+                    <th:block th:if="${myDevices.totalPages <= 5}">
+                        <th:block th:each="i : ${#numbers.sequence(0, myDevices.totalPages - 1)}">
+                            <li class="page-item" th:classappend="${myDevices.number == i ? 'active' : ''}">
+                                <a class="page-link"
+                                   th:href="@{'/user/myDevices' + '?page=' + ${i}}" th:text="${i + 1}"></a>
+                            </li>
+                        </th:block>
+                    </th:block>
+
+                    <th:block th:if="${myDevices.totalPages > 5}">
+                        <th:block th:if="${myDevices.number < 2}">
+                            <th:block th:each="i : ${#numbers.sequence(0, 4)}">
+                                <li class="page-item" th:classappend="${myDevices.number == i ? 'active' : ''}">
+                                    <a class="page-link"
+                                       th:href="@{'/user/myDevices' + '?page=' + ${i}}" th:text="${i + 1}"></a>
+                                </li>
+                            </th:block>
+                            <li class="page-item disabled"><span class="page-link">...</span></li>
+                            <li class="page-item">
+                                <a class="page-link"
+                                   th:href="@{'/user/myDevices' + '?page=' + ${myDevices.totalPages - 1}}"
+                                   th:text="${myDevices.totalPages}"></a>
+                            </li>
+                        </th:block>
+
+                        <th:block th:if="${myDevices.number >= myDevices.totalPages - 2}">
+                            <li class="page-item">
+                                <a class="page-link"
+                                   th:href="@{'/user/myDevices' + '?page=0'}" th:text="1"></a>
+                            </li>
+                            <li class="page-item disabled"><span class="page-link">...</span></li>
+                            <th:block th:each="i : ${#numbers.sequence(myDevices.totalPages - 5, myDevices.totalPages - 1)}">
+                                <li class="page-item" th:classappend="${myDevices.number == i ? 'active' : ''}">
+                                    <a class="page-link"
+                                       th:href="@{'/user/myDevices' + '?page=' + ${i}}" th:text="${i + 1}"></a>
+                                </li>
+                            </th:block>
+                        </th:block>
+
+                        <th:block th:if="${myDevices.number >= 2 && myDevices.number < myDevices.totalPages - 2}">
+                            <li class="page-item">
+                                <a class="page-link"
+                                   th:href="@{'/user/myDevices' + '?page=0'}" th:text="1"></a>
+                            </li>
+                            <li class="page-item disabled"><span class="page-link">...</span></li>
+                            <th:block th:each="i : ${#numbers.sequence(myDevices.number - 1, myDevices.number + 1)}">
+                                <li class="page-item" th:classappend="${myDevices.number == i ? 'active' : ''}">
+                                    <a class="page-link"
+                                       th:href="@{'/user/myDevices' + '?page=' + ${i}}" th:text="${i + 1}"></a>
+                                </li>
+                            </th:block>
+                            <li class="page-item disabled"><span class="page-link">...</span></li>
+                            <li class="page-item">
+                                <a class="page-link"
+                                   th:href="@{'/user/myDevices' + '?page=' + ${myDevices.totalPages - 1}}"
+                                   th:text="${myDevices.totalPages}"></a>
+                            </li>
+                        </th:block>
+                    </th:block>
+
+                    <!-- Next Page -->
+                    <li class="page-item" th:classappend="${myDevices.number == myDevices.totalPages - 1 ? 'disabled' : ''}">
+                        <a th:unless="${myDevices.number == myDevices.totalPages - 1}" class="page-link"
+                           th:href="@{'/user/myDevices' + '?page=' + ${myDevices.number + 1}}">Next</a>
+                        <a th:if="${myDevices.number == myDevices.totalPages - 1}" class="page-link" href="#">Next</a>
+                    </li>
+
+                    <!-- Last Page -->
+                    <li class="page-item" th:classappend="${myDevices.number == myDevices.totalPages - 1 ? 'disabled' : ''}">
+                        <a th:unless="${myDevices.number == myDevices.totalPages - 1}" class="page-link"
+                           th:href="@{'/user/myDevices' + '?page=' + ${myDevices.totalPages - 1}}">Last</a>
+                        <a th:if="${myDevices.number == myDevices.totalPages - 1}" class="page-link" href="#">Last</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</th:block>
 
 <footer th:replace="~{fragments/footer}"></footer>
 </body>

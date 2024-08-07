@@ -32,9 +32,11 @@ public interface IphoneService {
     User findIphoneOwner(Long iPhoneId);
 
     void deleteIphone(User user, Long deviceId, Iphone iphone);
+
+    void refreshIphone(Long deviceId);
+
+    List<DeviceView> findMyIphones(String username);
 }
-
-
 
 
 

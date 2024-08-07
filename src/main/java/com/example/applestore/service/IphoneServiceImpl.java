@@ -113,6 +113,28 @@ public class IphoneServiceImpl implements IphoneService {
     }
 
     @Override
+    public void refreshIphone(Long deviceId) {
+        Iphone iphone = iphoneRepository.findById(deviceId).get();
+        iphone.setRegisteredOn(LocalDateTime.now());
+        iphoneRepository.save(iphone);
+    }
+
+    @Override
+    public List<DeviceView> findMyIphones(String username) {
+        return this.userService.findByUsername(username).get()
+                .getMyIphones()
+                .stream()
+                .map(iphone -> {
+                    DeviceView view = modelMapper.map(iphone, DeviceView.class);
+                    view.setReleaseDate(ModelAttributeUtil.formatDate(iphone.getReleaseDate()));
+                    view.setPrice(ModelAttributeUtil.formatPrice(iphone.getPrice()));
+                    view.setType("iPhone");
+                    return view;
+                })
+                .collect(Collectors.toList());
+    }
+
+    @Override
     public IphoneProfileView createIphoneProfileView(Iphone iphone) {
         IphoneProfileView iphoneProfileView = modelMapper.map(iphone, IphoneProfileView.class);
         iphoneProfileView.setReleaseDate(ModelAttributeUtil.formatDate(iphone.getReleaseDate()));
