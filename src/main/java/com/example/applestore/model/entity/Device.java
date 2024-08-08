@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -45,7 +46,7 @@ public abstract class Device extends BaseEntity {
     private Colour colour;
 
     @Column(nullable = false, name = "date_of_purchase")
-    private LocalDateTime dateOfPurchase;
+    private LocalDate dateOfPurchase;
 
     @Column(nullable = false)
     private BigDecimal price;

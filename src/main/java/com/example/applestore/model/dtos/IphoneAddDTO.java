@@ -8,6 +8,7 @@ import lombok.Setter;
 import lombok.experimental.Accessors;
 import org.springframework.web.multipart.MultipartFile;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -45,7 +46,7 @@ public class IphoneAddDTO {
 
     @NotNull(message = "Date of purchase must be specified.")
     @PastOrPresent(message = "Date of purchase must be in the past or present!")
-    private LocalDateTime dateOfPurchase;
+    private LocalDate dateOfPurchase;
 
     @NotNull(message = "Price must be specified.")
     @Min(value = 1, message = "Price must be greater than zero!")

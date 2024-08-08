@@ -66,7 +66,7 @@ public class WatchServiceImpl implements WatchService {
                 .stream()
                 .map(watch -> {
                     DeviceView view = modelMapper.map(watch, DeviceView.class);
-                    view.setDateOfPurchase(ModelAttributeUtil.formatDate(watch.getDateOfPurchase()));
+                    view.setDateOfPurchase(ModelAttributeUtil.formatDateWithoutTime(watch.getDateOfPurchase()));
                     view.setPrice(ModelAttributeUtil.formatPrice(watch.getPrice()));
                     view.setType("watch");
                     return view;
@@ -82,7 +82,7 @@ public class WatchServiceImpl implements WatchService {
     @Override
     public WatchProfileView createWatchProfileView(Watch watch) {
         WatchProfileView watchProfileView = modelMapper.map(watch, WatchProfileView.class);
-        watchProfileView.setDateOfPurchase(ModelAttributeUtil.formatDate(watch.getDateOfPurchase()));
+        watchProfileView.setDateOfPurchase(ModelAttributeUtil.formatDateWithoutTime(watch.getDateOfPurchase()));
         watchProfileView.setDateOfRegister(ModelAttributeUtil.formatDate(watch.getDateOfRegister()));
         watchProfileView.setPrice(ModelAttributeUtil.formatPrice(watch.getPrice()));
         return watchProfileView;
@@ -94,7 +94,7 @@ public class WatchServiceImpl implements WatchService {
                 .stream()
                 .map(watch -> {
                     DeviceView view = modelMapper.map(watch, DeviceView.class);
-                    view.setDateOfPurchase(ModelAttributeUtil.formatDate(watch.getDateOfPurchase()));
+                    view.setDateOfPurchase(ModelAttributeUtil.formatDateWithoutTime(watch.getDateOfPurchase()));
                     view.setPrice(ModelAttributeUtil.formatPrice(watch.getPrice()));
                     view.setType("watch");
                     return view;
@@ -134,7 +134,7 @@ public class WatchServiceImpl implements WatchService {
                 .stream()
                 .map(watch -> {
                     DeviceView view = modelMapper.map(watch, DeviceView.class);
-                    view.setDateOfPurchase(ModelAttributeUtil.formatDate(watch.getDateOfPurchase()));
+                    view.setDateOfPurchase(ModelAttributeUtil.formatDateWithoutTime(watch.getDateOfPurchase()));
                     view.setPrice(ModelAttributeUtil.formatPrice(watch.getPrice()));
                     view.setType("watch");
                     return view;

@@ -69,7 +69,7 @@ public class MacBookServiceImpl implements MacBookService {
                 .stream()
                 .map(macBook -> {
                     DeviceView view = modelMapper.map(macBook, DeviceView.class);
-                    view.setDateOfPurchase(ModelAttributeUtil.formatDate(macBook.getDateOfPurchase()));
+                    view.setDateOfPurchase(ModelAttributeUtil.formatDateWithoutTime(macBook.getDateOfPurchase()));
                     view.setPrice(ModelAttributeUtil.formatPrice(macBook.getPrice()));
                     view.setType("macBook");
                     return view;
@@ -85,7 +85,7 @@ public class MacBookServiceImpl implements MacBookService {
     @Override
     public MacBookProfileView createMacBookProfileView(MacBook macBook) {
         MacBookProfileView macBookProfileView = modelMapper.map(macBook, MacBookProfileView.class);
-        macBookProfileView.setDateOfPurchase(ModelAttributeUtil.formatDate(macBook.getDateOfPurchase()));
+        macBookProfileView.setDateOfPurchase(ModelAttributeUtil.formatDateWithoutTime(macBook.getDateOfPurchase()));
         macBookProfileView.setDateOfRegister(ModelAttributeUtil.formatDate(macBook.getDateOfRegister()));
         macBookProfileView.setPrice(ModelAttributeUtil.formatPrice(macBook.getPrice()));
         return macBookProfileView;
@@ -97,7 +97,7 @@ public class MacBookServiceImpl implements MacBookService {
                 .stream()
                 .map(macBook -> {
                     DeviceView view = modelMapper.map(macBook, DeviceView.class);
-                    view.setDateOfPurchase(ModelAttributeUtil.formatDate(macBook.getDateOfPurchase()));
+                    view.setDateOfPurchase(ModelAttributeUtil.formatDateWithoutTime(macBook.getDateOfPurchase()));
                     view.setPrice(ModelAttributeUtil.formatPrice(macBook.getPrice()));
                     view.setType("macBook");
                     return view;
@@ -137,7 +137,7 @@ public class MacBookServiceImpl implements MacBookService {
                 .stream()
                 .map(macBook -> {
                     DeviceView view = modelMapper.map(macBook, DeviceView.class);
-                    view.setDateOfPurchase(ModelAttributeUtil.formatDate(macBook.getDateOfPurchase()));
+                    view.setDateOfPurchase(ModelAttributeUtil.formatDateWithoutTime(macBook.getDateOfPurchase()));
                     view.setPrice(ModelAttributeUtil.formatPrice(macBook.getPrice()));
                     view.setType("macBook");
                     return view;

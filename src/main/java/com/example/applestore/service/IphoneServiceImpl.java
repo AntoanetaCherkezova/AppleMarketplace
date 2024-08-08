@@ -78,7 +78,7 @@ public class IphoneServiceImpl implements IphoneService {
                 .stream()
                 .map(iPhone -> {
                     DeviceView view = modelMapper.map(iPhone, DeviceView.class);
-                    view.setDateOfPurchase(ModelAttributeUtil.formatDate(iPhone.getDateOfPurchase()));
+                    view.setDateOfPurchase(ModelAttributeUtil.formatDateWithoutTime(iPhone.getDateOfPurchase()));
                     view.setPrice(ModelAttributeUtil.formatPrice(iPhone.getPrice()));
                     view.setType("iPhone");
                     return view;
@@ -92,7 +92,7 @@ public class IphoneServiceImpl implements IphoneService {
                 .stream()
                 .map(iPhone -> {
                     DeviceView view = modelMapper.map(iPhone, DeviceView.class);
-                    view.setDateOfPurchase(ModelAttributeUtil.formatDate(iPhone.getDateOfPurchase()));
+                    view.setDateOfPurchase(ModelAttributeUtil.formatDateWithoutTime(iPhone.getDateOfPurchase()));
                     view.setPrice(ModelAttributeUtil.formatPrice(iPhone.getPrice()));
                     view.setType("iPhone");
                     return view;
@@ -126,7 +126,7 @@ public class IphoneServiceImpl implements IphoneService {
                 .stream()
                 .map(iphone -> {
                     DeviceView view = modelMapper.map(iphone, DeviceView.class);
-                    view.setDateOfPurchase(ModelAttributeUtil.formatDate(iphone.getDateOfPurchase()));
+                    view.setDateOfPurchase(ModelAttributeUtil.formatDateWithoutTime(iphone.getDateOfPurchase()));
                     view.setPrice(ModelAttributeUtil.formatPrice(iphone.getPrice()));
                     view.setType("iPhone");
                     return view;
@@ -137,7 +137,7 @@ public class IphoneServiceImpl implements IphoneService {
     @Override
     public IphoneProfileView createIphoneProfileView(Iphone iphone) {
         IphoneProfileView iphoneProfileView = modelMapper.map(iphone, IphoneProfileView.class);
-        iphoneProfileView.setDateOfPurchase(ModelAttributeUtil.formatDate(iphone.getDateOfPurchase()));
+        iphoneProfileView.setDateOfPurchase(ModelAttributeUtil.formatDateWithoutTime(iphone.getDateOfPurchase()));
         iphoneProfileView.setDateOfRegister(ModelAttributeUtil.formatDate(iphone.getDateOfRegister()));
         iphoneProfileView.setPrice(ModelAttributeUtil.formatPrice(iphone.getPrice()));
         return iphoneProfileView;
