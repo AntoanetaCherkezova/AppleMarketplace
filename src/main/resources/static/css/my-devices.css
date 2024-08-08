@@ -25,6 +25,12 @@ body {
     border-radius: 0.5rem;
 }
 
+.alert-warning {
+    color: #ffffff;
+    background-color: #437db6;
+    border-color: rgba(41, 39, 39, 0.8);
+}
+
 .alert {
     border-radius: 0.3rem;
 }

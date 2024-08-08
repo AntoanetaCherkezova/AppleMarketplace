@@ -46,7 +46,7 @@
                             </td>
                             <td class="mt-4" th:text="${user.contactEmail}"></td>
                             <td><span th:text="${user.deviceCounts}"></span></td>
-                            <td th:text="${user.registeredOn}"></td>
+                            <td th:text="${user.dateOfRegister}"></td>
                             <td class="text-end">
                                 <div th:if="${user.hasRole('ADMIN')}">
                                     <form th:action="@{'/control-center/remove-admin/' + ${user.id}}" method="POST"
@@ -62,11 +62,11 @@
                                 </div>
                             </td>
                             <td class="text-end">
-                                <form th:if="${!user.isBanned}" th:action="@{'/control-center/block-user/' + ${user.id}}"
+                                <form th:if="${!user.isBlocked()}" th:action="@{'/control-center/block-user/' + ${user.id}}"
                                       method="POST">
                                     <button class="btn-danger block-button">Block</button>
                                 </form>
-                                <form th:if="${user.isBanned}" th:action="@{'/control-center/unblock-user/' + ${user.id}}"
+                                <form th:if="${user.isBlocked()}" th:action="@{'/control-center/unblock-user/' + ${user.id}}"
                                       method="POST">
                                     <button class="btn-danger block-button">Unblock</button>
                                 </form>

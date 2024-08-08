@@ -15,9 +15,9 @@ public class UserControlCenterView {
     private String lastName;
     private String contactPhone;
     private String contactEmail;
-    private boolean isBanned;
+    private boolean isBlocked;
     private String city;
-    private String registeredOn;
+    private String dateOfRegister;
     private int deviceCounts;
     private Set<UserRole> roles;
     public boolean hasRole(String roleName) {

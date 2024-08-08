@@ -21,11 +21,11 @@ public class UserProfileDTO {
 
 
     public void setContactPhone(String contactPhone) {
-        this.contactPhone = isEmpty(contactPhone) ? "N/A" : contactPhone;
+        this.contactPhone = isEmpty(contactPhone) ? "" : contactPhone;
     }
 
     public void setCity(String city) {
-        this.city = isEmpty(city) ? "N/A" : city;
+        this.city = isEmpty(city) ? "" : city;
     }
 
     private boolean isEmpty(String value) {

@@ -47,7 +47,7 @@
                 <div class="profile-detail editable">
                     <h6>Phone</h6>
                     <div class="profile-info">
-                        <span id="phone-span" th:text="${userProfileView.contactPhone != null ? userProfileView.contactPhone : 'N/A'}"></span>
+                        <span id="phone-span" th:text="${userProfileView.contactPhone != null ? userProfileView.contactPhone : ''}"></span>
                         <input type="text" class="form-control edit-input" id="phone-input" th:field="*{contactPhone}">
                         <i class="fas fa-pencil-alt edit-icon" onclick="editProfile('phone')"></i>
                     </div>
@@ -63,7 +63,7 @@
                 <div class="profile-detail editable">
                     <h6>City</h6>
                     <div class="profile-info">
-                        <span id="city-span" th:text="${userProfileView.city != null ? userProfileView.city : 'N/A'}"></span>
+                        <span id="city-span" th:text="${userProfileView.city != null ? userProfileView.city : ''}"></span>
                         <input type="text" class="form-control edit-input" id="city-input" th:field="*{city}">
                         <i class="fas fa-pencil-alt edit-icon" onclick="editProfile('city')"></i>
                     </div>

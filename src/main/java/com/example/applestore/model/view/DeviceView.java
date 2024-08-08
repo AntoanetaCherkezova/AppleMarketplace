@@ -32,13 +32,13 @@ public class DeviceView {
 
     private Colour colour;
 
-    private String releaseDate;
+    private String dateOfPurchase;
 
     private String price;
 
     private List<String> photosUrls;
 
-    private LocalDateTime registeredOn;
+    private LocalDateTime dateOfRegister;
 
     private String type;
 

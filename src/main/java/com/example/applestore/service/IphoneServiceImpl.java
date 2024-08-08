@@ -14,7 +14,7 @@ import com.example.applestore.util.ModelAttributeUtil;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
-
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -48,7 +48,7 @@ public class IphoneServiceImpl implements IphoneService {
                 .collect(Collectors.toList());
         iphone.setPhotosUrls(photoUrls);
 
-        iphone.setRegisteredOn(LocalDateTime.now());
+        iphone.setDateOfRegister(LocalDateTime.now());
         User user = this.userService.findByUsername(userDetails.getUsername()).get();
         iphone.setOwner(user);
         user.getMyIphones().add(iphone);
@@ -78,7 +78,7 @@ public class IphoneServiceImpl implements IphoneService {
                 .stream()
                 .map(iPhone -> {
                     DeviceView view = modelMapper.map(iPhone, DeviceView.class);
-                    view.setReleaseDate(ModelAttributeUtil.formatDate(iPhone.getReleaseDate()));
+                    view.setDateOfPurchase(ModelAttributeUtil.formatDate(iPhone.getDateOfPurchase()));
                     view.setPrice(ModelAttributeUtil.formatPrice(iPhone.getPrice()));
                     view.setType("iPhone");
                     return view;
@@ -92,7 +92,7 @@ public class IphoneServiceImpl implements IphoneService {
                 .stream()
                 .map(iPhone -> {
                     DeviceView view = modelMapper.map(iPhone, DeviceView.class);
-                    view.setReleaseDate(ModelAttributeUtil.formatDate(iPhone.getReleaseDate()));
+                    view.setDateOfPurchase(ModelAttributeUtil.formatDate(iPhone.getDateOfPurchase()));
                     view.setPrice(ModelAttributeUtil.formatPrice(iPhone.getPrice()));
                     view.setType("iPhone");
                     return view;
@@ -115,7 +115,7 @@ public class IphoneServiceImpl implements IphoneService {
     @Override
     public void refreshIphone(Long deviceId) {
         Iphone iphone = iphoneRepository.findById(deviceId).get();
-        iphone.setRegisteredOn(LocalDateTime.now());
+        iphone.setDateOfRegister(LocalDateTime.now());
         iphoneRepository.save(iphone);
     }
 
@@ -126,7 +126,7 @@ public class IphoneServiceImpl implements IphoneService {
                 .stream()
                 .map(iphone -> {
                     DeviceView view = modelMapper.map(iphone, DeviceView.class);
-                    view.setReleaseDate(ModelAttributeUtil.formatDate(iphone.getReleaseDate()));
+                    view.setDateOfPurchase(ModelAttributeUtil.formatDate(iphone.getDateOfPurchase()));
                     view.setPrice(ModelAttributeUtil.formatPrice(iphone.getPrice()));
                     view.setType("iPhone");
                     return view;
@@ -137,8 +137,8 @@ public class IphoneServiceImpl implements IphoneService {
     @Override
     public IphoneProfileView createIphoneProfileView(Iphone iphone) {
         IphoneProfileView iphoneProfileView = modelMapper.map(iphone, IphoneProfileView.class);
-        iphoneProfileView.setReleaseDate(ModelAttributeUtil.formatDate(iphone.getReleaseDate()));
-        iphoneProfileView.setRegisteredOn(ModelAttributeUtil.formatDate(iphone.getRegisteredOn()));
+        iphoneProfileView.setDateOfPurchase(ModelAttributeUtil.formatDate(iphone.getDateOfPurchase()));
+        iphoneProfileView.setDateOfRegister(ModelAttributeUtil.formatDate(iphone.getDateOfRegister()));
         iphoneProfileView.setPrice(ModelAttributeUtil.formatPrice(iphone.getPrice()));
         return iphoneProfileView;
     }

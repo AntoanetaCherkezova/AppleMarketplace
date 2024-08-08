@@ -53,9 +53,9 @@
                 <p><span class="description-text">Operating System: </span></p>
                 <p><span class="description-text">Display Size: </span></p>
                 <p><span class="description-text">Color: </span></p>
-                <p><span class="description-text">Release Date: </span></p>
+                <p><span class="description-text">Date of purchase: </span></p>
                 <p><span class="description-text">Price: </span></p>
-                <p><span class="description-text">Registered on: </span></p>
+                <p><span class="description-text">Date of register: </span></p>
             </div>
             <div>
                 <p><span th:text="${device.statusDevice}">...</span></p>
@@ -67,9 +67,9 @@
                 <p><span th:text="${device.operatingSystem}">...</span></p>
                 <p><span th:text="${device.displaySize}">...</span></p>
                 <p><span th:text="${device.colour.getName()}">...</span></p>
-                <p><span th:text="${device.releaseDate}">...</span></p>
+                <p><span th:text="${device.dateOfPurchase}">...</span></p>
                 <p><span th:text="${device.price} + ' BGN'">... BGN</span></p>
-                <p><span th:text="${device.registeredOn}">...</span></p>
+                <p><span th:text="${device.dateOfRegister}">...</span></p>
             </div>
         </div>
         <div class="features">

@@ -73,7 +73,7 @@
                             th:text="'Operating System: ' +${latestModelIphoneView.getOperatingSystem()}">iOS
                         </li>
                         <li class="list-group-item"
-                            th:text="'Release Date: ' + ${latestModelIphoneView.getReleaseDate.toLocalDate()}">Release
+                            th:text="'Date of purchase: ' + ${latestModelIphoneView.getDateOfPurchase().toLocalDate()}">Release
                             Date
                         </li>
                         <li class="list-group-item" th:text="'Price: ' + ${latestModelIphoneView.price} + ' BGN'">
@@ -94,7 +94,7 @@
                             th:text="'Operating System: ' +${latestModelMacBookView.getOperatingSystem()}">iOS
                         </li>
                         <li class="list-group-item"
-                            th:text="'Release Date: ' + ${latestModelMacBookView.getReleaseDate.toLocalDate()}">Release
+                            th:text="'Date of purchase: ' + ${latestModelMacBookView.getDateOfPurchase().toLocalDate()}">Release
                             Date
                         </li>
                         <li class="list-group-item" th:text="'Price: ' + ${latestModelMacBookView.price} + ' BGN'">
@@ -115,7 +115,7 @@
                             th:text="'Operating System: ' +${latestModelWatchView.getOperatingSystem()}">iOS
                         </li>
                         <li class="list-group-item"
-                            th:text="'Release Date: ' + ${latestModelWatchView.getReleaseDate().toLocalDate()}">Release
+                            th:text="'Date of purchase: ' + ${latestModelWatchView.getDateOfPurchase().toLocalDate()}">Release
                             Date
                         </li>
                         <li class="list-group-item" th:text="'Price: ' + ${latestModelWatchView.price} + ' BGN'">Price
@@ -159,8 +159,8 @@
                     <h5 class="card-title" th:text="${device.model}"></h5>
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item" th:text="'Registered on: ' + ${device.registeredOn.toLocalDate()}">
-                        Registered on:
+                    <li class="list-group-item" th:text="'Date of purchase: ' + ${device.dateOfPurchase}">
+                        Date of register:
                     </li>
                     <li class="list-group-item" th:text="'Warranty: ' + ${device.warranty} + ' month'">Warranty:</li>
                     <li class="list-group-item" th:text="'Price: ' + ${device.price} + ' BGN'">Price:</li>

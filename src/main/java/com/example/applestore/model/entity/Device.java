@@ -1,11 +1,9 @@
 package com.example.applestore.model.entity;
-
 import com.example.applestore.model.enums.*;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
-
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -46,8 +44,8 @@ public abstract class Device extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private Colour colour;
 
-    @Column(nullable = false, name = "release_date")
-    private LocalDateTime releaseDate;
+    @Column(nullable = false, name = "date_of_purchase")
+    private LocalDateTime dateOfPurchase;
 
     @Column(nullable = false)
     private BigDecimal price;
@@ -55,8 +53,8 @@ public abstract class Device extends BaseEntity {
     @ElementCollection
     private List<String> photosUrls;
 
-    @Column(nullable = false, name = "registered_on")
-    private LocalDateTime registeredOn;
+    @Column(nullable = false, name = "date_of_register")
+    private LocalDateTime dateOfRegister;
 
     @OneToMany(cascade = CascadeType.ALL)
     private List<Comment> comments;

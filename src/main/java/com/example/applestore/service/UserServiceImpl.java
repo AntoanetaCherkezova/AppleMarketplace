@@ -16,6 +16,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.List;
@@ -46,7 +47,7 @@ public class UserServiceImpl implements UserService {
     public void saveUser(UserRegisterDTO userRegisterDTO) {
         User user = this.modelMapper.map(userRegisterDTO, User.class);
         user.setPassword(passwordEncoder.encode(userRegisterDTO.getPassword()));
-        user.setRegisteredOn(LocalDateTime.now());
+        user.setDateOfRegister(LocalDateTime.now());
         user.getRoles().add(this.userRoleService.findByRole(Role.USER));
         user.setContact(new Contact()
                 .setEmail(userRegisterDTO.getEmail()));
@@ -68,7 +69,7 @@ public class UserServiceImpl implements UserService {
                     .setContact(new Contact().setEmail(adminConfiguration.getEmail()).setPhone(adminConfiguration.getPhoneNumber()))
                     .setAge(adminConfiguration.getAge())
                     .setCity(adminConfiguration.getCity())
-                    .setRegisteredOn(LocalDateTime.now())
+                    .setDateOfRegister(LocalDateTime.now())
                     .setRoles(roles);
             this.userRepository.save(user);
         }
@@ -117,7 +118,7 @@ public class UserServiceImpl implements UserService {
                 .stream()
                 .map(user -> {
                     UserControlCenterView view = modelMapper.map(user, UserControlCenterView.class);
-                    view.setRegisteredOn(ModelAttributeUtil.formatDate(user.getRegisteredOn()));
+                    view.setDateOfRegister(ModelAttributeUtil.formatDate(user.getDateOfRegister()));
                     view.setDeviceCounts(user.getMyIphones().size() + user.getMyMacBooks().size() + user.getMyWatches().size());
                     return view;
                 })
@@ -150,7 +151,7 @@ public class UserServiceImpl implements UserService {
     public void blockUser(Long userId) {
         userRepository.findById(userId)
                 .ifPresent(user -> {
-                    user.setBanned(true);
+                    user.setBlocked(true);
                     userRepository.save(user);
                 });
     }
@@ -159,7 +160,7 @@ public class UserServiceImpl implements UserService {
     public void unblockUser(Long userId) {
         userRepository.findById(userId)
                 .ifPresent(user -> {
-                    user.setBanned(false);
+                    user.setBlocked(false);
                     userRepository.save(user);
                 });
     }

@@ -4,6 +4,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -15,6 +16,10 @@ public class ModelAttributeUtil {
 
     public static String formatDate(LocalDateTime dateTime) {
         return dateTime.format(formatter);
+    }
+
+    public static String formatDateWithoutTime (LocalDate date) {
+        return date.format(formatter);
     }
 
     public static String formatPrice(BigDecimal price) {

@@ -175,16 +175,15 @@
                        name="sizes" th:field="*{sizes}">
             </div>
             <div>
-                <label for="releaseDate" th:style="${#fields.hasErrors('releaseDate')} ? 'margin-bottom: 0;' : ''">Release
-                    Date:</label>
-                <small id="releaseDateError"
+                <label for="dateOfPurchase" th:style="${#fields.hasErrors('dateOfPurchase')} ? 'margin-bottom: 0;' : ''">Date Of Purchase:</label>
+                <small id="dateOfPurchaseError"
                        class="bg-danger rounded d-block"
-                       th:if="${#fields.hasErrors('releaseDate')}"
-                       th:errors="*{releaseDate}">Release Date Error
+                       th:if="${#fields.hasErrors('dateOfPurchase')}"
+                       th:errors="*{dateOfPurchase}">Date Of Purchase Error
                 </small>
                 <input type="datetime-local"
-                       id="releaseDate"
-                       name="release-date" th:field="*{releaseDate}">
+                       id="dateOfPurchase"
+                       name="dateOfPurchase" th:field="*{dateOfPurchase}">
             </div>
         </div>
         <div class="price">

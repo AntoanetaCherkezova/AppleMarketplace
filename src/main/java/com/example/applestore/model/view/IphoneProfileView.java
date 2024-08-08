@@ -30,13 +30,13 @@ public class IphoneProfileView {
 
     private Colour colour;
 
-    private String releaseDate;
+    private String dateOfPurchase;
 
     private String price;
 
     private List<String> photosUrls;
 
-    private String registeredOn;
+    private String dateOfRegister;
 
     private Display display;
 

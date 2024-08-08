@@ -55,7 +55,7 @@ public class DeviceController {
                                 macBookService.findLatestMacBooks().stream()
                         ),
                         watchService.findLatestWatches().stream()
-                ).sorted(Comparator.comparing(DeviceView::getRegisteredOn).reversed())
+                ).sorted(Comparator.comparing(DeviceView::getDateOfRegister).reversed())
                 .collect(Collectors.toList());
 
         int start = (int) pageable.getOffset();
@@ -76,7 +76,7 @@ public class DeviceController {
     public ModelAndView showIphones(@PageableDefault(sort = "id", size = 5) Pageable pageable, ModelAndView model) {
         List<DeviceView> iPhones = iphoneService.findLatestIphones()
                 .stream()
-                .sorted(Comparator.comparing(DeviceView::getRegisteredOn).reversed())
+                .sorted(Comparator.comparing(DeviceView::getDateOfRegister).reversed())
                 .collect(Collectors.toList());
 
         int start = (int) pageable.getOffset();
@@ -96,7 +96,7 @@ public class DeviceController {
     public ModelAndView showMacBooks(@PageableDefault(sort = "id", size = 5) Pageable pageable, ModelAndView model) {
         List<DeviceView> macBooks = macBookService.findLatestMacBooks()
                 .stream()
-                .sorted(Comparator.comparing(DeviceView::getRegisteredOn).reversed())
+                .sorted(Comparator.comparing(DeviceView::getDateOfRegister).reversed())
                 .collect(Collectors.toList());
 
         int start = (int) pageable.getOffset();
@@ -116,7 +116,7 @@ public class DeviceController {
     public ModelAndView showWatches(@PageableDefault(sort = "id", size = 5) Pageable pageable, ModelAndView model) {
         List<DeviceView> watches = watchService.findLatestWatches()
                 .stream()
-                .sorted(Comparator.comparing(DeviceView::getRegisteredOn).reversed())
+                .sorted(Comparator.comparing(DeviceView::getDateOfRegister).reversed())
                 .collect(Collectors.toList());
 
         int start = (int) pageable.getOffset();

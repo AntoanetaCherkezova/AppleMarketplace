@@ -84,7 +84,7 @@ public class UserController {
                                 macBookService.findMyMacBooks(userDetails.getUsername()).stream()
                         ),
                         watchService.findMyWatches(userDetails.getUsername()).stream()
-                ).sorted(Comparator.comparing(DeviceView::getRegisteredOn).reversed())
+                ).sorted(Comparator.comparing(DeviceView::getDateOfRegister).reversed())
                 .collect(Collectors.toList());
 
 

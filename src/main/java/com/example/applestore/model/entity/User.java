@@ -1,15 +1,14 @@
 package com.example.applestore.model.entity;
-
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
-
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
+
 @Getter
 @Setter
 @Accessors(chain = true)
@@ -35,14 +34,14 @@ public class User extends BaseEntity {
     @Column(nullable = false)
     private int age;
 
-    @Column(name = "is_banned")
-    private boolean isBanned;
+    @Column(name = "is_blocked")
+    private boolean isBlocked;
 
     @Column
     private String city;
 
-    @Column(nullable = false, name = "registered_on")
-    private LocalDateTime registeredOn;
+    @Column(nullable = false, name = "date_of_register")
+    private LocalDateTime dateOfRegister;
 
     @Column
     private LocalDateTime modified;

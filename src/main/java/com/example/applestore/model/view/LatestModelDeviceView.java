@@ -15,6 +15,6 @@ public class LatestModelDeviceView {
     private String model;
     private List<String> photosUrls;
     private String operatingSystem;
-    private LocalDateTime releaseDate;
+    private LocalDateTime dateOfPurchase;
     private BigDecimal price;
 }

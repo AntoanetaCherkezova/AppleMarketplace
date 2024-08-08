@@ -13,6 +13,7 @@ import com.example.applestore.util.ModelAttributeUtil;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -46,7 +47,7 @@ public class MacBookServiceImpl implements MacBookService {
                 .collect(Collectors.toList());
         macBook.setPhotosUrls(photoUrls);
 
-        macBook.setRegisteredOn(LocalDateTime.now());
+        macBook.setDateOfRegister(LocalDateTime.now());
         User user = this.userService.findByUsername(userDetails.getUsername()).get();
         macBook.setOwner(user);
         user.getMyMacBooks().add(macBook);
@@ -68,7 +69,7 @@ public class MacBookServiceImpl implements MacBookService {
                 .stream()
                 .map(macBook -> {
                     DeviceView view = modelMapper.map(macBook, DeviceView.class);
-                    view.setReleaseDate(ModelAttributeUtil.formatDate(macBook.getReleaseDate()));
+                    view.setDateOfPurchase(ModelAttributeUtil.formatDate(macBook.getDateOfPurchase()));
                     view.setPrice(ModelAttributeUtil.formatPrice(macBook.getPrice()));
                     view.setType("macBook");
                     return view;
@@ -84,8 +85,8 @@ public class MacBookServiceImpl implements MacBookService {
     @Override
     public MacBookProfileView createMacBookProfileView(MacBook macBook) {
         MacBookProfileView macBookProfileView = modelMapper.map(macBook, MacBookProfileView.class);
-        macBookProfileView.setReleaseDate(ModelAttributeUtil.formatDate(macBook.getReleaseDate()));
-        macBookProfileView.setRegisteredOn(ModelAttributeUtil.formatDate(macBook.getRegisteredOn()));
+        macBookProfileView.setDateOfPurchase(ModelAttributeUtil.formatDate(macBook.getDateOfPurchase()));
+        macBookProfileView.setDateOfRegister(ModelAttributeUtil.formatDate(macBook.getDateOfRegister()));
         macBookProfileView.setPrice(ModelAttributeUtil.formatPrice(macBook.getPrice()));
         return macBookProfileView;
     }
@@ -96,7 +97,7 @@ public class MacBookServiceImpl implements MacBookService {
                 .stream()
                 .map(macBook -> {
                     DeviceView view = modelMapper.map(macBook, DeviceView.class);
-                    view.setReleaseDate(ModelAttributeUtil.formatDate(macBook.getReleaseDate()));
+                    view.setDateOfPurchase(ModelAttributeUtil.formatDate(macBook.getDateOfPurchase()));
                     view.setPrice(ModelAttributeUtil.formatPrice(macBook.getPrice()));
                     view.setType("macBook");
                     return view;
@@ -125,7 +126,7 @@ public class MacBookServiceImpl implements MacBookService {
     @Override
     public void refreshMacBook(Long deviceId) {
         MacBook macBook = macBookRepository.findById(deviceId).get();
-        macBook.setRegisteredOn(LocalDateTime.now());
+        macBook.setDateOfRegister(LocalDateTime.now());
         macBookRepository.save(macBook);
     }
 
@@ -136,7 +137,7 @@ public class MacBookServiceImpl implements MacBookService {
                 .stream()
                 .map(macBook -> {
                     DeviceView view = modelMapper.map(macBook, DeviceView.class);
-                    view.setReleaseDate(ModelAttributeUtil.formatDate(macBook.getReleaseDate()));
+                    view.setDateOfPurchase(ModelAttributeUtil.formatDate(macBook.getDateOfPurchase()));
                     view.setPrice(ModelAttributeUtil.formatPrice(macBook.getPrice()));
                     view.setType("macBook");
                     return view;

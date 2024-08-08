@@ -11,7 +11,7 @@ import com.example.applestore.util.ModelAttributeUtil;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
-
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -44,7 +44,7 @@ public class WatchServiceImpl implements WatchService {
                 .collect(Collectors.toList());
         watch.setPhotosUrls(photoUrls);
 
-        watch.setRegisteredOn(LocalDateTime.now());
+        watch.setDateOfRegister(LocalDateTime.now());
         User user = this.userService.findByUsername(userDetails.getUsername()).get();
         watch.setOwner(user);
         user.getMyWatches().add(watch);
@@ -66,7 +66,7 @@ public class WatchServiceImpl implements WatchService {
                 .stream()
                 .map(watch -> {
                     DeviceView view = modelMapper.map(watch, DeviceView.class);
-                    view.setReleaseDate(ModelAttributeUtil.formatDate(watch.getReleaseDate()));
+                    view.setDateOfPurchase(ModelAttributeUtil.formatDate(watch.getDateOfPurchase()));
                     view.setPrice(ModelAttributeUtil.formatPrice(watch.getPrice()));
                     view.setType("watch");
                     return view;
@@ -82,8 +82,8 @@ public class WatchServiceImpl implements WatchService {
     @Override
     public WatchProfileView createWatchProfileView(Watch watch) {
         WatchProfileView watchProfileView = modelMapper.map(watch, WatchProfileView.class);
-        watchProfileView.setReleaseDate(ModelAttributeUtil.formatDate(watch.getReleaseDate()));
-        watchProfileView.setRegisteredOn(ModelAttributeUtil.formatDate(watch.getRegisteredOn()));
+        watchProfileView.setDateOfPurchase(ModelAttributeUtil.formatDate(watch.getDateOfPurchase()));
+        watchProfileView.setDateOfRegister(ModelAttributeUtil.formatDate(watch.getDateOfRegister()));
         watchProfileView.setPrice(ModelAttributeUtil.formatPrice(watch.getPrice()));
         return watchProfileView;
     }
@@ -94,7 +94,7 @@ public class WatchServiceImpl implements WatchService {
                 .stream()
                 .map(watch -> {
                     DeviceView view = modelMapper.map(watch, DeviceView.class);
-                    view.setReleaseDate(ModelAttributeUtil.formatDate(watch.getReleaseDate()));
+                    view.setDateOfPurchase(ModelAttributeUtil.formatDate(watch.getDateOfPurchase()));
                     view.setPrice(ModelAttributeUtil.formatPrice(watch.getPrice()));
                     view.setType("watch");
                     return view;
@@ -123,7 +123,7 @@ public class WatchServiceImpl implements WatchService {
     @Override
     public void refreshWatch(Long deviceId) {
         Watch watch = watchRepository.findById(deviceId).get();
-        watch.setRegisteredOn(LocalDateTime.now());
+        watch.setDateOfRegister(LocalDateTime.now());
         watchRepository.save(watch);
     }
 
@@ -134,7 +134,7 @@ public class WatchServiceImpl implements WatchService {
                 .stream()
                 .map(watch -> {
                     DeviceView view = modelMapper.map(watch, DeviceView.class);
-                    view.setReleaseDate(ModelAttributeUtil.formatDate(watch.getReleaseDate()));
+                    view.setDateOfPurchase(ModelAttributeUtil.formatDate(watch.getDateOfPurchase()));
                     view.setPrice(ModelAttributeUtil.formatPrice(watch.getPrice()));
                     view.setType("watch");
                     return view;

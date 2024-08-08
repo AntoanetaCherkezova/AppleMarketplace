@@ -43,9 +43,9 @@ public class IphoneAddDTO {
     @NotNull(message = "Colour must be specified.")
     private Colour colour;
 
-    @NotNull(message = "Release Date must be specified.")
-    @PastOrPresent(message = "Production date must be in the past or present!")
-    private LocalDateTime releaseDate;
+    @NotNull(message = "Date of purchase must be specified.")
+    @PastOrPresent(message = "Date of purchase must be in the past or present!")
+    private LocalDateTime dateOfPurchase;
 
     @NotNull(message = "Price must be specified.")
     @Min(value = 1, message = "Price must be greater than zero!")
