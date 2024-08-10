@@ -1,0 +1,55 @@
+body {
+    background: url('https://res.cloudinary.com/dwgx3lz5l/image/upload/v1723194412/apple_sabizw.jpg');
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.main-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 92%;
+    height: 92%;
+    padding-top: 15rem;
+}
+
+.lost-container {
+    text-align: center;
+    color: white;
+    background: rgba(0, 0, 0, 5);
+    padding: 2rem;
+    border-radius: 5px;
+}
+
+.lost {
+    font-size: 2rem;
+}
+
+.button-container {
+    margin-top: 10px;
+}
+
+.go-home {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #92a0af;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.go-home:hover {
+    background-color: #0056b3;
+    color: white;
+    text-decoration: none;
+}
+
+i {
+    color: #4684b6;
+}
+
+

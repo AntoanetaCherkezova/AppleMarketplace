@@ -62,4 +62,5 @@ public class CommentServiceImpl implements CommentService {
     public Comment findById(Long commentId) {
         return this.commentRepository.findById(commentId).orElse(null);
     }
+
 }

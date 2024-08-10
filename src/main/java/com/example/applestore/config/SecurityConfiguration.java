@@ -14,8 +14,10 @@ public class SecurityConfiguration {
         return httpSecurity.authorizeHttpRequests(
                 authorizeRequests -> authorizeRequests
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                        .requestMatchers("/", "/user/login", "/user/register", "/user/login-error","/about-us","/contact-us").permitAll()
-                        .requestMatchers("/home","/devices/**","/iPhones/**","/macBooks/**", "/watches/**","/comments/**","/user/**").hasRole(Role.USER.name())
+                        .requestMatchers("/", "/user/login", "/user/register", "/user/login-error",
+                                "/about-us","/contact-us", "/error").permitAll()
+                        .requestMatchers("/home","/devices/**","/iPhones/**","/macBooks/**", "/watches/**",
+                                "/comments/**","/user/**").hasRole(Role.USER.name())
                         .requestMatchers("/**").hasRole(Role.ADMIN.name())
                         .anyRequest().authenticated()
         ).formLogin(
