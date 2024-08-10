@@ -99,22 +99,35 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void updateUser(UserProfileDTO userProfileDTO, String username) {
+
         User user = this.userRepository.findByUsername(username)
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
-        if (userProfileDTO.getFirstName() != null) user.setFirstName(userProfileDTO.getFirstName());
-        if (userProfileDTO.getLastName() != null) user.setLastName(userProfileDTO.getLastName());
+        if (userProfileDTO.getUsername() != null ) {
+            user.setUsername(userProfileDTO.getUsername());
+        }
+        if (userProfileDTO.getFirstName() != null) {
+            user.setFirstName(userProfileDTO.getFirstName());
+        }
+        if (userProfileDTO.getLastName() != null){
+            user.setLastName(userProfileDTO.getLastName());
+        }
 
-        if (userProfileDTO.getContactPhone() != null) user.getContact().setPhone(userProfileDTO.getContactPhone());
+        if (userProfileDTO.getContactPhone() != null) {
+            user.getContact().setPhone(userProfileDTO.getContactPhone());
+        }
 
-        if (userProfileDTO.getCity() != null) user.setCity(userProfileDTO.getCity());
+        if (userProfileDTO.getCity() != null) {
+            user.setCity(userProfileDTO.getCity());
+        }
 
         this.userRepository.save(user);
     }
 
     @Override
     public List<UserControlCenterView> findAllUsersExcludingMyUser() {
-        return userRepository.findAllUsersExcludingUsername("antoaneta")
+
+        return userRepository.findAllUsersExcludingUsername(adminConfiguration.getUsername())
                 .stream()
                 .map(user -> {
                     UserControlCenterView view = modelMapper.map(user, UserControlCenterView.class);

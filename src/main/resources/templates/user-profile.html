@@ -20,7 +20,11 @@
                 <div class="profile-detail">
                     <h6>Username</h6>
                     <div class="profile-info">
-                        <span th:text="${userProfileView.username}"></span>
+                        <span id="username-span" th:text="${userProfileView.username}"></span>
+                        <input type="hidden" class="form-control edit-input" id="currentUsername-input" name="currentUsername" th:value="${userProfileView.username}">
+                        <input type="text" class="form-control edit-input" id="username-input" th:field="*{username}">
+                        <i class="fas fa-pencil-alt edit-icon" onclick="editProfile('username')"></i>
+                        <small id="usernameError" class="error-message" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username Error</small>
                     </div>
                 </div>
 

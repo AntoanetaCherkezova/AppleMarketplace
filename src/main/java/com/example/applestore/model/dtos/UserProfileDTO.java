@@ -1,5 +1,6 @@
 package com.example.applestore.model.dtos;
 
+import com.example.applestore.validation.uniqueUsername.UniqueUsername;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
@@ -9,6 +10,9 @@ import lombok.experimental.Accessors;
 @Setter
 @Accessors(chain = true)
 public class UserProfileDTO {
+
+    @Size(min = 5, max = 20, message = "Username length must be between 5 and 20 characters!")
+    private String username;
 
     @Size(min = 3, max = 20, message = "First name length must be between 3 and 20 characters!")
     private String firstName;
