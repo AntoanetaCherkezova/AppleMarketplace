@@ -13,11 +13,7 @@
     <nav th:replace="~{fragments/navigation}"></nav>
 </div>
 
-<div class="line-with-text">
-    <div class="text-line" th:text="${title}">Device Showcase</div>
-</div>
-
-<div th:if="${devices.isEmpty()}" class="alert alert-warning mt-4 text-center no-vehicles" role="alert">
+<div th:if="${devices.isEmpty()}" class="alert alert-warning mt-4 text-center no-devices" role="alert">
     No devices available at the moment.
 </div>
 <div class="container ml-auto mr-auto device-container d-flex justify-content-center row mt-4 mb-5" th:each="device : ${devices}">

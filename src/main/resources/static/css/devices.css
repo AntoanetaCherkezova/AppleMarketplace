@@ -109,3 +109,24 @@ body {
     margin-top: 1rem !important;
     margin-bottom: 2rem;
 }
+
+.no-devices {
+    font-size: 1.1rem;
+}
+.alert-warning {
+    color: #ffffff;
+    background-color: #437db6;
+    border-color: rgba(41, 39, 39, 0.8)
+}
+
+.mt-4, .my-4 {
+    margin-top: 5rem !important;
+}
+.alert {
+    max-width: 1140px;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
