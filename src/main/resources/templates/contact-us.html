@@ -20,41 +20,65 @@
                 <div class="row no-gutters mb-4">
                     <div class="col-md-12">
                         <div class="contact-wrap w-100 p-md-5 p-4 text-center">
-                            <h3 class="mb-4 contact-text">Contact Us</h3>
-                            <div id="form-message-warning" class="mb-4"></div>
-                            <form method="POST" id="contactForm" name="contactForm" class="contactForm">
+                            <h3 class="mb-4 contact-text" >Contact Us</h3>
+                            <div th:if="${success}" id="form-message-warning" class="mb-4">
+                                <p>Your message was sent successfully!</p>
+                            </div>
+                            <div th:if="${error}" class="alert alert-danger">
+                                <p>There was an error sending the message. Please try again.</p>
+                            </div>
+                            <form method="POST" th:action="@{/contact-us/send-message}" th:object="${contactDTO}"
+                                  id="contactForm" name="contactForm" class="contactForm">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="label contact-text" for="name">Full Name</label>
-                                            <input type="text" class="form-control" name="name" id="name"
-                                                   placeholder="Full Name">
+                                            <input id="name"
+                                                   type="text"
+                                                   class="form-control"
+                                                   name="fullName"
+                                                   th:field="*{fullName}"
+                                                   th:placeholder="fullName">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label class="label contact-text" for="email">Email Address</label>
-                                            <input type="email" class="form-control" name="email" id="email"
-                                                   placeholder="Email">
+                                            <label class="label contact-text" for="email">Email</label>
+                                            <input id="email"
+                                                   type="text"
+                                                   class="form-control"
+                                                   name="email"
+                                                   th:field="*{email}"
+                                                   th:placeholder="email">
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label class="label contact-text" for="subject">Subject</label>
-                                            <input type="text" class="form-control" name="subject" id="subject"
-                                                   placeholder="Subject">
+                                            <input id="subject"
+                                                   type="text"
+                                                   class="form-control"
+                                                   name="subject"
+                                                   th:field="*{subject}"
+                                                   th:placeholder="subject">
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label class="label contact-text" for="#">Message</label>
-                                            <textarea name="message" class="form-control" id="message" cols="30"
-                                                      rows="4" placeholder="Message"></textarea>
+                                            <label class="label contact-text" for="message">Message</label>
+                                            <textarea id="message"
+                                                      class="form-control"
+                                                      cols="30"
+                                                      rows="4"
+                                                      name="message"
+                                                      th:field="*{message}"
+                                                      th:placeholder="message">
+                                            </textarea>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group mt-3 mb-0">
-                                            <button class="button">Send Message</button>
+                                            <button type="submit" class="button" th:text="'Send button'">Send Message</button>
                                         </div>
                                     </div>
                                 </div>

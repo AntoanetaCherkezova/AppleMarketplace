@@ -101,6 +101,7 @@ public class UserController {
             SecurityContextHolder.getContext().setAuthentication(newAuthentication);
         }
 
+        model.setViewName("redirect:/user/profile");
         return model;
     }
 

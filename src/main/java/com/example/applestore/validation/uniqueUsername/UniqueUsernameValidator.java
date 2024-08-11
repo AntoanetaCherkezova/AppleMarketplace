@@ -8,7 +8,6 @@ public class UniqueUsernameValidator implements ConstraintValidator<UniqueUserna
     private final UserRepository userRepository;
     private String message;
 
-
     public UniqueUsernameValidator(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
@@ -21,7 +20,7 @@ public class UniqueUsernameValidator implements ConstraintValidator<UniqueUserna
     @Override
     public boolean isValid(String username, ConstraintValidatorContext context) {
 
-        if (!userRepository.existsByUsername(username)) {
+        if (username != null && !userRepository.existsByUsername(username)) {
             return true;
         }
 
