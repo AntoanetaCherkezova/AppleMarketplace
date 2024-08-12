@@ -1,25 +1,27 @@
 package com.example.applemarketplace.model.enums;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
+
 public enum Colour {
-    MIDNIGHT("Midnight"),
-    STARLIGHT("Starlight"),
-    BLUE("Blue"),
-    PURPLE("Purple"),
-    RED("(Product) RED"),
-    YELLOW("Yellow"),
-    SPACE_BLACK("Space Black"),
-    SILVER("Silver"),
-    GOLD("Gold"),
-    DEEP_PURPLE("Deep Purple"),
-    PINK("Pink"),
-    GREEN("Green"),
-    GRAPHITE("Graphite"),
-    SIERRA_BLUE("Sierra Blue"),
-    ALPINE_GREEN("Alpine Green"),
-    SPACE_GRAY("Space Gray"),
-    ORANGE("Orange"),
-    WHITE("White"),
-    BLACK("Black");
+    MIDNIGHT("enum.color.Midnight"),
+    STARLIGHT("enum.color.Starlight"),
+    BLUE("enum.color.Blue"),
+    PURPLE("enum.color.Purple"),
+    YELLOW("enum.color.Yellow"),
+    SPACE_BLACK("enum.color.SpaceBlack"),
+    SILVER("enum.color.Silver"),
+    GOLD("enum.color.Gold"),
+    DEEP_PURPLE("enum.color.DeepPurple"),
+    PINK("enum.color.Pink"),
+    GREEN("enum.color.Green"),
+    GRAPHITE("enum.color.Graphite"),
+    SIERRA_BLUE("enum.color.SierraBlue"),
+    ALPINE_GREEN("enum.color.AlpineGreen"),
+    SPACE_GRAY("enum.color.SpaceGray"),
+    ORANGE("enum.color.Orange"),
+    WHITE("enum.color.White"),
+    BLACK("enum.color.Black");
 
     private final String name;
 
@@ -27,7 +29,8 @@ public enum Colour {
         this.name = name;
     }
 
-    public String getName() {
-        return name;
+    public String getName(Locale locale) {
+        ResourceBundle messages = ResourceBundle.getBundle("messages", locale);
+        return messages.getString(name);
     }
 }

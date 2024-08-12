@@ -16,20 +16,20 @@
     <div class="login-page">
         <div class="form acrylic">
             <form class="login-form" method="POST" th:action="@{/user/login}">
-                <p class="bg-danger text-white pt-2 pb-2 pr-4 pl-4" th:if="${bad_credentials}">
+                <p class="bg-danger text-white pt-2 pb-2 pr-4 pl-4" th:if="${bad_credentials}" th:text="#{login.invalid.credentials}">
                     Invalid username or password.
                 </p>
-                <h2>Login to your account</h2>
+                <h2 th:text="#{login.title}">Login to your account</h2>
                 <div class="input-container">
                     <i class="fa-solid fa-user input-icon"></i>
-                    <input id="username" name="username" type="text" placeholder="Username" />
+                    <input id="username" name="username" type="text" th:placeholder="#{login.username.placeholder}" />
                 </div>
                 <div class="input-container">
                     <i class="fa-solid fa-lock input-icon"></i>
-                    <input id="password" name="password" type="password" placeholder="Password" />
+                    <input id="password" name="password" type="password" th:placeholder="#{login.password.placeholder}" />
                 </div>
-                <button class="login" type="submit"><strong>LOGIN</strong></button>
-                <p class="message"><a th:href="@{/user/register}">Register</a></p>
+                <button class="login" type="submit"><strong th:text="#{login.submit.button}">LOGIN</strong></button>
+                <p class="message"><a th:href="@{/user/register}" th:text="#{login.register.link}">Register</a></p>
             </form>
         </div>
     </div>

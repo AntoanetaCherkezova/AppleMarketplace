@@ -1,8 +1,10 @@
 package com.example.applemarketplace.model.dtos;
-
 import com.example.applemarketplace.model.enums.*;
 import com.example.applemarketplace.validation.photosValidator.ValidPhotos;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PastOrPresent;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
@@ -16,54 +18,54 @@ import java.util.List;
 @Accessors(chain = true)
 public class IphoneAddDTO {
 
-    @NotBlank(message = "Status must be specified.")
+    @NotBlank(message = "{iPhone.add.statusDeviceError}")
     private String statusDevice;
 
-    @Min(value = 0, message = "Warranty must be a non-negative number!")
+    @Min(value = 0, message = "{iPhone.add.warrantyError}")
     private int warranty;
 
-    @NotBlank(message = "Model must be specified.")
+    @NotBlank(message = "{iPhone.add.modelError}")
     private String model;
 
-    @NotBlank(message = "Resolution must be specified.")
+    @NotBlank(message = "{iPhone.add.resolutionError}")
     private String resolution;
 
-    @NotBlank(message = "Processor must be specified.")
+    @NotBlank(message = "{iPhone.add.processorError}")
     private String processor;
 
-    @NotNull(message = "Capacity RAM must be specified.")
+    @NotNull(message = "{iPhone.add.capacityRamError}")
     private CapacityRam capacityRam;
 
-    @NotBlank(message = "Operating System must be specified.")
+    @NotBlank(message = "{iPhone.add.operatingSystemError}")
     private String operatingSystem;
 
-    @NotBlank(message = "Display Size must be specified.")
+    @NotBlank(message = "{iPhone.add.displaySizeError}")
     private String displaySize;
 
-    @NotNull(message = "Colour must be specified.")
+    @NotNull(message = "{iPhone.add.colourError}")
     private Colour colour;
 
-    @NotNull(message = "Date of purchase must be specified.")
-    @PastOrPresent(message = "Date of purchase must be in the past or present!")
+    @NotNull(message = "{iPhone.add.dateOfPurchaseError}")
+    @PastOrPresent(message = "{iPhone.add.dateOfPurchaseErrorPastOrPresent}!")
     private LocalDate dateOfPurchase;
 
-    @NotNull(message = "Price must be specified.")
-    @Min(value = 1, message = "Price must be greater than zero!")
+    @NotNull(message = "{iPhone.add.priceErrorNotNull}")
+    @Min(value = 1, message = "{iPhone.add.priceError}")
     private BigDecimal price;
 
     @ValidPhotos
     private List<MultipartFile> photosUrls;
 
-    @NotNull(message = "Display must be specified.")
+    @NotNull(message = "{iPhone.add.displayError}")
     private Display display;
 
-    @NotNull(message = "Internal Memory must be specified.")
+    @NotNull(message = "{iPhone.add.internalMemoryError}")
     private InternalMemory internalMemory;
 
-    @NotNull(message = "Battery must be specified.")
+    @NotNull(message = "{iPhone.add.batteryError}")
     private Battery battery;
 
-    @NotBlank(message = "Sizes are required.")
+    @NotBlank(message = "{iPhone.add.sizesError}")
     private String sizes;
 
     private boolean dualSim;

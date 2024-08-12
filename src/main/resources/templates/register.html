@@ -20,7 +20,7 @@
                 <label for="username"><i class="fa fa-envelope"></i></label>
                 <input id="username"
                        type="text"
-                       placeholder="Username"
+                       th:placeholder="#{register.placeholder.username}"
                        name="username"
                        th:field="*{username}"/>
                 <small id="usernameError"
@@ -33,7 +33,7 @@
                 <label for="email"><i class="fa fa-envelope"></i></label>
                 <input id="email"
                        type="email"
-                       placeholder="Your Email Address"
+                       th:placeholder="#{register.placeholder.email}"
                        name="email"
                        th:field="*{email}"/>
                 <small id="emailError"
@@ -44,7 +44,11 @@
             </div>
             <div class="element" th:style="${#fields.hasErrors('firstName')} ? 'margin-bottom: 0;' : ''">
                 <label for="firstName"><i class="fa fa-user"></i></label>
-                <input id="firstName" type="text" name="firstName" placeholder="First Name" th:field="*{firstName}"/>
+                <input id="firstName"
+                       type="text"
+                       name="firstName"
+                       th:placeholder="#{register.placeholder.firstName}"
+                       th:field="*{firstName}"/>
                 <small id="firstNameError"
                        class="bg-danger rounded error-message"
                        th:if="${#fields.hasErrors('firstName')}"
@@ -53,7 +57,11 @@
             </div>
             <div class="element" th:style="${#fields.hasErrors('lastName')} ? 'margin-bottom: 0;' : ''">
                 <label for="lastName"><i class="fa-regular fa-user"></i></label>
-                <input id="lastName" type="text" name="lastName" placeholder="Last Name" th:field="*{lastName}"/>
+                <input id="lastName"
+                       type="text"
+                       name="lastName"
+                       th:placeholder="#{register.placeholder.lastName}"
+                       th:field="*{lastName}"/>
                 <small id="lastNameError"
                        class="bg-danger rounded error-message"
                        th:if="${#fields.hasErrors('lastName')}"
@@ -62,7 +70,11 @@
             </div>
             <div class="element" th:style="${#fields.hasErrors('age')} ? 'margin-bottom: 0;' : ''">
                 <label for="age"><i class="fa fa-calendar"></i></label>
-                <input id="age" type="number" name="age" placeholder="Age" th:field="*{age}"/>
+                <input id="age"
+                       type="number"
+                       name="age"
+                       th:placeholder="#{register.placeholder.age}"
+                       th:field="*{age}"/>
                 <small id="ageError"
                        class="bg-danger rounded error-message"
                        th:if="${#fields.hasErrors('age')}"
@@ -71,7 +83,11 @@
             </div>
             <div class="element" th:style="${#fields.hasErrors('password')} ? 'margin-bottom: 0;' : ''">
                 <label for="password"><i class="fa fa-lock"></i></label>
-                <input id="password" type="password" name="password" placeholder="Password" th:field="*{password}"/>
+                <input id="password"
+                       type="password"
+                       name="password"
+                       th:placeholder="#{register.placeholder.password}"
+                       th:field="*{password}"/>
                 <small id="passwordError"
                        class="bg-danger rounded error-message"
                        th:if="${#fields.hasErrors('password')}"
@@ -80,7 +96,11 @@
             </div>
             <div class="element">
                 <label for="confirmPassword"><i class="fa fa-lock"></i></label>
-                <input id="confirmPassword" type="password" name="confirmPassword" placeholder="Re-Enter Password" th:field="*{confirmPassword}"/>
+                <input id="confirmPassword"
+                       type="password"
+                       name="confirmPassword"
+                       th:placeholder="#{register.placeholder.confirmPassword}"
+                       th:field="*{confirmPassword}"/>
                 <small id="confirmPasswordError"
                        class="bg-danger rounded error-message"
                        th:if="${#fields.hasErrors('confirmPassword')}"
@@ -88,7 +108,7 @@
                 </small>
             </div>
 
-            <button>Register</button>
+            <button th:text="#{register.button}">Register</button>
         </div>
     </form>
 </div>

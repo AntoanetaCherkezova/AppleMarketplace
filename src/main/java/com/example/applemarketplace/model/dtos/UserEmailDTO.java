@@ -8,6 +8,7 @@ import lombok.experimental.Accessors;
 @Setter
 @Accessors(chain = true)
 public class UserEmailDTO {
+
     private String firstName;
     private String lastName;
     private String contactEmail;

@@ -16,8 +16,8 @@
     <div class="container">
         <div class="row justify-content-md-center">
             <div class="col-12 col-md-10 col-lg-8 col-xl-7 col-xxl-6">
-                <h2 class="mb-4 display-5 text-center text-secondary">About Us</h2>
-                <p class="text-center lead fs-4 text-dark container-font">
+                <h2 class="mb-4 display-5 text-center text-secondary" th:text="#{about.title}">About Us</h2>
+                <p class="text-center lead fs-4 text-dark container-font" th:text="#{about.description}">
                     Welcome to our online store, your go-to marketplace for new and pre-owned Apple devices!
                     We offer a wide range of iPhones, MacBooks, and Apple Watches,
                     including both the latest models and high-quality refurbished options.
@@ -35,7 +35,7 @@
             </div>
             <div class="col-12 col-lg-6 order-lg-1">
                 <div class="about-wrapper">
-                    <p class="lead mb-4 text-dark container-font">
+                    <p class="lead mb-4 text-dark container-font" th:text="#{about.details}">
                         Our aim is to provide a seamless shopping experience with detailed product information, reviews, and competitive pricing.
                         Whether you’re looking to buy or sell, our platform helps you find the perfect device or list your pre-owned devices with ease.
                         Register on our site to list your devices for resale, and explore our offerings to find great deals and make informed decisions!
@@ -44,14 +44,14 @@
                     </div>
                     <th:block sec:authorize="isAuthenticated()">
                         <div class="text-center">
-                        <a th:href="@{/home}" class="btn btn-primary bsb-btn-2xl">Shop Now <i
-                                class="fa-solid fa-arrow-right"></i></a>
+                        <a th:href="@{/home}" class="btn btn-primary bsb-btn-2xl" th:text="#{about.shopNow.authenticated}">
+                            Shop Now <i class="fa-solid fa-arrow-right"></i></a>
                         </div>
                     </th:block>
                     <th:block sec:authorize="isAnonymous()">
                         <div class="text-center">
-                        <a th:href="@{/}" class="btn btn-primary bsb-btn-2xl">Shop Now <i
-                                class="fa-solid fa-arrow-right"></i></a>
+                        <a th:href="@{/}" class="btn btn-primary bsb-btn-2xl" th:text="#{about.shopNow.authenticated}">
+                            Shop Now <i class="fa-solid fa-arrow-right"></i></a>
                         </div>
                     </th:block>
                 </div>

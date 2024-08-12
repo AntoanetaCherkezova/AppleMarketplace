@@ -5,8 +5,11 @@ spring:
     url: jdbc:mysql://localhost:3306/apple_store?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC
     username: ${db_username}
     password: ${db_password}
+  messages:
+    basename: messages
+    encoding: UTF-8
 
-# Multipart settings
+  # Multipart settings
   servlet:
     multipart:
       max-file-size: 2MB
@@ -73,3 +76,10 @@ admin:
   age: ${ADMIN_AGE:33}
   city: ${ADMIN_CITY:Burgas}
   phone-number: ${ADMIN_PHONE_NUMBER:123-456-789}
+
+server:
+  servlet:
+    encoding:
+      charset: UTF-8
+      force: true
+      enabled: true

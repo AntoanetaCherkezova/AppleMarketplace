@@ -13,43 +13,44 @@
     </th:block>
     <div class="menu">
         <th:block sec:authorize="isAuthenticated()">
-            <a th:href="@{/home}">Home</a>
+            <a th:href="@{/home}" th:text="#{nav.home}">Home</a>
         </th:block>
         <th:block sec:authorize="isAnonymous()">
-            <a th:href="@{/}">Home</a>
+            <a th:href="@{/}" th:text="#{nav.home}">Home</a>
         </th:block>
-        <a th:href="@{/about-us}">About</a>
+        <a th:href="@{/about-us}" th:text="#{nav.about}">About</a>
         <th:block sec:authorize="isAuthenticated()">
             <div class="dropdown">
-                <a href="#" class="dropbtn">Add <i class="fas fa-caret-down"></i></a>
+                <a href="#"  class=" dropbtn"><span th:text="#{nav.add}"></span><i class="fas fa-caret-down"></i></a>
                 <div class="dropdown-content">
-                    <a th:href="@{/iPhones/add-iPhone}">iPhone</a>
-                    <a th:href="@{/macBooks/add-macBook}">MacBook</a>
-                    <a th:href="@{/watches/add-watch}">Watch</a>
+                    <a th:href="@{/iPhones/add-iPhone}" th:text="#{nav.iPhone}">iPhone</a>
+                    <a th:href="@{/macBooks/add-macBook}" th:text="#{nav.macBook}">MacBook</a>
+                    <a th:href="@{/watches/add-watch}" th:text="#{nav.watch}">Watch</a>
                 </div>
             </div>
             <th:block sec:authorize="hasRole('ADMIN')">
-                <a th:href="@{/control-center}">Control center</a>
+                <a th:href="@{/control-center}" th:text="#{nav.controlCenter}">Control center</a>
             </th:block>
         </th:block>
-        <a th:href="@{/contact-us}">Contact</a>
+        <a th:href="@{/contact-us}" th:text="#{nav.contact}">Contact</a>
         <th:block sec:authorize="!isAuthenticated()">
-                <a th:href="@{/user/register}">Register</a>
-                <a th:href="@{/user/login}">Login</a>
+                <a th:href="@{/user/register}" th:text="#{nav.register}">Register</a>
+                <a th:href="@{/user/login}" th:text="#{nav.login}">Login</a>
         </th:block>
 
         <th:block sec:authorize="isAuthenticated()">
             <div class="auth-links">
                 <a th:href="@{/user/profile}"><i class="fa-solid fa-user"></i></a>
                 <a th:href="@{/user/my-devices}"><i class="fa-solid fa-list"></i></a>
-                <form method="POST" th:action="@{/user/logout}">
-                    <button type="submit">Logout</button>
+                <form method="POST" th:action="@{/user/logout}" >
+                    <button type="submit" th:text="#{nav.logout}">Logout</button>
                 </form>
             </div>
         </th:block>
     </div>
+
     <div class="flags">
-        <a href="#"><img src="/images/flag-uk.png" alt="English"></a>
-        <a href="#"><img src="/images/flag-bg.png" alt="Bulgarian"></a>
+        <a><img src="/images/flag-uk.png" alt="English" onclick="changeLanguage('en')"></a>
+        <a><img src="/images/flag-bg.png" alt="Bulgarian" onclick="changeLanguage('bg')"></a>
     </div>
 </nav>

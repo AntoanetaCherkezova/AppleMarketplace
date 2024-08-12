@@ -18,51 +18,51 @@ import java.util.List;
 @Setter
 @Accessors(chain = true)
 public class WatchAddDTO {
-    @NotBlank(message = "Status must be specified.")
+    @NotBlank(message = "{watch.add.statusDeviceError}")
     private String statusDevice;
 
-    @Min(value = 0, message = "Warranty must be a non-negative number!")
+    @Min(value = 0, message = "{watch.add.warrantyError}")
     private int warranty;
 
-    @NotBlank(message = "Model must be specified.")
+    @NotBlank(message = "{watch.add.modelError}")
     private String model;
 
-    @NotBlank(message = "Resolution must be specified.")
+    @NotBlank(message = "{watch.add.resolutionError}")
     private String resolution;
 
-    @NotBlank(message = "Processor must be specified.")
+    @NotBlank(message = "{watch.add.processorError}")
     private String processor;
 
-    @NotNull(message = "Capacity RAM must be specified.")
+    @NotNull(message = "{watch.add.capacityRamError}")
     private CapacityRam capacityRam;
 
-    @NotBlank(message = "Operating System must be specified.")
+    @NotBlank(message = "{watch.add.operatingSystemError}")
     private String operatingSystem;
 
-    @NotBlank(message = "Display Size must be specified.")
+    @NotBlank(message = "{watch.add.displaySizeError}")
     private String displaySize;
 
-    @NotNull(message = "Colour must be specified.")
+    @NotNull(message = "{watch.add.colourError}")
     private Colour colour;
 
-    @NotNull(message = "Date of purchase must be specified.")
-    @PastOrPresent(message = "Date of purchase must be in the past or present!")
+    @NotNull(message = "{watch.add.dateOfPurchaseError}")
+    @PastOrPresent(message = "{watch.add.dateOfPurchaseErrorPastOrPresent}")
     private LocalDate dateOfPurchase;
 
-    @NotNull(message = "Price must be specified.")
-    @Min(value = 1, message = "Price must be greater than zero!")
+    @NotNull(message = "{watch.add.priceErrorNotNull}")
+    @Min(value = 1, message = "{watch.add.priceError}")
     private BigDecimal price;
 
     @ValidPhotos
     private List<MultipartFile> photosUrls;
 
-    @NotNull(message = "Display must be specified.")
+    @NotNull(message = "{watch.add.displayError}")
     private Display display;
 
-    @NotNull(message = "Internal Memory must be specified.")
+    @NotNull(message = "{watch.add.internalMemoryError}")
     private InternalMemory internalMemory;
 
-    @NotBlank(message = "Sizes are required.")
+    @NotBlank(message = "{watch.add.sizesError}")
     private String sizes;
 
     private boolean touchScreenDisplay;

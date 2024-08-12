@@ -18,48 +18,48 @@ import java.util.List;
 @Accessors(chain = true)
 public class MacBookAddDTO {
 
-    @NotBlank(message = "Status must be specified.")
+    @NotBlank(message = "{macBook.add.statusDeviceError}")
     private String statusDevice;
 
-    @Min(value = 0, message = "Warranty must be a non-negative number!")
+    @Min(value = 0, message = "{macBook.add.warrantyError}!")
     private int warranty;
 
-    @NotBlank(message = "Model must be specified.")
+    @NotBlank(message = "{macBook.add.modelError}")
     private String model;
 
-    @NotBlank(message = "Resolution must be specified.")
+    @NotBlank(message = "{macBook.add.resolutionError}")
     private String resolution;
 
-    @NotBlank(message = "Processor must be specified.")
+    @NotBlank(message = "{macBook.add.processorError}")
     private String processor;
 
-    @NotNull(message = "Capacity RAM must be specified.")
+    @NotNull(message = "{macBook.add.capacityRamError}")
     private CapacityRam capacityRam;
 
-    @NotBlank(message = "Operating System must be specified.")
+    @NotBlank(message = "{macBook.add.operatingSystemError}")
     private String operatingSystem;
 
-    @NotBlank(message = "Display Size must be specified.")
+    @NotBlank(message = "{macBook.add.displaySizeError}")
     private String displaySize;
 
-    @NotNull(message = "Colour must be specified.")
+    @NotNull(message = "{macBook.add.colourError}")
     private Colour colour;
 
-    @NotNull(message = "Date of purchase must be specified.")
-    @PastOrPresent(message = "Date of purchase must be in the past or present!")
+    @NotNull(message = "{macBook.add.dateOfPurchaseError}")
+    @PastOrPresent(message = "{macBook.add.dateOfPurchaseErrorPastOrPresent}")
     private LocalDate dateOfPurchase;
 
-    @NotNull(message = "Price must be specified.")
-    @Min(value = 1, message = "Price must be greater than zero!")
+    @NotNull(message = "{macBook.add.priceErrorNotNull}")
+    @Min(value = 1, message = "{macBook.add.priceError}")
     private BigDecimal price;
 
     @ValidPhotos
     private List<MultipartFile> photosUrls;
 
-    @NotBlank(message = "HDD must be specified.")
+    @NotBlank(message = "{macBook.add.hddError}")
     private String HDD;
 
-    @NotBlank(message = "Video Card Type are required.")
+    @NotBlank(message = "{macBook.add.videoCardTypeError}")
     private String videoCardType;
 
 }

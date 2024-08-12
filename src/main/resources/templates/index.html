@@ -13,13 +13,15 @@
 </div>
 
 <th:block sec:authorize="!isAuthenticated()">
-    <div class="h1"><h1>Welcome to Apple Marketplace</h1></div>
+    <div class="h1"><h1><span class="welcome-title" th:text="#{welcome.title}">Welcome to </span>Apple Marketplace</h1></div>
     <div class="home">
         <div class="welcome">
-            <h2>Discover New and Used Apple Devices</h2>
-            <p> Whether you're buying or selling,
+            <h2 th:text="#{welcome.subtitle}">Discover New and Used Apple Devices</h2>
+            <p th:text="#{welcome.description}"> Whether you're buying or selling,
                 register to list your pre-owned devices or explore our range to find great deals and make informed choices.</p>
-            <p>To explore our full range of products and services, please <a href="@{/user/login}">Login</a> or <a href="@{/user/register}">Register</a>!</p>
+            <p><span th:text="#{welcome.instruction}">To explore our full range of products and services, please</span>
+                <a th:href="@{/user/login}" th:text="#{welcome.login}">Login</a><span th:text="#{welcome.or}">or</span>
+                <a th:href="@{/user/register}" th:text="#{welcome.register}">Register</a>!</p>
         </div>
     </div>
 </th:block>

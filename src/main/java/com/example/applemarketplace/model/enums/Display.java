@@ -1,11 +1,14 @@
 package com.example.applemarketplace.model.enums;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
+
 public enum Display {
-    LCD("LCD (Liquid Crystal Display)"),
-    RETINA_DISPLAY("Retina Display"),
-    OLED("OLED (Organic Light-Emitting Diode)"),
-    LIQUID_RETINA_HD("Liquid Retina HD"),
-    LIQUID_RETINA_XDR("Liquid Retina XDR");
+    LCD("enum.display.LCD(LiquidCrystalDisplay)"),
+    RETINA_DISPLAY("enum.display.RetinaDisplay"),
+    OLED("enum.display.OLED(OrganicLight-EmittingDiode)"),
+    LIQUID_RETINA_HD("enum.display.LiquidRetinaHD"),
+    LIQUID_RETINA_XDR("enum.display.LiquidRetinaXDR");
 
     private final String name;
 
@@ -13,7 +16,8 @@ public enum Display {
         this.name = name;
     }
 
-    public String getName() {
-        return name;
+    public String getName(Locale locale) {
+        ResourceBundle messages = ResourceBundle.getBundle("messages", locale);
+        return messages.getString(name);
     }
 }

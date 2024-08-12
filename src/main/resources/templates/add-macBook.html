@@ -13,12 +13,10 @@
 </div>
 
 <div class="add-macBook">
-    <form th:method="POST" th:action="@{/macBooks/add-macBook}" th:object="${macBookAddDTO}"
-          enctype="multipart/form-data">
+    <form th:method="POST" th:action="@{/macBooks/add-macBook}" th:object="${macBookAddDTO}" enctype="multipart/form-data">
         <div class="form-group">
             <div>
-                <label for="statusDevice" th:style="${#fields.hasErrors('statusDevice')} ? 'margin-bottom: 0;' : ''">Status
-                    Device:</label>
+                <label for="statusDevice" th:style="${#fields.hasErrors('statusDevice')} ? 'margin-bottom: 0;' : ''" th:text="#{macBook.add.statusDevice}">Status Device:</label>
                 <small id="statusDeviceError"
                        class="bg-danger rounded d-block "
                        th:if="${#fields.hasErrors('statusDevice')}"
@@ -26,9 +24,10 @@
                 </small>
                 <input id="statusDevice"
                        type="text"
-                       name="statusDevice" th:field="*{statusDevice}">
+                       name="statusDevice"
+                       th:field="*{statusDevice}">
                 <div>
-                    <label for="warranty" th:style="${#fields.hasErrors('warranty')} ? 'margin-bottom: 0;' : ''">Warranty:</label>
+                    <label for="warranty" th:style="${#fields.hasErrors('warranty')} ? 'margin-bottom: 0;' : ''" th:text="#{macBook.add.warranty}">Warranty:</label>
                     <small id="warrantyError"
                            class="bg-danger rounded d-block "
                            th:if="${#fields.hasErrors('warranty')}"
@@ -36,11 +35,12 @@
                     </small>
                     <input type="text"
                            id="warranty"
-                           name="warranty" th:field="*{warranty}">
+                           name="warranty"
+                           th:field="*{warranty}">
                 </div>
                 <div>
                     <label for="model"
-                           th:style="${#fields.hasErrors('model')} ? 'margin-bottom: 0;' : ''">Model:</label>
+                           th:style="${#fields.hasErrors('model')} ? 'margin-bottom: 0;' : ''" th:text="#{macBook.add.model}">Model:</label>
                     <small id="modelError"
                            class="bg-danger rounded d-block "
                            th:if="${#fields.hasErrors('model')}"
@@ -48,10 +48,11 @@
                     </small>
                     <input type="text"
                            id="model"
-                           name="model" th:field="*{model}">
+                           name="model"
+                           th:field="*{model}">
                 </div>
                 <div>
-                    <label for="resolution" th:style="${#fields.hasErrors('resolution')} ? 'margin-bottom: 0;' : ''">Resolution:</label>
+                    <label for="resolution" th:style="${#fields.hasErrors('resolution')} ? 'margin-bottom: 0;' : ''" th:text="#{macBook.add.resolution}">Resolution:</label>
                     <small id="resolutionError"
                            class="bg-danger rounded d-block "
                            th:if="${#fields.hasErrors('resolution')}"
@@ -59,10 +60,11 @@
                     </small>
                     <input type="text"
                            id="resolution"
-                           name="resolution" th:field="*{resolution}">
+                           name="resolution"
+                           th:field="*{resolution}">
                 </div>
                 <div>
-                    <label for="processor" th:style="${#fields.hasErrors('processor')} ? 'margin-bottom: 0;' : ''">Processor:</label>
+                    <label for="processor" th:style="${#fields.hasErrors('processor')} ? 'margin-bottom: 0;' : ''" th:text="#{macBook.add.processor}">Processor:</label>
                     <small id="processorError"
                            class="bg-danger rounded d-block "
                            th:if="${#fields.hasErrors('processor')}"
@@ -70,11 +72,11 @@
                     </small>
                     <input type="text"
                            id="processor"
-                           name="processor" th:field="*{processor}">
+                           name="processor"
+                           th:field="*{processor}">
                 </div>
                 <div>
-                    <label for="capacityRam" th:style="${#fields.hasErrors('capacityRam')} ? 'margin-bottom: 0;' : ''">Capacity
-                        Ram:</label>
+                    <label for="capacityRam" th:style="${#fields.hasErrors('capacityRam')} ? 'margin-bottom: 0;' : ''" th:text="#{macBook.add.capacityRam}">Capacity Ram:</label>
                     <small id="capacityRamError"
                            class="bg-danger rounded d-block"
                            th:if="${#fields.hasErrors('capacityRam')}"
@@ -82,27 +84,22 @@
                     </small>
                     <select id="capacityRam"
                             name="capacityRam" th:field="*{capacityRam}">
-                        <option value="">- Select Capacity Ram -</option>
-                        <option th:each="capacityRam : ${capacityRams}" th:value="${capacityRam}"
-                                th:text="${capacityRam.getName()}">Capacity Ram
-                        </option>
+                        <option value="" th:text="#{macBook.add.select.capacityRam}">- Select Capacity Ram -</option>
+                        <option th:each="capacityRam : ${capacityRams}" th:value="${capacityRam}" th:text="${capacityRam.getName(#locale)}">Capacity Ram</option>
                     </select>
                 </div>
                 <div>
-                    <label for="operatingSystem"
-                           th:style="${#fields.hasErrors('operatingSystem')} ? 'margin-bottom: 0;' : ''">Operating
-                        System:</label>
+                    <label for="operatingSystem" th:style="${#fields.hasErrors('operatingSystem')} ? 'margin-bottom: 0;' : ''" th:text="#{macBook.add.operatingSystem}">Operating System:</label>
                     <small id="operatingSystemError"
                            class="bg-danger rounded d-block "
-                           th:if="${#fields.hasErrors('operatingSystem')}"
-                           th:errors="*{operatingSystem}">Operating System Error
+                           th:if="${#fields.hasErrors('operatingSystem')}" th:errors="*{operatingSystem}">Operating System Error
                     </small>
                     <input type="text"
                            id="operatingSystem"
                            name="operatingSystem" th:field="*{operatingSystem}">
                 </div>
                 <div>
-                    <label for="displaySize" th:style="${#fields.hasErrors('displaySize')} ? 'margin-bottom: 0;' : ''">Display Size:</label>
+                    <label for="displaySize" th:style="${#fields.hasErrors('displaySize')} ? 'margin-bottom: 0;' : ''" th:text="#{macBook.add.displaySize}">Display Size:</label>
                     <small id="displaySizeError"
                            class="bg-danger rounded d-block "
                            th:if="${#fields.hasErrors('displaySize')}"
@@ -114,7 +111,7 @@
                 </div>
                 <div>
                     <label for="colour"
-                           th:style="${#fields.hasErrors('colour')} ? 'margin-bottom: 0;' : ''">Colour:</label>
+                           th:style="${#fields.hasErrors('colour')} ? 'margin-bottom: 0;' : ''" th:text="#{macBook.add.colour}">Colour:</label>
                     <small id="colourError"
                            class="bg-danger rounded d-block"
                            th:if="${#fields.hasErrors('colour')}"
@@ -122,14 +119,14 @@
                     </small>
                     <select id="colour"
                             name="colour" th:field="*{colour}">
-                        <option value="">- Select colour -</option>
-                        <option th:each="colour : ${colours}" th:value="${colour}" th:text="${colour.getName()}">
+                        <option value="" th:text="#{macBook.add.select.colour}">- Select colour -</option>
+                        <option th:each="colour : ${colours}" th:value="${colour}" th:text="${colour.getName(#locale)}">
                             Colour
                         </option>
                     </select>
                 </div>
                 <div>
-                    <label for="HDD" th:style="${#fields.hasErrors('HDD')} ? 'margin-bottom: 0;' : ''">HDD:</label>
+                    <label for="HDD" th:style="${#fields.hasErrors('HDD')} ? 'margin-bottom: 0;' : ''" th:text="#{macBook.add.hdd}">HDD:</label>
                     <small id="HDDError"
                            class="bg-danger rounded d-block "
                            th:if="${#fields.hasErrors('HDD')}"
@@ -140,7 +137,7 @@
                            name="HDD" th:field="*{HDD}">
                 </div>
                 <div>
-                    <label for="videoCardType" th:style="${#fields.hasErrors('videoCardType')} ? 'margin-bottom: 0;' : ''">Video Card Type:</label>
+                    <label for="videoCardType" th:style="${#fields.hasErrors('videoCardType')} ? 'margin-bottom: 0;' : ''" th:text="#{macBook.add.videoCardType}">Video Card Type:</label>
                     <small id="videoCardTypeError"
                            class="bg-danger rounded d-block "
                            th:if="${#fields.hasErrors('videoCardType')}"
@@ -151,7 +148,7 @@
                            name="videoCardType" th:field="*{videoCardType}">
                 </div>
                 <div>
-                    <label for="dateOfPurchase" th:style="${#fields.hasErrors('dateOfPurchase')} ? 'margin-bottom: 0;' : ''">Date Of Purchase:</label>
+                    <label for="dateOfPurchase" th:style="${#fields.hasErrors('dateOfPurchase')} ? 'margin-bottom: 0;' : ''" th:text="#{macBook.add.dateOfPurchase}">Date Of Purchase:</label>
                     <small id="dateOfPurchaseError"
                            class="bg-danger rounded d-block"
                            th:if="${#fields.hasErrors('dateOfPurchase')}"
@@ -163,7 +160,7 @@
                 </div>
             </div>
             <div class="price">
-                <label for="price" th:style="${#fields.hasErrors('price')} ? 'margin-bottom: 0;' : ''">Price
+                <label for="price" th:style="${#fields.hasErrors('price')} ? 'margin-bottom: 0;' : ''" th:text="#{macBook.add.price}">Price
                     (BGN):</label>
                 <small id="priceError"
                        class="bg-danger rounded d-block"
@@ -177,7 +174,7 @@
             </div>
             <div class="photos">
                 <label for="photosUrls"
-                       th:style="${#fields.hasErrors('photosUrls')} ? 'margin-bottom: 0;' : ''">Photos:</label>
+                       th:style="${#fields.hasErrors('photosUrls')} ? 'margin-bottom: 0;' : ''" th:text="#{macBook.add.photosUrls}">Photos:</label>
                 <small id="photosUrlsError"
                        class="bg-danger rounded d-block"
                        th:if="${#fields.hasErrors('photosUrls')}"
@@ -191,7 +188,7 @@
                        th:field="*{photosUrls}">
             </div>
         </div>
-        <button type="submit">Add MacBook</button>
+        <button type="submit" th:text="#{macBook.add.button}">Add MacBook</button>
     </form>
 </div>
 

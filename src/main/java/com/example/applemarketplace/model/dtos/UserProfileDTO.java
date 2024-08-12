@@ -10,13 +10,13 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 public class UserProfileDTO {
 
-    @Size(min = 5, max = 20, message = "Username length must be between 5 and 20 characters!")
+    @Size(min = 5, max = 20, message = "{register.size.username}")
     private String username;
 
-    @Size(min = 3, max = 20, message = "First name length must be between 3 and 20 characters!")
+    @Size(min = 3, max = 20, message = "{register.size.firstName}")
     private String firstName;
 
-    @Size(min = 3, max = 20, message = "Last name length must be between 3 and 20 characters!")
+    @Size(min = 3, max = 20, message = "register.size.lastName")
     private String lastName;
 
     private String contactPhone;

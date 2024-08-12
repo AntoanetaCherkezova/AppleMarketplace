@@ -13,7 +13,7 @@
     <nav th:replace="~{fragments/navigation}"></nav>
 </div>
 
-<div th:if="${devices.isEmpty()}" class="alert alert-warning mt-4 text-center no-devices" role="alert">
+<div th:if="${devices.isEmpty()}" class="alert alert-warning mt-4 text-center no-devices" role="alert" th:text="#{devices.no.available}">
     No devices available at the moment.
 </div>
 <div class="container ml-auto mr-auto device-container d-flex justify-content-center row mt-4 mb-5" th:each="device : ${devices}">
@@ -51,13 +51,13 @@
                 </div>
 
                 <div class="details-device">
-                    <p>Color: <span th:text="${device.colour.getName()}"></span></p>
-                    <p>Processor: <span th:text="${device.processor}"></span></p>
-                    <p>Date of purchase: <span th:text="${device.dateOfPurchase}"></span></p>
-                    <p>Price: <span th:text="${device.price} + ' BGN'"></span></p>
+                    <p><span class="p-text1" th:text="#{device.colour}">Color: </span><span th:text="${device.colour.getName(#locale)}" class="p-text2"></span></p>
+                    <p><span class="p-text1" th:text="#{device.processor}">Processor: </span><span th:text="${device.processor}" class="p-text2"></span></p>
+                    <p><span class="p-text1" th:text="#{device.dateOfPurchase}">Date Of Purchase: </span><span th:text="${device.dateOfPurchase}" class="p-text2"></span></p>
+                    <p><span class="p-text1" th:text="#{device.price}">Price: </span><span th:text="${device.price} + ' BGN'" class="p-text2"></span></p>
                 </div>
                 <div class="button-device">
-                    <a th:href="'/devices/device-profile/' + ${device.type} + '/' + ${device.id}" class="">Details</a>
+                    <a th:href="'/devices/device-profile/' + ${device.type} + '/' + ${device.id}" th:text="#{devices.details}">Details</a>
                 </div>
             </div>
         </div>
@@ -74,14 +74,14 @@
                     <li class="page-item" th:classappend="${devices.number == 0 ? 'disabled' : ''}">
                         <a th:unless="${devices.number == 0}" class="page-link"
                            th:href="@{'/devices/' + ${filter} + '?page=0'}">First</a>
-                        <a th:if="${devices.number == 0}" class="page-link" href="#">First</a>
+                        <a th:if="${devices.number == 0}" class="page-link" href="#" th:text="#{devices.first}">First</a>
                     </li>
 
                     <!-- Previous Page -->
                     <li class="page-item" th:classappend="${devices.number == 0 ? 'disabled' : ''}">
                         <a th:unless="${devices.number == 0}" class="page-link"
                            th:href="@{'/devices/' + ${filter} + '?page=' + ${devices.number - 1}}">Previous</a>
-                        <a th:if="${devices.number == 0}" class="page-link" href="#">Previous</a>
+                        <a th:if="${devices.number == 0}" class="page-link" href="#" th:text="#{devices.previous}">Previous</a>
                     </li>
 
                     <!-- Page Numbers -->
@@ -149,14 +149,14 @@
                     <li class="page-item" th:classappend="${devices.number == devices.totalPages - 1 ? 'disabled' : ''}">
                         <a th:unless="${devices.number == devices.totalPages - 1}" class="page-link"
                            th:href="@{'/devices/' + ${filter} + '?page=' + ${devices.number + 1}}">Next</a>
-                        <a th:if="${devices.number == devices.totalPages - 1}" class="page-link" href="#">Next</a>
+                        <a th:if="${devices.number == devices.totalPages - 1}" class="page-link" href="#" th:text="#{devices.next}">Next</a>
                     </li>
 
                     <!-- Last Page -->
                     <li class="page-item" th:classappend="${devices.number == devices.totalPages - 1 ? 'disabled' : ''}">
                         <a th:unless="${devices.number == devices.totalPages - 1}" class="page-link"
                            th:href="@{'/devices/' + ${filter} + '?page=' + ${devices.totalPages - 1}}">Last</a>
-                        <a th:if="${devices.number == devices.totalPages - 1}" class="page-link" href="#">Last</a>
+                        <a th:if="${devices.number == devices.totalPages - 1}" class="page-link" href="#" th:text="#{devices.last}">Last</a>
                     </li>
 
                 </ul>

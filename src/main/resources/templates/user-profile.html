@@ -18,7 +18,7 @@
         <form th:action="@{/user/profile}" method="POST" th:object="${userProfile}">
             <div class="profile-details">
                 <div class="profile-detail">
-                    <h6>Username</h6>
+                    <h6 th:text="#{user.profile.username}">Username</h6>
                     <div class="profile-info">
                         <span id="username-span" th:text="${userProfileView.username}"></span>
                         <input type="hidden" class="form-control edit-input" id="currentUsername-input" name="currentUsername" th:value="${userProfileView.username}">
@@ -29,7 +29,7 @@
                 </div>
 
                 <div class="profile-detail editable">
-                    <h6>First Name</h6>
+                    <h6 th:text="#{user.profile.firstName}">First Name</h6>
                     <div class="profile-info">
                         <span id="firstname-span" th:text="${userProfileView.firstName}"></span>
                         <input type="text" class="form-control edit-input" id="firstname-input" th:field="*{firstName}">
@@ -39,7 +39,7 @@
                 </div>
 
                 <div class="profile-detail editable">
-                    <h6>Last Name</h6>
+                    <h6 th:text="#{user.profile.lastName}">Last Name</h6>
                     <div class="profile-info">
                         <span id="lastname-span" th:text="${userProfileView.lastName}"></span>
                         <input type="text" class="form-control edit-input" id="lastname-input" th:field="*{lastName}">
@@ -49,7 +49,7 @@
                 </div>
 
                 <div class="profile-detail editable">
-                    <h6>Phone</h6>
+                    <h6 th:text="#{user.profile.phone}">Phone</h6>
                     <div class="profile-info">
                         <span id="phone-span" th:text="${userProfileView.contactPhone != null ? userProfileView.contactPhone : ''}"></span>
                         <input type="text" class="form-control edit-input" id="phone-input" th:field="*{contactPhone}">
@@ -58,14 +58,14 @@
                 </div>
 
                 <div class="profile-detail">
-                    <h6>Email</h6>
+                    <h6 th:text="#{user.profile.email}">Email</h6>
                     <div class="profile-info">
                         <span id="email-span" th:text="${userProfileView.contactEmail}"></span>
                     </div>
                 </div>
 
                 <div class="profile-detail editable">
-                    <h6>City</h6>
+                    <h6 th:text="#{user.profile.city}">City</h6>
                     <div class="profile-info">
                         <span id="city-span" th:text="${userProfileView.city != null ? userProfileView.city : ''}"></span>
                         <input type="text" class="form-control edit-input" id="city-input" th:field="*{city}">
@@ -74,7 +74,7 @@
                 </div>
 
                 <div class="profile-detail">
-                    <h6>Role</h6>
+                    <h6 th:text="#{user.profile.role}">Role</h6>
                     <div class="profile-info">
                         <span class="role" th:text="${roles}">User</span>
                     </div>
@@ -82,7 +82,7 @@
             </div>
 
             <div class="button-submit">
-                <input type="submit" class="btn btn-primary" value="Save Changes">
+                <input type="submit" class="btn btn-primary" th:value="#{user.profile.saveChanges}">
             </div>
         </form>
     </div>

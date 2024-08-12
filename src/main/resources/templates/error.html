@@ -10,9 +10,9 @@
 <div class="main-container">
     <div class="lost-container">
         <div class="button-container">
-            <h3> Oops, something went wrong!</h3>
-            <h3> We are working to fix it!</h3>
-            <a class="btn btn-info btn-lg" href="/" role="button">Home</a>
+            <h3 th:text="#{error.text1}"> Oops, something went wrong!</h3>
+            <h3 th:text="#{error.text2}"> We are working to fix it!</h3>
+            <a class="btn btn-info btn-lg" href="/" role="button" th:text="#{error.button}">Home</a>
         </div>
     </div>
 </div>

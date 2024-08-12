@@ -1,8 +1,10 @@
 package com.example.applemarketplace.model.enums;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public enum Role {
-    ADMIN("Admin"),
-    USER("User");
+    ADMIN("enum.role.Admin"),
+    USER("enum.role.User");
 
     private final String name;
 
@@ -10,7 +12,8 @@ public enum Role {
         this.name = name;
     }
 
-    public String getName() {
-        return name;
+    public String getName(Locale locale) {
+        ResourceBundle messages = ResourceBundle.getBundle("messages", locale);
+        return messages.getString(name);
     }
 }

@@ -18,8 +18,7 @@
     <form th:method="POST" th:action="@{/watches/add-watch}" th:object="${watchAddDTO}" enctype="multipart/form-data">
         <div class="form-group">
             <div>
-                <label for="statusDevice" th:style="${#fields.hasErrors('statusDevice')} ? 'margin-bottom: 0;' : ''">Status
-                    Device:</label>
+                <label for="statusDevice" th:style="${#fields.hasErrors('statusDevice')} ? 'margin-bottom: 0;' : ''" th:text="#{watch.add.statusDevice}">Status Device:</label>
                 <small id="statusDeviceError"
                        class="bg-danger rounded d-block "
                        th:if="${#fields.hasErrors('statusDevice')}"
@@ -27,12 +26,13 @@
                 </small>
                 <input id="statusDevice"
                        type="text"
-                       name="statusDevice" th:field="*{statusDevice}">
+                       name="statusDevice"
+                       th:field="*{statusDevice}">
             </div>
 
             <div>
                 <label for="warranty"
-                       th:style="${#fields.hasErrors('warranty')} ? 'margin-bottom: 0;' : ''">Warranty:</label>
+                       th:style="${#fields.hasErrors('warranty')} ? 'margin-bottom: 0;' : ''" th:text="#{watch.add.warranty}">Warranty:</label>
                 <small id="warrantyError"
                        class="bg-danger rounded d-block "
                        th:if="${#fields.hasErrors('warranty')}"
@@ -40,10 +40,11 @@
                 </small>
                 <input type="text"
                        id="warranty"
-                       name="warranty" th:field="*{warranty}">
+                       name="warranty"
+                       th:field="*{warranty}">
             </div>
             <div>
-                <label for="model" th:style="${#fields.hasErrors('model')} ? 'margin-bottom: 0;' : ''">Model:</label>
+                <label for="model" th:style="${#fields.hasErrors('model')} ? 'margin-bottom: 0;' : ''" th:text="#{watch.add.model}">Model:</label>
                 <small id="modelError"
                        class="bg-danger rounded d-block "
                        th:if="${#fields.hasErrors('model')}"
@@ -51,10 +52,11 @@
                 </small>
                 <input type="text"
                        id="model"
-                       name="model" th:field="*{model}">
+                       name="model"
+                       th:field="*{model}">
             </div>
             <div>
-                <label for="resolution" th:style="${#fields.hasErrors('resolution')} ? 'margin-bottom: 0;' : ''">Resolution:</label>
+                <label for="resolution" th:style="${#fields.hasErrors('resolution')} ? 'margin-bottom: 0;' : ''" th:text="#{watch.add.resolution}">Resolution:</label>
                 <small id="resolutionError"
                        class="bg-danger rounded d-block "
                        th:if="${#fields.hasErrors('resolution')}"
@@ -62,10 +64,11 @@
                 </small>
                 <input type="text"
                        id="resolution"
-                       name="resolution" th:field="*{resolution}">
+                       name="resolution"
+                       th:field="*{resolution}">
             </div>
             <div>
-                <label for="processor" th:style="${#fields.hasErrors('processor')} ? 'margin-bottom: 0;' : ''">Processor:</label>
+                <label for="processor" th:style="${#fields.hasErrors('processor')} ? 'margin-bottom: 0;' : ''" th:text="#{watch.add.processor}">Processor:</label>
                 <small id="processorError"
                        class="bg-danger rounded d-block "
                        th:if="${#fields.hasErrors('processor')}"
@@ -77,8 +80,7 @@
             </div>
             <div>
                 <label for="internalMemory"
-                       th:style="${#fields.hasErrors('internalMemory')} ? 'margin-bottom: 0;' : ''">Internal
-                    Memory:</label>
+                       th:style="${#fields.hasErrors('internalMemory')} ? 'margin-bottom: 0;' : ''" th:text="#{watch.add.internalMemory}">Internal Memory:</label>
                 <small id="internalMemoryError"
                        class="bg-danger rounded d-block"
                        th:if="${#fields.hasErrors('internalMemory')}"
@@ -86,15 +88,12 @@
                 </small>
                 <select id="internalMemory"
                         name="internalMemory" th:field="*{internalMemory}">
-                    <option value="">- Select Internal Memory -</option>
-                    <option th:each="internalMemory : ${internalMemories}" th:value="${internalMemory}"
-                            th:text="${internalMemory.getName()}">Internal Memory
-                    </option>
+                    <option value="" th:text="#{watch.add.select.internalMemory}">- Select Internal Memory -</option>
+                    <option th:each="internalMemory : ${internalMemories}" th:value="${internalMemory}" th:text="${internalMemory.getName(#locale)}">Internal Memory</option>
                 </select>
             </div>
             <div>
-                <label for="capacityRam" th:style="${#fields.hasErrors('capacityRam')} ? 'margin-bottom: 0;' : ''">Capacity
-                    Ram:</label>
+                <label for="capacityRam" th:style="${#fields.hasErrors('capacityRam')} ? 'margin-bottom: 0;' : ''" th:text="#{watch.add.capacityRam}">Capacity Ram:</label>
                 <small id="capacityRamError"
                        class="bg-danger rounded d-block"
                        th:if="${#fields.hasErrors('capacityRam')}"
@@ -102,16 +101,13 @@
                 </small>
                 <select id="capacityRam"
                         name="capacityRam" th:field="*{capacityRam}">
-                    <option value="">- Select Capacity Ram -</option>
-                    <option th:each="capacityRam : ${capacityRams}" th:value="${capacityRam}"
-                            th:text="${capacityRam.getName()}">Capacity Ram
-                    </option>
+                    <option value="" th:text="#{watch.add.select.capacityRam}">- Select Capacity Ram -</option>
+                    <option th:each="capacityRam : ${capacityRams}" th:value="${capacityRam}" th:text="${capacityRam.getName(#locale)}">Capacity Ram</option>
                 </select>
             </div>
             <div>
                 <label for="operatingSystem"
-                       th:style="${#fields.hasErrors('operatingSystem')} ? 'margin-bottom: 0;' : ''">Operating
-                    System:</label>
+                       th:style="${#fields.hasErrors('operatingSystem')} ? 'margin-bottom: 0;' : ''" th:text="#{watch.add.operatingSystem}">Operating System:</label>
                 <small id="operatingSystemError"
                        class="bg-danger rounded d-block "
                        th:if="${#fields.hasErrors('operatingSystem')}"
@@ -119,11 +115,11 @@
                 </small>
                 <input type="text"
                        id="operatingSystem"
-                       name="operatingSystem" th:field="*{operatingSystem}">
+                       name="operatingSystem"
+                       th:field="*{operatingSystem}">
             </div>
             <div>
-                <label for="displaySize" th:style="${#fields.hasErrors('displaySize')} ? 'margin-bottom: 0;' : ''">Display
-                    Size:</label>
+                <label for="displaySize" th:style="${#fields.hasErrors('displaySize')} ? 'margin-bottom: 0;' : ''" th:text="#{watch.add.displaySize}">Display Size:</label>
                 <small id="displaySizeError"
                        class="bg-danger rounded d-block "
                        th:if="${#fields.hasErrors('displaySize')}"
@@ -131,11 +127,12 @@
                 </small>
                 <input type="text"
                        id="displaySize"
-                       name="displaySize" th:field="*{displaySize}">
+                       name="displaySize"
+                       th:field="*{displaySize}">
             </div>
             <div>
                 <label for="display"
-                       th:style="${#fields.hasErrors('display')} ? 'margin-bottom: 0;' : ''">Display:</label>
+                       th:style="${#fields.hasErrors('display')} ? 'margin-bottom: 0;' : ''" th:text="#{watch.add.display}">Display:</label>
                 <small id="displayError"
                        class="bg-danger rounded d-block"
                        th:if="${#fields.hasErrors('display')}"
@@ -143,14 +140,12 @@
                 </small>
                 <select id="display"
                         name="display" th:field="*{display}">
-                    <option value="">- Select Display -</option>
-                    <option th:each="display : ${displays}" th:value="${display}" th:text="${display.getName()}">
-                        Display
-                    </option>
+                    <option value="" th:text="#{watch.add.select.display}">- Select Display -</option>
+                    <option th:each="display : ${displays}" th:value="${display}" th:text="${display.getName(#locale)}">Display</option>
                 </select>
             </div>
             <div>
-                <label for="colour" th:style="${#fields.hasErrors('colour')} ? 'margin-bottom: 0;' : ''">Colour:</label>
+                <label for="colour" th:style="${#fields.hasErrors('colour')} ? 'margin-bottom: 0;' : ''" th:text="#{watch.add.colour}">Colour:</label>
                 <small id="colourError"
                        class="bg-danger rounded d-block"
                        th:if="${#fields.hasErrors('colour')}"
@@ -158,13 +153,13 @@
                 </small>
                 <select id="colour"
                         name="colour" th:field="*{colour}">
-                    <option value="">- Select colour -</option>
-                    <option th:each="colour : ${colours}" th:value="${colour}" th:text="${colour.getName()}">Colour
+                    <option value="" th:text="#{watch.add.select.colour}">- Select colour -</option>
+                    <option th:each="colour : ${colours}" th:value="${colour}" th:text="${colour.getName(#locale)}">Colour
                     </option>
                 </select>
             </div>
             <div>
-                <label for="sizes" th:style="${#fields.hasErrors('sizes')} ? 'margin-bottom: 0;' : ''">Sizes:</label>
+                <label for="sizes" th:style="${#fields.hasErrors('sizes')} ? 'margin-bottom: 0;' : ''" th:text="#{watch.add.sizes}">Sizes:</label>
                 <small id="sizesError"
                        class="bg-danger rounded d-block"
                        th:if="${#fields.hasErrors('sizes')}"
@@ -172,10 +167,11 @@
                 </small>
                 <input type="text"
                        id="sizes"
-                       name="sizes" th:field="*{sizes}">
+                       name="sizes"
+                       th:field="*{sizes}">
             </div>
             <div>
-                <label for="dateOfPurchase" th:style="${#fields.hasErrors('dateOfPurchase')} ? 'margin-bottom: 0;' : ''">Date Of Purchase:</label>
+                <label for="dateOfPurchase" th:style="${#fields.hasErrors('dateOfPurchase')} ? 'margin-bottom: 0;' : ''" th:text="#{watch.add.dateOfPurchase}">Date Of Purchase:</label>
                 <small id="dateOfPurchaseError"
                        class="bg-danger rounded d-block"
                        th:if="${#fields.hasErrors('dateOfPurchase')}"
@@ -183,11 +179,12 @@
                 </small>
                 <input type="date"
                        id="dateOfPurchase"
-                       name="dateOfPurchase" th:field="*{dateOfPurchase}">
+                       name="dateOfPurchase"
+                       th:field="*{dateOfPurchase}">
             </div>
         </div>
         <div class="price">
-            <label for="price" th:style="${#fields.hasErrors('price')} ? 'margin-bottom: 0;' : ''">Price (BGN):</label>
+            <label for="price" th:style="${#fields.hasErrors('price')} ? 'margin-bottom: 0;' : ''" th:text="#{watch.add.price}">Price (BGN):</label>
             <small id="priceError"
                    class="bg-danger rounded d-block"
                    th:if="${#fields.hasErrors('price')}"
@@ -200,7 +197,7 @@
         </div>
         <div class="photos">
             <label for="photosUrls"
-                   th:style="${#fields.hasErrors('photosUrls')} ? 'margin-bottom: 0;' : ''">Photos:</label>
+                   th:style="${#fields.hasErrors('photosUrls')} ? 'margin-bottom: 0;' : ''" th:text="#{watch.add.photosUrls}">Photos:</label>
             <small id="photosUrlsError"
                    class="bg-danger rounded d-block"
                    th:if="${#fields.hasErrors('photosUrls')}"
@@ -220,7 +217,7 @@
                        id="touchScreenDisplay"
                        name="touchScreenDisplay"
                        th:field="*{touchScreenDisplay}">
-                <label class="form-check-label" for="touchScreenDisplay">Touch Screen Display</label>
+                <label class="form-check-label" for="touchScreenDisplay" th:text="#{watch.add.touchScreenDisplay}">Touch Screen Display</label>
             </div>
             <div class="form-check form-check-inline custom-checkbox">
                 <input class="form-check-input"
@@ -228,10 +225,10 @@
                        id="simCardSupport"
                        name="simCardSupport"
                        th:field="*{simCardSupport}">
-                <label class="form-check-label" for="simCardSupport">Sim Card Support</label>
+                <label class="form-check-label" for="simCardSupport" th:text="#{watch.add.simCardSupport}">Sim Card Support</label>
             </div>
         </div>
-        <button type="submit">Add Watch</button>
+        <button type="submit" th:text="#{watch.add.button}">Add Watch</button>
     </form>
 </div>
 

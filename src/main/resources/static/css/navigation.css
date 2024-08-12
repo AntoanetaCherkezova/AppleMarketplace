@@ -137,5 +137,8 @@ nav .flags a {
 nav .flags img {
     width: 100%;
     height: auto;
+    cursor: pointer;
 }
+
+
 

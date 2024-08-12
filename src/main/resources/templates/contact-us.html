@@ -20,65 +20,65 @@
                 <div class="row no-gutters mb-4">
                     <div class="col-md-12">
                         <div class="contact-wrap w-100 p-md-5 p-4 text-center">
-                            <h3 class="mb-4 contact-text" >Contact Us</h3>
+                            <h3 class="mb-4 contact-text" th:text="#{contact.title}">Contact Us</h3>
                             <div th:if="${success}" id="form-message-warning" class="mb-4">
-                                <p>Your message was sent successfully!</p>
+                                <p th:text="#{contact.success}">Your message was sent successfully!</p>
                             </div>
                             <div th:if="${error}" class="alert alert-danger">
-                                <p>There was an error sending the message. Please try again.</p>
+                                <p th:text="#{contact.error}">There was an error sending the message. Please try again.</p>
                             </div>
                             <form method="POST" th:action="@{/contact-us/send-message}" th:object="${contactDTO}"
                                   id="contactForm" name="contactForm" class="contactForm">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label class="label contact-text" for="name">Full Name</label>
+                                            <label class="label contact-text" for="name" th:text="#{contact.fullName}">Full Name</label>
                                             <input id="name"
                                                    type="text"
                                                    class="form-control"
                                                    name="fullName"
                                                    th:field="*{fullName}"
-                                                   th:placeholder="fullName">
+                                                   th:placeholder="#{contact.placeholder.fullName}">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label class="label contact-text" for="email">Email</label>
+                                            <label class="label contact-text" for="email" th:text="#{contact.email}">Email</label>
                                             <input id="email"
                                                    type="text"
                                                    class="form-control"
                                                    name="email"
                                                    th:field="*{email}"
-                                                   th:placeholder="email">
+                                                   th:placeholder="#{contact.placeholder.email}">
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label class="label contact-text" for="subject">Subject</label>
+                                            <label class="label contact-text" for="subject" th:text="#{contact.subject}">Subject</label>
                                             <input id="subject"
                                                    type="text"
                                                    class="form-control"
                                                    name="subject"
                                                    th:field="*{subject}"
-                                                   th:placeholder="subject">
+                                                   th:placeholder="#{contact.placeholder.subject}">
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label class="label contact-text" for="message">Message</label>
+                                            <label class="label contact-text" for="message" th:text="#{contact.message}">Message</label>
                                             <textarea id="message"
                                                       class="form-control"
                                                       cols="30"
                                                       rows="4"
                                                       name="message"
                                                       th:field="*{message}"
-                                                      th:placeholder="message">
+                                                      th:placeholder="#{contact.placeholder.message}">
                                             </textarea>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group mt-3 mb-0">
-                                            <button type="submit" class="button" th:text="'Send button'">Send Message</button>
+                                            <button type="submit" class="button" th:text="#{contact.sendButton}">Send Message</button>
                                         </div>
                                     </div>
                                 </div>
@@ -93,7 +93,7 @@
                                 <span class="fa-solid fa-location-dot"></span>
                             </div>
                             <div class="text">
-                                <p><span class="contact-text">Address: </span>22 Rilska St, Burgas</p>
+                                <p><span class="contact-text" th:text="#{contact.addressLabel}">Address: </span>22 Rilska Str, Burgas</p>
                             </div>
                         </div>
                     </div>
@@ -103,7 +103,7 @@
                                 <span class="fa-solid fa-phone-alt"></span>
                             </div>
                             <div class="text">
-                                <p><span class="contact-text">Phone: </span>+359 885 996 774 </p>
+                                <p><span class="contact-text" th:text="#{contact.phoneLabel}">Phone: </span>+359 885 996 774 </p>
                             </div>
                         </div>
                     </div>
@@ -113,8 +113,8 @@
                                 <span class="fa fa-envelope"></span>
                             </div>
                             <div class="text">
-                                <p><span class="contact-text">Email:
-                                </span><a href="/" class="website"> applestore@gmail.com</a></p>
+                                <p><span class="contact-text" th:text="#{contact.emailLabel}">Email:</span>
+                                    <a href="/" class="website"> applemarketplace@gmail.com</a></p>
                             </div>
                         </div>
                     </div>
@@ -124,8 +124,8 @@
                                 <span class="fa fa-globe"></span>
                             </div>
                             <div class="text">
-                                <p><span class="contact-text">Website: </span>
-                                    <a href="/" class="website">www.applestore.com</a></p>
+                                <p><span class="contact-text" th:text="#{contact.websiteLabel}">Website: </span>
+                                    <a href="/" class="website">www.applemarketplace.com</a></p>
                             </div>
                         </div>
                     </div>

@@ -1,9 +1,12 @@
 package com.example.applemarketplace.model.enums;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
+
 public enum Battery {
-    LI_ION("Lithium-Ion (Li-Ion)"),
-    LIPO("Lithium-Polymer (Li-Po)"),
-    DUAL_CELL_LIPO("Dual-Cell Li-Po");
+    LI_ION("enum.battery.Lithium-Ion(Li-Ion)"),
+    LIPO("enum.battery.Lithium-Polymer(Li-Po)"),
+    DUAL_CELL_LIPO("enum.battery.Dual-CellLi-Po");
 
     private final String name;
 
@@ -11,7 +14,8 @@ public enum Battery {
         this.name = name;
     }
 
-    public String getName() {
-        return name;
+    public String getName(Locale locale) {
+        ResourceBundle messages = ResourceBundle.getBundle("messages", locale);
+        return messages.getString(name);
     }
 }
