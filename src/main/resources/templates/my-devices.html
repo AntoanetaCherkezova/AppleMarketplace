@@ -56,6 +56,7 @@
                                             <span th:text="#{my.devices.refresh}">Refresh</span></button>
                                     </form>
                                     <form th:action="'/devices/delete-device/' + ${device.type} + '/' + ${device.id} + '/' + ${page}" method="POST" class="d-inline">
+                                        <input type="hidden" name="_method" value="DELETE"/>
                                         <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i>
                                             <span th:text="#{my.devices.delete}">Delete</span></button>
                                     </form>

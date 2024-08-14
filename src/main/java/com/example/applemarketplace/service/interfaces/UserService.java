@@ -18,6 +18,8 @@ public interface UserService {
 
     void saveCurrentUser(User user);
 
+    List<User> findAll();
+
     UserProfileView mapUserToView(String username);
 
     UserProfileDTO mapUserToDTO(String username);

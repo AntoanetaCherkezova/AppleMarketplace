@@ -206,23 +206,27 @@ public class DeviceController {
                                       @PathVariable String page,
                                       ModelAndView model) {
         User user = null;
-        if (type.equals("iPhone")) {
-            Iphone iphone = iphoneService.findById(deviceId);
-            if (iphone != null) {
-                user = this.iphoneService.findIphoneOwner(deviceId);
-                this.iphoneService.deleteIphone(user,deviceId,iphone);
+        switch (type) {
+            case "iPhone" -> {
+                Iphone iphone = iphoneService.findById(deviceId);
+                if (iphone != null) {
+                    user = this.iphoneService.findIphoneOwner(deviceId);
+                    this.iphoneService.deleteIphone(user, deviceId, iphone);
+                }
             }
-        } else if (type.equals("macBook")) {
-            MacBook macBook = macBookService.findById(deviceId);
-            if (macBook != null) {
-                user = this.macBookService.findMacBookOwner(deviceId);
-                this.macBookService.deleteMacBook(user,deviceId,macBook);
+            case "macBook" -> {
+                MacBook macBook = macBookService.findById(deviceId);
+                if (macBook != null) {
+                    user = this.macBookService.findMacBookOwner(deviceId);
+                    this.macBookService.deleteMacBook(user, deviceId, macBook);
+                }
             }
-        } else if (type.equals("watch")) {
-            Watch watch = watchService.findById(deviceId);
-            if (watch != null) {
-                user = this.watchService.findWatchOwner(deviceId);
-                this.watchService.deleteWatch(user,deviceId,watch);
+            case "watch" -> {
+                Watch watch = watchService.findById(deviceId);
+                if (watch != null) {
+                    user = this.watchService.findWatchOwner(deviceId);
+                    this.watchService.deleteWatch(user, deviceId, watch);
+                }
             }
         }
         userService.saveCurrentUser(user);

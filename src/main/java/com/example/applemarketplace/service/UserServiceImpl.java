@@ -86,6 +86,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public List<User> findAll() {
+        return this.userRepository.findAll();
+    }
+
+    @Override
     public UserProfileView mapUserToView(String username) {
         User user = this.userRepository.findByUsername(username).get();
         return this.modelMapper.map(user, UserProfileView.class);
@@ -192,4 +197,5 @@ public class UserServiceImpl implements UserService {
                 .map(user -> this.modelMapper.map(user, UserEmailDTO.class))
                 .collect(Collectors.toList());
     }
+
 }

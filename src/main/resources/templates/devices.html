@@ -27,20 +27,20 @@
                                 <img th:src="${device.getPhotosUrls().get(0)}" class="img-fluid" alt="Image">
                             </a>
                         </div>
-                        <div class="col-md-4 small-images d-flex flex-column justify-content-between">
-                            <a th:href="'/devices/device-profile/' + ${device.type} + '/' + ${device.id}" class="d-block mb-2 flex-fill">
-                                <img th:src="${device.getPhotosUrls().size() > 1 ? device.getPhotosUrls().get(1) : 'https://res.cloudinary.com/dwgx3lz5l/image/upload/v1722856503/add-image-icon-vector-add-image-icon-vector-filled-flat-sign-solid-pictogram-isolated-white-picture-plus-symbol-logo-103911077_pfvedm.png'}"
-                                     class="img-fluid" alt="Image">
-                            </a>
-                            <a th:href="'/devices/device-profile/' + ${device.type} + '/' + ${device.id}" class="d-block flex-fill">
-                                <img th:src="${device.getPhotosUrls().size() > 2 ? device.getPhotosUrls().get(2) : 'https://res.cloudinary.com/dwgx3lz5l/image/upload/v1722856503/add-image-icon-vector-add-image-icon-vector-filled-flat-sign-solid-pictogram-isolated-white-picture-plus-symbol-logo-103911077_pfvedm.png'}"
-                                     class="img-fluid" alt="Image">
-                            </a>
-                            <a th:href="'/devices/device-profile/' + ${device.type} + '/' + ${device.id}" class="d-block flex-fill">
-                                <img th:src="${device.getPhotosUrls().size() > 3 ? device.getPhotosUrls().get(3) : 'https://res.cloudinary.com/dwgx3lz5l/image/upload/v1722856503/add-image-icon-vector-add-image-icon-vector-filled-flat-sign-solid-pictogram-isolated-white-picture-plus-symbol-logo-103911077_pfvedm.png'}"
-                                     class="img-fluid" alt="Image">
-                            </a>
-                        </div>
+<!--                        <div class="col-md-4 small-images d-flex flex-column justify-content-between">-->
+<!--                            <a th:href="'/devices/device-profile/' + ${device.type} + '/' + ${device.id}" class="d-block mb-2 flex-fill">-->
+<!--                                <img th:src="${device.getPhotosUrls().size() > 1 ? device.getPhotosUrls().get(1) : 'https://res.cloudinary.com/dwgx3lz5l/image/upload/v1722856503/add-image-icon-vector-add-image-icon-vector-filled-flat-sign-solid-pictogram-isolated-white-picture-plus-symbol-logo-103911077_pfvedm.png'}"-->
+<!--                                     class="img-fluid" alt="Image">-->
+<!--                            </a>-->
+<!--                            <a th:href="'/devices/device-profile/' + ${device.type} + '/' + ${device.id}" class="d-block flex-fill">-->
+<!--                                <img th:src="${device.getPhotosUrls().size() > 2 ? device.getPhotosUrls().get(2) : 'https://res.cloudinary.com/dwgx3lz5l/image/upload/v1722856503/add-image-icon-vector-add-image-icon-vector-filled-flat-sign-solid-pictogram-isolated-white-picture-plus-symbol-logo-103911077_pfvedm.png'}"-->
+<!--                                     class="img-fluid" alt="Image">-->
+<!--                            </a>-->
+<!--                            <a th:href="'/devices/device-profile/' + ${device.type} + '/' + ${device.id}" class="d-block flex-fill">-->
+<!--                                <img th:src="${device.getPhotosUrls().size() > 3 ? device.getPhotosUrls().get(3) : 'https://res.cloudinary.com/dwgx3lz5l/image/upload/v1722856503/add-image-icon-vector-add-image-icon-vector-filled-flat-sign-solid-pictogram-isolated-white-picture-plus-symbol-logo-103911077_pfvedm.png'}"-->
+<!--                                     class="img-fluid" alt="Image">-->
+<!--                            </a>-->
+<!--                        </div>-->
                     </div>
                 </div>
             </div>

@@ -1,0 +1,40 @@
+# Data Source Properties
+spring:
+  # Email Sending
+  mail:
+    host: localhost
+    port: 1050
+    username: test@test.com
+    password: test
+    properties:
+      mail:
+        smtp:
+          auth: false
+          starttls:
+            enable: false
+
+  sql:
+    init:
+      mode: never
+
+# Email Recipient
+email:
+  recipient:
+    address: ${EMAIL_RECIPIENT:test@gmail.com}
+
+# Cloudinary
+cloudinary:
+  name: ${CLOUDINARY_NAME:dwgx3lz5l}
+  api-key: ${CLOUDINARY_API_KEY:952728852841552}
+  api-secret: ${CLOUDINARY_API_SECRET:6lRJ3v01NhjijHLchvvUS_-1bKM}
+
+# Administrator
+admin:
+  username: ${ADMIN_USERNAME:antoaneta}
+  password: ${ADMIN_PASSWORD:aa1aa}
+  first-name: ${ADMIN_FIRST_NAME:Antoaneta}
+  last-name: ${ADMIN_LAST_NAME:Cherkezova}
+  email: ${ADMIN_EMAIL:role_admin@gmail.com}
+  age: ${ADMIN_AGE:33}
+  city: ${ADMIN_CITY:Burgas}
+  phone-number: ${ADMIN_PHONE_NUMBER:123-456-789}

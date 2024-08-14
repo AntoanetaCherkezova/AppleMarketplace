@@ -44,8 +44,8 @@ public class HomeController {
                                 iphoneService.findLongestWarrantyIphone().stream(),
                                 macBookService.findLongestWarrantyMacBook().stream()
                         ),
-                        watchService.findLongestWarrantyWatch().stream()
-                ).sorted(Comparator.comparing(DeviceView::getWarranty).reversed())
+                        watchService.findLongestWarrantyWatch().stream())
+                .sorted(Comparator.comparing(DeviceView::getWarranty).reversed())
                 .limit(5)
                 .collect(Collectors.toList());
 

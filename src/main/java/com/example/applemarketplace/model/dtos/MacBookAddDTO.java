@@ -56,10 +56,8 @@ public class MacBookAddDTO {
     @ValidPhotos
     private List<MultipartFile> photosUrls;
 
-    @NotBlank(message = "{macBook.add.hddError}")
     private String HDD;
 
-    @NotBlank(message = "{macBook.add.videoCardTypeError}")
     private String videoCardType;
 
 }

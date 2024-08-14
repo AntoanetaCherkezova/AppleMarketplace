@@ -16,19 +16,20 @@ public class UserProfileDTO {
     @Size(min = 3, max = 20, message = "{register.size.firstName}")
     private String firstName;
 
-    @Size(min = 3, max = 20, message = "register.size.lastName")
+    @Size(min = 3, max = 20, message = "{register.size.lastName}")
     private String lastName;
 
     private String contactPhone;
     private String city;
 
-
-    public void setContactPhone(String contactPhone) {
-        this.contactPhone = isEmpty(contactPhone) ? "" : contactPhone;
+    public UserProfileDTO setContactPhone(String contactPhone) {
+        this.contactPhone = isEmpty(contactPhone) ? "N/A" : contactPhone;
+        return this;
     }
 
-    public void setCity(String city) {
-        this.city = isEmpty(city) ? "" : city;
+    public UserProfileDTO setCity(String city) {
+        this.city = isEmpty(city) ? "N/A" : city;
+        return this;
     }
 
     private boolean isEmpty(String value) {
