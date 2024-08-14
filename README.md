@@ -23,7 +23,7 @@ with the ability to view detailed specifications, reviews and current offers.
 ## Configurations:
 - JDK 17
 - Apache Maven 
-To set up and run AppleMarketplace, you need to:
+- To set up and run AppleMarketplace, you need to:
 Set up environment variables - ${db_username}, ${db_password}, ${MAIL_USER}, ${MAIL_PASSWORD}, ${EMAIL_RECIPIENT}, ${ADMIN_USERNAME}, ${ADMIN_PASSWORD}
 
 ### -Home-
