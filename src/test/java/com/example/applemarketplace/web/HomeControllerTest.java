@@ -116,13 +116,13 @@ class HomeControllerTest {
                         ),
                         watchService.findLongestWarrantyWatch().stream())
                 .sorted((d1, d2) -> Integer.compare(d2.getWarranty(), (d1.getWarranty())))
-                .limit(5)
+                .limit(6)
                 .toList();
 
         Assertions.assertEquals("2000", iphoneService.findById(2L).getPrice().toString());
         Assertions.assertEquals("2000", macBookService.findById(2L).getPrice().toString());
         Assertions.assertEquals("2000", watchService.findById(2L).getPrice().toString());
-        Assertions.assertEquals(5, deviceWithTheLongestWarranty.size());
+        Assertions.assertEquals(6, deviceWithTheLongestWarranty.size());
         mockMvc.perform(get("/home"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("home"))

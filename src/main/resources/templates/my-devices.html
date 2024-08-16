@@ -79,14 +79,14 @@
                     <!-- First Page -->
                     <li class="page-item" th:classappend="${myDevices.number == 0 ? 'disabled' : ''}">
                         <a th:unless="${myDevices.number == 0}" class="page-link"
-                           th:href="@{'/user/myDevices?page=0'}">First</a>
+                           th:href="@{'/user/my-devices?page=0'}" th:text="#{my.devices.first}">First</a>
                         <a th:if="${myDevices.number == 0}" class="page-link" href="#" th:text="#{my.devices.first}">First</a>
                     </li>
 
                     <!-- Previous Page -->
                     <li class="page-item" th:classappend="${myDevices.number == 0 ? 'disabled' : ''}">
                         <a th:unless="${myDevices.number == 0}" class="page-link"
-                           th:href="@{'/user/myDevices?page=' + ${myDevices.number - 1}}">Previous</a>
+                           th:href="@{'/user/my-devices?page=' + ${myDevices.number - 1}}" th:text="#{my.devices.previous}">Previous</a>
                         <a th:if="${myDevices.number == 0}" class="page-link" href="#" th:text="#{my.devices.previous}">Previous</a>
                     </li>
 
@@ -95,7 +95,7 @@
                         <th:block th:each="i : ${#numbers.sequence(0, myDevices.totalPages - 1)}">
                             <li class="page-item" th:classappend="${myDevices.number == i ? 'active' : ''}">
                                 <a class="page-link"
-                                   th:href="@{'/user/myDevices' + '?page=' + ${i}}" th:text="${i + 1}"></a>
+                                   th:href="@{'/user/my-devices' + '?page=' + ${i}}" th:text="${i + 1}"></a>
                             </li>
                         </th:block>
                     </th:block>
@@ -105,13 +105,13 @@
                             <th:block th:each="i : ${#numbers.sequence(0, 4)}">
                                 <li class="page-item" th:classappend="${myDevices.number == i ? 'active' : ''}">
                                     <a class="page-link"
-                                       th:href="@{'/user/myDevices' + '?page=' + ${i}}" th:text="${i + 1}"></a>
+                                       th:href="@{'/user/my-devices' + '?page=' + ${i}}" th:text="${i + 1}"></a>
                                 </li>
                             </th:block>
                             <li class="page-item disabled"><span class="page-link">...</span></li>
                             <li class="page-item">
                                 <a class="page-link"
-                                   th:href="@{'/user/myDevices' + '?page=' + ${myDevices.totalPages - 1}}"
+                                   th:href="@{'/user/my-devices' + '?page=' + ${myDevices.totalPages - 1}}"
                                    th:text="${myDevices.totalPages}"></a>
                             </li>
                         </th:block>
@@ -119,13 +119,13 @@
                         <th:block th:if="${myDevices.number >= myDevices.totalPages - 2}">
                             <li class="page-item">
                                 <a class="page-link"
-                                   th:href="@{'/user/myDevices' + '?page=0'}" th:text="1"></a>
+                                   th:href="@{'/user/my-devices' + '?page=0'}" th:text="1"></a>
                             </li>
                             <li class="page-item disabled"><span class="page-link">...</span></li>
                             <th:block th:each="i : ${#numbers.sequence(myDevices.totalPages - 5, myDevices.totalPages - 1)}">
                                 <li class="page-item" th:classappend="${myDevices.number == i ? 'active' : ''}">
                                     <a class="page-link"
-                                       th:href="@{'/user/myDevices' + '?page=' + ${i}}" th:text="${i + 1}"></a>
+                                       th:href="@{'/user/my-devices' + '?page=' + ${i}}" th:text="${i + 1}"></a>
                                 </li>
                             </th:block>
                         </th:block>
@@ -133,19 +133,19 @@
                         <th:block th:if="${myDevices.number >= 2 && myDevices.number < myDevices.totalPages - 2}">
                             <li class="page-item">
                                 <a class="page-link"
-                                   th:href="@{'/user/myDevices' + '?page=0'}" th:text="1"></a>
+                                   th:href="@{'/user/my-devices' + '?page=0'}" th:text="1"></a>
                             </li>
                             <li class="page-item disabled"><span class="page-link">...</span></li>
                             <th:block th:each="i : ${#numbers.sequence(myDevices.number - 1, myDevices.number + 1)}">
                                 <li class="page-item" th:classappend="${myDevices.number == i ? 'active' : ''}">
                                     <a class="page-link"
-                                       th:href="@{'/user/myDevices' + '?page=' + ${i}}" th:text="${i + 1}"></a>
+                                       th:href="@{'/user/my-devices' + '?page=' + ${i}}" th:text="${i + 1}"></a>
                                 </li>
                             </th:block>
                             <li class="page-item disabled"><span class="page-link">...</span></li>
                             <li class="page-item">
                                 <a class="page-link"
-                                   th:href="@{'/user/myDevices' + '?page=' + ${myDevices.totalPages - 1}}"
+                                   th:href="@{'/user/my-devices' + '?page=' + ${myDevices.totalPages - 1}}"
                                    th:text="${myDevices.totalPages}"></a>
                             </li>
                         </th:block>
@@ -154,14 +154,14 @@
                     <!-- Next Page -->
                     <li class="page-item" th:classappend="${myDevices.number == myDevices.totalPages - 1 ? 'disabled' : ''}">
                         <a th:unless="${myDevices.number == myDevices.totalPages - 1}" class="page-link"
-                           th:href="@{'/user/myDevices' + '?page=' + ${myDevices.number + 1}}">Next</a>
+                           th:href="@{'/user/my-devices' + '?page=' + ${myDevices.number + 1}}" th:text="#{my.devices.next}">Next</a>
                         <a th:if="${myDevices.number == myDevices.totalPages - 1}" class="page-link" href="#" th:text="#{my.devices.next}">Next</a>
                     </li>
 
                     <!-- Last Page -->
                     <li class="page-item" th:classappend="${myDevices.number == myDevices.totalPages - 1 ? 'disabled' : ''}">
                         <a th:unless="${myDevices.number == myDevices.totalPages - 1}" class="page-link"
-                           th:href="@{'/user/myDevices' + '?page=' + ${myDevices.totalPages - 1}}">Last</a>
+                           th:href="@{'/user/my-devices' + '?page=' + ${myDevices.totalPages - 1}}" th:text="#{my.devices.last}">Last</a>
                         <a th:if="${myDevices.number == myDevices.totalPages - 1}" class="page-link" href="#" th:text="#{my.devices.last}">Last</a>
                     </li>
 
