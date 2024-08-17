@@ -14,6 +14,6 @@ public interface WatchRepository extends JpaRepository<Watch, Long> {
     @Query(value = "SELECT * FROM watches ORDER BY date_of_register DESC LIMIT 10", nativeQuery = true)
     List<Watch>  findLatestWatches();
 
-    @Query(value = "SELECT * FROM watches ORDER BY warranty DESC LIMIT 5", nativeQuery = true)
+    @Query(value = "SELECT * FROM watches ORDER BY warranty DESC LIMIT 8", nativeQuery = true)
     List<Watch> findLongestWarrantyWatch();
 }

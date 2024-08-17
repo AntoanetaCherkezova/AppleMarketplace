@@ -46,7 +46,7 @@ public class HomeController {
                         ),
                         watchService.findLongestWarrantyWatch().stream())
                 .sorted(Comparator.comparing(DeviceView::getWarranty).reversed())
-                .limit(5)
+                .limit(8)
                 .collect(Collectors.toList());
 
         model.addObject("availableIPhones", this.iphoneService.availableIPhones());

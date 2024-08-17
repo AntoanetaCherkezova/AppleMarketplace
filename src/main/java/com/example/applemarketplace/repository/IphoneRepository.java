@@ -18,6 +18,6 @@ public interface IphoneRepository extends JpaRepository<Iphone, Long> {
     @Query(value = "SELECT * FROM i_phones ORDER BY date_of_register DESC LIMIT 10", nativeQuery = true)
     List<Iphone> findLatestIphones();
 
-    @Query(value = "SELECT * FROM i_phones ORDER BY warranty ASC LIMIT 5", nativeQuery = true)
+    @Query(value = "SELECT * FROM i_phones ORDER BY warranty ASC LIMIT 8", nativeQuery = true)
     List<Iphone> findLongestWarrantyIphone();
 }
